@@ -1,0 +1,14 @@
+<resources>
+	<string name="cancel">انصراف</string>
+    <string name="confirm">تایید</string>
+    <string name="file_size">File Size</string>
+    <string name="current_folder">Current Dir:</string>
+    <string name="create_folder_title">ساخت پوشه جدید</string>
+    <string name="create_folder_msg">نام را وارد کنید</string>
+    <string name="create_folder_success">پوشه جدید با موفقیت ساخته شد</string>
+    <string name="create_folder_error_no_write_access">امکان ساخت پوشه مورد نطر امکان پذیر نیست</string>
+    <string name="create_folder_error_already_exists">پوشه مورد نظر وجود دارد</string>
+    <string name="create_folder_error">امکان ساخت پوشه مورد نطر امکان پذیر نیست</string>
+    <string name="back">بازگشت</string>
+    <string name="select_here">انتخاب</string>
+</resources>

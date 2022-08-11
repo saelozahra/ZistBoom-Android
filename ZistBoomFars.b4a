@@ -1,0 +1,184 @@
+﻿Build1=Default,ir.saelozahra.zistboom.fars
+File1=db.db
+File2=icon.png
+File3=load.gif
+File4=loading_app.gif
+File5=samim-bold-fd-wol.ttf
+File6=samim-fd-wol.ttf
+File7=searchlayout.bal
+File8=seprate.png
+File9=vplayout.bal
+FileGroup1=Default Group
+FileGroup2=img
+FileGroup3=img
+FileGroup4=img
+FileGroup5=Default Group
+FileGroup6=Default Group
+FileGroup7=Layout
+FileGroup8=img
+FileGroup9=Layout
+Group=Default Group
+Library1=ahoyonboardingandroidx
+Library10=ime
+Library11=javaobject
+Library12=jk_customtabsbrowser
+Library13=okhttputils2
+Library14=persiandate
+Library15=phone
+Library16=reflection
+Library17=runtimepermissions
+Library18=smartstring
+Library19=spacenavigation
+Library2=ahswipetorefresh
+Library20=xmllayoutbuilder
+Library21=xui
+Library3=ahviewpager
+Library4=amir_activityslider
+Library5=appcompat
+Library6=bitmapcreator
+Library7=core
+Library8=dateutils
+Library9=dialogs
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~~\n~SetActivityAttribute(MainAct, android:windowSoftInputMode, adjustResize|stateHidden)~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#fff</item>~\n~        <item name="colorPrimaryDark">#00A693</item>~\n~        <item name="colorAccent">#FFCC17</item>~\n~    	<item name="colorControlHighlight">#916D02</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDisablePreview">True</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~~\n~~\n~~\n~AddManifestText(~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~  android:maxSdkVersion="19" />~\n~)
+Module1=DoubleTaptoClose
+Module2=MainAct
+Module3=ProfileAct
+Module4=SaeloZahra
+Module5=SearchAct
+Module6=Starter
+NumberOfFiles=9
+NumberOfLibraries=21
+NumberOfModules=6
+Version=11.8
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: زیست بوم فرهنگ و ارشاد فارس
+	#VersionCode: 1
+	#VersionName: 1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: true
+'	#AdditionalRes: c:\Android\my_resource\b4a_floatingactionbutton
+'	#AdditionalJar: com.android.support:support-v4
+'	#AdditionalJar: com.android.support:design
+	#AdditionalRes: ..\activity_slider_resource
+'	#AdditionalRes: ..\CoordinatorRes
+	#AdditionalRes: ..\intro_resource
+	#AdditionalRes: ..\Resource
+'	#IgnoreWarnings	: 15
+	#MultiDex		: true
+	#BridgeLogger	: True
+#End Region
+
+#Region  Activity Attributes 
+	#FullScreen		: false
+	#IncludeTitle	: True
+	#Extends		: com.onboarder.AhoyOnboarderActivity
+'	#AdditionalJar	: androidx.constraintlayout:constraintlayout
+#End Region
+
+Sub Process_Globals
+	Dim AppOpenCount As Int = 0
+End Sub
+
+Sub Globals
+	Dim AC As AppCompat
+'	Private ASOnboarding1 As ASOnboarding
+	Dim DTTC As DoubleTaptoClose
+End Sub
+
+Sub Activity_Create(FirstTime As Boolean)
+	
+'	Activity.LoadLayout("IntroLayout")
+	
+	ProgressDialogShow(SaeloZahra.CSB("در حال ورود"))
+	
+	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
+	
+	SaeloZahra.MaterialActionBarHeight 	=	AC.GetMaterialActionBarHeight
+	SaeloZahra.StatusBarHeight 			=	AC.GetStatusBarHeight
+	
+	SaeloZahra.Color		 			=	AC.GetThemeAttribute("colorPrimary")
+	SaeloZahra.ColorDark	 			=	AC.GetThemeAttribute("colorPrimaryDark")
+	SaeloZahra.ColorAccent	 			=	AC.GetThemeAttribute("colorAccent")
+	
+	
+	
+	Dim l As List
+	l.Initialize
+	
+	Dim c,c1,c2 As AhoyOnboarderCard
+	Dim p As AhoyOnboarding
+	p.Initialize("p")
+'	
+	l.Add(c.AddCard("از شیر مرغ تا جون آدمی‌زاد", "هر چیزی که دنبالشین" & CRLF & " از شیر مرغ تا جون آدمی‌زاد اینجا پیدا میشه","backpack"))
+	c.setBackgroundColor(Colors.ARGB(40,0,0,0))
+	c.setTitleColor(Colors.White)
+	c.setDescriptionColor(Colors.rgb(238,238,238))
+	c.setTitleTextSize(p.dpToPixels(12))
+	c.setDescriptionTextSize(p.dpToPixels(8))
+	
+	l.Add(c1.AddCard("ارزان تر از همه جا","اینجا میتونید محصولات رو با قیمتی پیدا کنید"&CRLF&"که هیچ جای شهر همچین قیمتایی پیدا نمیشه","chalk"))
+	c1.setBackgroundColor(Colors.ARGB(40,0,0,0))
+	c1.setTitleColor(Colors.White)
+	c1.setDescriptionColor(Colors.rgb(238,238,238))
+	c1.setTitleTextSize(p.dpToPixels(12))
+	c1.setDescriptionTextSize(p.dpToPixels(8))
+	
+	l.Add(c2.AddCard("فروشنده شوید","به راحتی آب خوردن "&CRLF&"در عرض چند دقیقه "&CRLF&"یه فروشنده بشید و محصولاتتون رو اینجا بفروشید","chat"))
+	c2.setBackgroundColor(Colors.ARGB(40,0,0,0))
+	c2.setTitleColor(Colors.White)
+	c2.setDescriptionColor(Colors.rgb(238,238,238))
+	c2.setTitleTextSize(p.dpToPixels(12))
+	c2.setDescriptionTextSize(p.dpToPixels(8))
+	
+	p.FinishButtonTitle= "شروع به کار"
+	p.showNavigationControls(True)
+	p.setGradientBackground
+		
+	p.Font = Typeface.LoadFromAssets("samim-fd-wol.ttf")
+	
+	p.StartOnboardPages = l
+	
+	
+	OpenAppCounter
+	
+	
+End Sub
+
+Sub p_onFinishButtonPressed
+	Activity.Finish
+	StartActivity(MainAct)
+End Sub
+
+Sub OpenAppCounter
+	
+	If File.Exists(SaeloZahra.Dir,"AppOpenCount") Then
+		AppOpenCount = File.ReadString(SaeloZahra.Dir,"AppOpenCount")
+	End If
+	
+	File.WriteString(SaeloZahra.Dir,"AppOpenCount",AppOpenCount+2)
+	
+	Log("AppOpenCount: "&AppOpenCount)
+	If AppOpenCount>0 And Not(SaeloZahra.Debug) Then
+		p_onFinishButtonPressed
+	End If
+	
+End Sub
+
+Sub Activity_Resume
+
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+
+End Sub
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	If KeyCode = KeyCodes.KEYCODE_BACK Then
+		DTTC.TapToClose
+		Return True
+	Else
+		Return False
+	End If
+End Sub

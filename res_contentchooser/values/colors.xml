@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="cancel_normal">#ddd</color>
+    <color name="cancel_pressed">@android:color/darker_gray</color>
+
+    <color name="confirm_normal">#ddd</color>
+    <color name="confirm_pressed">@android:color/darker_gray</color>
+
+    <color name="bright_blue">#33B5E5</color>
+
+    <!-- Use Gingerbread-orange -->
+    <color name="selection_background_color">#FEBB20</color>
+
+</resources>

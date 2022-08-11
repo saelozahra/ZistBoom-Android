@@ -1,0 +1,76 @@
+<resources>
+	<string name="app_name">Coordinator Examples</string>
+
+	<string name="example_title">This is an awesome title</string>
+	<string name="example_subtitle">I\'m a cool subtitle, larger than the title</string>
+
+	<string name="text_header">Text</string>
+	<string name="flexible_title">Flexible space</string>
+
+	<string name="header_about">About</string>
+	<string name="header_examples">Examples</string>
+
+	<string name="item_flexible_space_example">Flexible space example</string>
+	<string name="item_simple_coordinator_example">Simple coordinator example</string>
+	<string name="item_googleio_example">Google IO Detail example</string>
+	<string name="item_materialup_example">Material up profile example</string>
+
+	<string name="lorem">
+	 استفاده از این تکنیکها در عکاسی پرتره میتواند الهام بخش باشد و باعث خلاقیت و ثبتی متفاوت شود.
+\n\n
+۱- PHOTOSHOP فتوشاپ
+\n\n
+اگر بر نرم افزار فتوشاپ مسلط اید با ویرایش, ادیت و دستکاری عکس و حتی ترکیب دو عکس میتوانید با ادیت های خلاقانه, اثری متفاوت تولید کنید.
+\n\n
+۲- TEXTURE بافت
+\n\n
+اگر بافت بخش بزرگ و وپژه ای از عکس است آنرا آشکار کنید و بافت را بین موضوع و پس زمینه مچ کرده و تطبیق دهید.شما حتی میتوانید بافت را در کل عکس گسترش دهید.
+\n\n
+۳ -OVEREXPOSE بیش از اندازه لازم در معرض نورو غیره قرار دادن
+\n\n
+با در معرض نور بالا قرار دادن سوژه میتوانید پرتره ای با حالت رویایی از نور ایجاد کنید.از ویژگیهای نور زیاد از بین رفتن برجستگیها و دیده نشدن نقایص است و باعث نگاه روان در عکس میشود.
+\n\n
+۴- UNDEREXPOSE کمتر از حد لزوم در معرض قرار دادن
+\n\n
+تصاویر با نور کم یا قسمتهای تاریک بطور طبیعی چشم ونگاه را به سمت قسمت های روشن وخاص مد نظر عکاس هدایت میکند.
+\n\n
+۵ -BACK-LIGHT بازگشت نور
+\n\n
+با قرار گرفتن سوژه بین عکاس و یک منبع نور میتوان این حالت را ایجاد کرد.این حالت بخصوص زمانی جلوه گراست که مو ها بخشی بیشتری از تصویر را بپوشاند.
+\n\n
+۶ -POSING خود نما, فیگور , ژست
+\n\n
+ژست فیگور و حالت سوژه امتیاژ ویژه ای ست بخصوص اگر نامتعارف باشد.علاوه بر فیگور انتخاب زاویه های متفاوت هم میتواند شما را به اثری متفاوت برساند.
+\n\n
+۷- CULTURE فرهنگ
+\n\n
+ضبط فرهنگ محلی حتی اگر پیش پا افتاده باشد ممکن است برای شما ودیگران عجیب وغریب باشد. فرهنگ در همه جا هست حتی جایی که شما زندگی میکنید.عکاسی از فرهنگ ها در سفر به نقاط و کشورهای مختلف در دسترس است. از سوژههایی که برای شما عجیب و جالب است عکاسی کنید.
+\n\n
+۸- REFLECTIONS بازتاب
+\n\n
+استفاده از چیزهای بسیاری چون آینه ,شیشه ,آب و دیگر رفلکتورها برای ایجاد رفله در گرفتن یک پرتره انعکاس داده شده بسیار مفید است.
+\n\n
+۱۰- GET CLOSE نزدیک
+\n\n
+برداشتهای گوناگونی از سوژه در یک پرتره مقدور است. درعکسهای مشابه این تصویر تساوی توجه به سمت چپ  وبالای سوژه باعث حرکت وسوق داده شدن توجه به قسمتهای دیگر عکس میشود.
+\n\n
+۱۱-UNFOCUS تمرکز
+\n\n
+خارج از تمرکز قرار دادن موضوع باعث ایجاد جذابیت و ایجاد رمز و راز در تصویر میشود چون بیننده نمی تواند به درستی چیزی رادر تصویر پیدا کند که موضوع اصلی میباشد.
+\n\n
+۱۲ -MOVEMENT جنبش
+\n\n
+استفاده از حرکت برای نشان دادن یک  عملکرد حتی اگر یک پرتره را نسبت به موضوع کامل نشان ندهیدجالب توجه است. در قضایایی مانند این از شخص به عنوان وسیله ایجاد موضوع در کنار موضوع واقعی استفاده میکنیم.
+	</string>
+
+	<string name="about">
+		This example shows different CoordinatorLayout usage examples, like the use of \'anchor\' in views,
+		flexible space and some more tips.\n\n
+
+		This code has also been used as an example for the presentation given at the Spanish GDG Summit 2015:
+		\'Tools and tips of the trade for the Android developer\'. Whose slides will be published soon :)
+
+		\n\n Enjoy
+	</string>
+	<string name="swype.help">The \'Swipe to dismiss\' behavior allows you to easily add the \'Swipe to dismiss\' functionality in a View inside a CoordinatorLayout</string>
+</resources>
