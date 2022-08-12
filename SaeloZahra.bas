@@ -16,7 +16,6 @@ Sub Process_Globals
 '	Dim SupportNumber As String = "09366208105"
 	Dim P As Phone
 	Dim Debug As Boolean = False
-	Dim NewLayout As Boolean = True
 	Dim R As Reflector
 	Dim PI As PhoneIntents
 	Dim I As Intent

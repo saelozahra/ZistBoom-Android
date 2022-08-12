@@ -15,7 +15,7 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
-
+	Dim SpaceNavigationView1 As SpaceNavigationView
 	Dim DTTC As DoubleTaptoClose
 	Dim VP 			As AHViewPager
 	Dim ActionBar As ACToolBarLight
@@ -78,44 +78,50 @@ End Sub
 
 Sub ime1_HeightChanged (NewHeight As Int, OldHeight As Int)
 		
-	If Not(SaeloZahra.NewLayout) Then
-		If BottomBar.IsInitialized Then VP.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-BottomBar.Height-SaeloZahra.MaterialActionBarHeight)
-		If BottomBar.IsInitialized Then BottomBar.SetLayout(0,VP.Top+VP.Height,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
-	End If
+'	If BottomBar.IsInitialized Then VP.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-BottomBar.Height-SaeloZahra.MaterialActionBarHeight)
+'	If BottomBar.IsInitialized Then BottomBar.SetLayout(0,VP.Top+VP.Height,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
 	
 End Sub
 
 Sub InstallBottomMenu
 	
-	Dim Items As List
-	Items.Initialize
-	Items.Add(BottomBar.CreateItem("پروفایل‌من"	,X1.GetDrawable("baseline_account_circle_black_24")))
-	Items.Add(BottomBar.CreateItem("زیست بوم" 	,X1.GetDrawable("baseline_other_houses_black_24")))
-	Items.Add(BottomBar.CreateItem("پیام‌ها"		,X1.GetDrawable("round_message_black_24")))
+	SpaceNavigationView1.Initialize("SpaceNavigationView1")
 	
-	Dim Ui As AX_SmoothBottomBarUI
-	Ui.Initialize
-	Ui.BarBackgroundColor = SaeloZahra.Color
-	Ui.ItemTextColor = SaeloZahra.ColorDark
-	Ui.ItemIconSize = 24dip
-	Ui.BarIndicatorColor = 0x3FFFFFFF
-	Ui.BarIndicatorRadius = 12dip
-'	Ui.BarSideMargins = 0dip
-	Ui.BarSideMargins = 14dip
-	Ui.ItemPadding = 8dip ' har chi Kamtar beshe koochikTar Mishe
-	Ui.ItemIconTint = 0xA0333333
-	Ui.ItemIconTintActive = SaeloZahra.ColorDark
-'	Ui.ItemTextSize = 28
-	Ui.ItemTypeface=SaeloZahra.font
-	BottomBar.Initialize("BottomBar",Ui,Items)
-	SaeloZahra.SetElevation(BottomBar,8)
-	Activity.AddView(BottomBar,0,100%y-SaeloZahra.MaterialActionBarHeight-SaeloZahra.StatusBarHeight,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	SpaceNavigationView1.ActiveSpaceItemColor = SaeloZahra.ColorDark
+	SpaceNavigationView1.CentreButtonColor = SaeloZahra.ColorDark
+	SpaceNavigationView1.CentreButtonIcon = "baseline_other_houses_black_24"
 	
-	BottomBar.ActiveItem = 1
-	BottomBar.BringToFront
+	Dim item As SpaceItem
+	item.Initialize("پروفایل‌من","baseline_account_circle_black_24")
+	SpaceNavigationView1.addSpaceItem(item)
+	Dim item As SpaceItem
+	item.Initialize("پیام‌ها","round_message_black_24")
+	SpaceNavigationView1.addSpaceItem(item)
+	SpaceNavigationView1.showIconOnly
+	
+'	
+'	
+'	Dim Ui As AX_SmoothBottomBarUI
+'	Ui.Initialize
+'	Ui.BarBackgroundColor = SaeloZahra.Color
+'	Ui.ItemTextColor = SaeloZahra.ColorDark
+'	Ui.ItemIconSize = 24dip
+'	Ui.BarIndicatorColor = 0x3FFFFFFF
+'	Ui.BarIndicatorRadius = 12dip
+''	Ui.BarSideMargins = 0dip
+'	Ui.BarSideMargins = 14dip
+'	Ui.ItemPadding = 8dip ' har chi Kamtar beshe koochikTar Mishe
+'	Ui.ItemIconTint = 0xA0333333
+'	Ui.ItemIconTintActive = SaeloZahra.ColorDark
+''	Ui.ItemTextSize = 28
+'	Ui.ItemTypeface=SaeloZahra.font
+'	BottomBar.Initialize("BottomBar",Ui,Items)
+	SaeloZahra.SetElevation(SpaceNavigationView1,8)
+	Activity.AddView(SpaceNavigationView1,0,100%y-SaeloZahra.MaterialActionBarHeight-SaeloZahra.StatusBarHeight,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
 	
 	
-	VP.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,100%y-BottomBar.Height-SaeloZahra.MaterialActionBarHeight-SaeloZahra.StatusBarHeight+SaeloZahra.StatusBarHeight)
+	
+	VP.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,100%y-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight-SaeloZahra.StatusBarHeight+SaeloZahra.StatusBarHeight)
 	
 	
 	
@@ -161,9 +167,8 @@ Sub InstallBottomMenu
 	PC.AddPage(StrChat,"پیام‌ها")
 	VP.PageContainer = PC
 	VP.CurrentPage = 1
-	BottomBar.ActiveItem = 1
 	
-	BottomBar.BringToFront
+	SpaceNavigationView1.BringToFront
 	
 	
 	
@@ -180,7 +185,7 @@ End Sub
 
 
 Private Sub VP_PageChanged (Position As Int)
-	BottomBar.ActiveItem = Position
+'	SpaceNavigationView1.ActiveItem = Position
 	If Position == 2 Then
 		If File.Exists(SaeloZahra.Dir, "username") Then
 			ChatWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password"))
@@ -202,12 +207,20 @@ Private Sub BottomBar_onItemSelected (Position As Int)
 	VP.CurrentPage = Position
 End Sub
 
+Sub SpaceNavigationView1_onCentreButtonClick()
+	Log("SpaceNavi_onCentreButtonClick()")
+End Sub
+
+Sub SpaceNavigationView1_onItemClick(index As Int, text As String)
+	VP.CurrentPage = index
+	Log($"SpaceNavi_onItemClick(${index},${text})"$)
+End Sub
+
+
 #End Region
 
 
 Sub LoginKon
-	
-	SaeloZahra.NewLayout=False
 	
 	Dim PLogin As Panel
 	PLogin.Initialize("PLogin")

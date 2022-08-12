@@ -18,37 +18,35 @@ FileGroup7=Layout
 FileGroup8=img
 FileGroup9=Layout
 Group=Default Group
-Library1=ahoyonboardingandroidx
-Library10=ime
-Library11=javaobject
-Library12=jk_customtabsbrowser
-Library13=okhttputils2
-Library14=persiandate
-Library15=phone
-Library16=reflection
-Library17=runtimepermissions
-Library18=smartstring
-Library19=spacenavigation
-Library2=ahswipetorefresh
-Library20=xmllayoutbuilder
-Library21=xui
-Library3=ahviewpager
-Library4=amir_activityslider
-Library5=appcompat
-Library6=bitmapcreator
-Library7=core
-Library8=dateutils
-Library9=dialogs
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~~\n~SetActivityAttribute(MainAct, android:windowSoftInputMode, adjustResize|stateHidden)~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#fff</item>~\n~        <item name="colorPrimaryDark">#00A693</item>~\n~        <item name="colorAccent">#FFCC17</item>~\n~    	<item name="colorControlHighlight">#916D02</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDisablePreview">True</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~~\n~~\n~~\n~AddManifestText(~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~  android:maxSdkVersion="19" />~\n~)
+Library1=ahswipetorefresh
+Library10=javaobject
+Library11=jk_customtabsbrowser
+Library12=okhttputils2
+Library13=persiandate
+Library14=phone
+Library15=reflection
+Library16=runtimepermissions
+Library17=smartstring
+Library18=spacenavigation
+Library19=xmllayoutbuilder
+Library2=ahviewpager
+Library20=xui
+Library3=amir_activityslider
+Library4=appcompat
+Library5=bitmapcreator
+Library6=core
+Library7=dateutils
+Library8=dialogs
+Library9=ime
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~~\n~SetActivityAttribute(Main, android:windowSoftInputMode, adjustResize|stateHidden)~\n~~\n~'SetApplicationAttribute(android:theme, "@style/Theme.AppCompat")~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#fff</item>~\n~        <item name="colorPrimaryDark">#00A693</item>~\n~        <item name="colorAccent">#FFCC17</item>~\n~    	<item name="colorControlHighlight">#916D02</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDisablePreview">True</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~~\n~~\n~~\n~AddManifestText(~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~  android:maxSdkVersion="19" />~\n~)~\n~~\n~
 Module1=DoubleTaptoClose
-Module2=MainAct
-Module3=ProfileAct
-Module4=SaeloZahra
-Module5=SearchAct
-Module6=Starter
+Module2=ProfileAct
+Module3=SaeloZahra
+Module4=SearchAct
+Module5=Starter
 NumberOfFiles=9
-NumberOfLibraries=21
-NumberOfModules=6
+NumberOfLibraries=20
+NumberOfModules=5
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -58,12 +56,13 @@ Version=11.8
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: true
+	#Extends: android.support.v7.app.AppCompatActivity
 '	#AdditionalRes: c:\Android\my_resource\b4a_floatingactionbutton
-'	#AdditionalJar: com.android.support:support-v4
-'	#AdditionalJar: com.android.support:design
-	#AdditionalRes: ..\activity_slider_resource
-'	#AdditionalRes: ..\CoordinatorRes
-	#AdditionalRes: ..\intro_resource
+	#AdditionalJar: androidx.arch.core:core-runtime
+	#AdditionalJar: com.android.support:support-v4
+	#AdditionalJar: com.android.support:design
+'	#AdditionalRes: ..\activity_slider_resource
+	#AdditionalRes	: ..\Resource.Navigation
 	#AdditionalRes: ..\Resource
 '	#IgnoreWarnings	: 15
 	#MultiDex		: true
@@ -73,8 +72,6 @@ Version=11.8
 #Region  Activity Attributes 
 	#FullScreen		: false
 	#IncludeTitle	: True
-	#Extends		: com.onboarder.AhoyOnboarderActivity
-'	#AdditionalJar	: androidx.constraintlayout:constraintlayout
 #End Region
 
 Sub Process_Globals
@@ -83,17 +80,31 @@ End Sub
 
 Sub Globals
 	Dim AC As AppCompat
-'	Private ASOnboarding1 As ASOnboarding
 	Dim DTTC As DoubleTaptoClose
+	
+	Dim SpaceNavigationView1 As SpaceNavigationView
+	Dim DTTC As DoubleTaptoClose
+	Dim VP 			As AHViewPager
+	Dim ActionBar As ACToolBarLight
+	Dim Show 	As Amir_SliderShow
+	Dim sv As ACSearchView
+	Dim SI As ACMenuItem
+	Dim X1 As XmlLayoutBuilder
+	
+	Dim StrChat, StrHome, StrProfile As AHSwipeToRefresh
+	Dim ChatWV, HomeWV, ProfileWV As WebView
+	Dim Ime1 As IME
+	Dim customBrowser As JK_CustomTabsBrowser
+	Dim LoginJob As HttpJob
+	Dim LoginDialog As CustomDialog2
+	Dim PasswordET,UserNameET As EditText
 End Sub
+
 
 Sub Activity_Create(FirstTime As Boolean)
 	
-'	Activity.LoadLayout("IntroLayout")
 	
-	ProgressDialogShow(SaeloZahra.CSB("در حال ورود"))
-	
-	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
+	Activity.LoadLayout("VPLayout")
 	
 	SaeloZahra.MaterialActionBarHeight 	=	AC.GetMaterialActionBarHeight
 	SaeloZahra.StatusBarHeight 			=	AC.GetStatusBarHeight
@@ -104,64 +115,53 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	
 	
-	Dim l As List
-	l.Initialize
+	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
 	
-	Dim c,c1,c2 As AhoyOnboarderCard
-	Dim p As AhoyOnboarding
-	p.Initialize("p")
-'	
-	l.Add(c.AddCard("از شیر مرغ تا جون آدمی‌زاد", "هر چیزی که دنبالشین" & CRLF & " از شیر مرغ تا جون آدمی‌زاد اینجا پیدا میشه","backpack"))
-	c.setBackgroundColor(Colors.ARGB(40,0,0,0))
-	c.setTitleColor(Colors.White)
-	c.setDescriptionColor(Colors.rgb(238,238,238))
-	c.setTitleTextSize(p.dpToPixels(12))
-	c.setDescriptionTextSize(p.dpToPixels(8))
 	
-	l.Add(c1.AddCard("ارزان تر از همه جا","اینجا میتونید محصولات رو با قیمتی پیدا کنید"&CRLF&"که هیچ جای شهر همچین قیمتایی پیدا نمیشه","chalk"))
-	c1.setBackgroundColor(Colors.ARGB(40,0,0,0))
-	c1.setTitleColor(Colors.White)
-	c1.setDescriptionColor(Colors.rgb(238,238,238))
-	c1.setTitleTextSize(p.dpToPixels(12))
-	c1.setDescriptionTextSize(p.dpToPixels(8))
+	ActionBar.Color=SaeloZahra.Color
+'	ActionBar.Title=SaeloZahra.CSBTitle(Application.LabelName)
+'	ActionBar.TitleTextColor=Colors.White
+	ActionBar.SetLayout(0,0,100%x,SaeloZahra.MaterialActionBarHeight)
+	ActionBar.LogoBitmap=LoadBitmapResize(File.DirAssets,"icon.png",SaeloZahra.MaterialActionBarHeight-14,SaeloZahra.MaterialActionBarHeight-14,True)
 	
-	l.Add(c2.AddCard("فروشنده شوید","به راحتی آب خوردن "&CRLF&"در عرض چند دقیقه "&CRLF&"یه فروشنده بشید و محصولاتتون رو اینجا بفروشید","chat"))
-	c2.setBackgroundColor(Colors.ARGB(40,0,0,0))
-	c2.setTitleColor(Colors.White)
-	c2.setDescriptionColor(Colors.rgb(238,238,238))
-	c2.setTitleTextSize(p.dpToPixels(12))
-	c2.setDescriptionTextSize(p.dpToPixels(8))
+	InstallBottomMenu
 	
-	p.FinishButtonTitle= "شروع به کار"
-	p.showNavigationControls(True)
-	p.setGradientBackground
-		
-	p.Font = Typeface.LoadFromAssets("samim-fd-wol.ttf")
+	Sleep(0)
 	
-	p.StartOnboardPages = l
 	
+	Ime1.Initialize("ime1")
+	Ime1.AddHeightChangedEvent
+	
+	SaeloZahra.SetStatusBarColor(SaeloZahra.Color)
+	
+	
+	customBrowser.Initialize
+	customBrowser.ToolbarColor = SaeloZahra.Color
+	customBrowser.ShowTitle = True
+	customBrowser.Build
+	
+	
+
 	
 	OpenAppCounter
 	
 	
-End Sub
-
-Sub p_onFinishButtonPressed
-	Activity.Finish
-	StartActivity(MainAct)
+	
 End Sub
 
 Sub OpenAppCounter
-	
-	If File.Exists(SaeloZahra.Dir,"AppOpenCount") Then
-		AppOpenCount = File.ReadString(SaeloZahra.Dir,"AppOpenCount")
-	End If
-	
-	File.WriteString(SaeloZahra.Dir,"AppOpenCount",AppOpenCount+2)
+	Starter.RP.CheckAndRequest(Starter.RP.PERMISSION_WRITE_EXTERNAL_STORAGE)
+	Wait For ACtivity_PermissionResult (Permission As String, Result As Boolean)
+		If Result Then
+			If File.Exists(SaeloZahra.Dir,"AppOpenCount") Then
+				AppOpenCount = File.ReadString(SaeloZahra.Dir,"AppOpenCount")
+			End If
+			
+			File.WriteString(SaeloZahra.Dir,"AppOpenCount",AppOpenCount+2)
+		End If
 	
 	Log("AppOpenCount: "&AppOpenCount)
 	If AppOpenCount>0 And Not(SaeloZahra.Debug) Then
-		p_onFinishButtonPressed
 	End If
 	
 End Sub
@@ -182,3 +182,347 @@ Sub Activity_KeyPress (KeyCode As Int) As Boolean
 		Return False
 	End If
 End Sub
+
+
+
+
+
+
+
+
+
+#Region InstallBottomMenu
+
+Sub ime1_HeightChanged (NewHeight As Int, OldHeight As Int)
+		
+	If SpaceNavigationView1.IsInitialized Then VP.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	If SpaceNavigationView1.IsInitialized Then StrHome.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	If SpaceNavigationView1.IsInitialized Then SpaceNavigationView1.SetLayout(0,VP.Top+VP.Height-SaeloZahra.StatusBarHeight,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	
+End Sub
+
+Sub InstallBottomMenu
+	
+	
+	SpaceNavigationView1.SpaceBackgroundColor = SaeloZahra.ColorDark
+	SpaceNavigationView1.ActiveSpaceItemColor = Colors.White
+	SpaceNavigationView1.InActiveSpaceItemColor = Colors.LightGray
+	SpaceNavigationView1.CentreButtonColor = SaeloZahra.ColorDark
+	SpaceNavigationView1.CentreButtonColor = SaeloZahra.ColorDark
+	SpaceNavigationView1.CentreButtonIcon = "baseline_cottage_white_24"
+	
+	Dim item As SpaceItem
+	item.Initialize("پروفایل‌من","baseline_account_circle_black_24")
+	SpaceNavigationView1.addSpaceItem(item)
+	Dim item As SpaceItem
+	item.Initialize("پیام‌ها","round_message_black_24")
+	SpaceNavigationView1.addSpaceItem(item)
+	
+	
+	SpaceNavigationView1.showIconOnly
+	SaeloZahra.SetElevation(SpaceNavigationView1,1)
+	AC.SetElevation(SpaceNavigationView1,1)
+	
+	
+	
+	
+	ProfileWV.Initialize("ProfileWV")
+	If File.Exists(SaeloZahra.Dir, "username") Then
+		ProfileWV.LoadUrl(SaeloZahra.SiteUrl&"chat?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password"))
+	End If
+	ProfileWV.ZoomEnabled=False
+	ProfileWV.Color=Colors.Transparent
+	StrProfile.Initialize("StrProfile")
+	StrProfile.AddView(ProfileWV)
+	
+	
+	
+	HomeWV.Initialize("HomeWV")
+	Dim UNQuery As String
+	If File.Exists(SaeloZahra.Dir, "username") Then
+		UNQuery = "?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password")
+	End If
+	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&UNQuery)
+	HomeWV.ZoomEnabled=False
+	HomeWV.Color=Colors.Transparent
+	StrHome.Initialize("StrChat")
+	StrHome.AddView(HomeWV)
+	StrHome.SetColorScheme2(Array As Int(SaeloZahra.ColorDark, SaeloZahra.ColorAccent))
+	Activity.AddView(StrHome,0,0,100%x,VP.Height)
+	
+	ChatWV.Initialize("ChatWV")
+	If File.Exists(SaeloZahra.Dir, "username") Then
+		ChatWV.LoadUrl(SaeloZahra.SiteUrl&"chat?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password"))
+	Else
+		ChatWV.LoadUrl("https://google.com")
+'		LoginKon
+	End If
+	ChatWV.ZoomEnabled=False
+	ChatWV.Color=Colors.Transparent
+	ChatWV.LoadUrl("http://rahpouyan.com")
+	ChatWV.ZoomEnabled=False
+	StrChat.Initialize("StrChat")
+	StrChat.SetColorScheme(SaeloZahra.Color,Colors.Yellow,SaeloZahra.ColorDark,SaeloZahra.ColorLight)
+	StrChat.AddView(ChatWV)
+	
+	Dim PC As AHPageContainer
+	PC.Initialize
+	PC.AddPage(StrProfile,"حساب کاربری")
+'	PC.AddPage(HomeWV,Application.LabelName)
+	PC.AddPage(StrChat,"پیام‌ها")
+	VP.PageContainer = PC
+	VP.CurrentPage = 1
+	
+	VP.SendToBack
+	SpaceNavigationView1.BringToFront
+	StrHome.BringToFront
+	
+	
+	
+	VP.SetLayout(     0,SaeloZahra.MaterialActionBarHeight,100%x,100%y-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	StrHome.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,100%y-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	
+	
+End Sub
+
+Sub StrHome_Refresh
+	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile")
+	LogColor("Refreshing",Colors.DarkGray)
+End Sub
+
+Sub HomeWV_PageFinished (Url As String)
+	CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
+	StrHome.Refreshing=False
+End Sub
+
+'Sub THideProgress_Tick
+'	IHideProgress=IHideProgress+1
+'	If IHideProgress = 2 Then
+'		ProgressDialogHide
+'	End If
+'End Sub
+
+
+Private Sub VP_PageChanged (Position As Int)
+	
+	SpaceNavigationView1.changeCurrentItem(Position)
+	
+	If Position == 2 Then
+		If File.Exists(SaeloZahra.Dir, "username") Then
+			ChatWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password"))
+			ChatWV.Tag="home"
+		Else
+			LoginKon
+		End If
+'		sv.QueryHint=SaeloZahra.CSB("جستجو در بازارچه")
+	Else If Position == 1 Then
+'		sv.QueryHint=SaeloZahra.CSB("جستجو در سایت")
+	Else If Position == 0 Then
+'		sv.QueryHint=SaeloZahra.CSB("جستجو در رسانه ها")
+	End If
+	
+End Sub
+
+Sub SpaceNavigationView1_onCentreButtonClick
+	
+	SpaceNavigationView1.showBadgeAtIndex(1, 8,Colors.Red)
+	LogColor("SpaceNavi_onCentreButtonClick()", SaeloZahra.ColorDark)
+	
+	SpaceNavigationView1.ActiveSpaceItemColor   = Colors.LightGray
+	
+	VP.SendToBack
+	VP.SetVisibleAnimated(313,False)
+	StrHome.BringToFront
+	StrHome.SetVisibleAnimated(313,True)
+	SpaceNavigationView1.BringToFront
+	
+	
+End Sub
+
+Sub SpaceNavigationView1_onItemReselected(index As Int, text As String)
+	
+	Log("EventName_onItemReselected "&index&" : "& text)
+	
+	SpaceNavigationView1.ActiveSpaceItemColor = SaeloZahra.ColorAccent
+	StrHome.SetVisibleAnimated(313,False)
+	StrHome.SendToBack
+	VP.SetVisibleAnimated(313,True)
+	VP.BringToFront
+	SpaceNavigationView1.BringToFront
+	
+End Sub
+
+Sub SpaceNavigationView1_onItemClick(index As Int, text As String)
+	
+	VP.CurrentPage = index
+	Log($"SpaceNavi_onItemClick(${index},${text})"$)
+	
+End Sub
+
+
+#End Region
+
+
+Sub LoginKon
+	
+	Dim PLogin As Panel
+	PLogin.Initialize("PLogin")
+	UserNameET.Initialize("UserNameET")
+	UserNameET.InputType=UserNameET.INPUT_TYPE_PHONE
+	UserNameET.Typeface=SaeloZahra.Font
+	UserNameET.Hint="شماره تماس"
+	PLogin.AddView(UserNameET,5%x,5%x,60%x,14%x)
+				
+	PasswordET.Initialize("PasswordET")
+	PasswordET.Typeface=SaeloZahra.Font
+	PasswordET.Hint="کلمه عبور"
+	PasswordET.PasswordMode=True
+	PLogin.AddView(PasswordET,5%x,25%x,60%x,14%x)
+				
+	If File.Exists(SaeloZahra.Dir,"username") And File.Exists(SaeloZahra.Dir,"password") Then
+		UserNameET.Text= File.ReadString(SaeloZahra.Dir,"username")
+		PasswordET.Text= File.ReadString(SaeloZahra.Dir,"password")
+	End If
+
+	LoginDialog.AddView(PLogin,72%x,45%x)
+	Dim loginDialogResult As Int = LoginDialog.Show( SaeloZahra.CSB("ورود به حساب کاربری") , SaeloZahra.CSB("ورود") , SaeloZahra.CSB("لغو") , SaeloZahra.CSB("ثبت نام") , Null)
+	If loginDialogResult == DialogResponse.POSITIVE Then
+					
+		LoginJob.Initialize("LoginJob",Starter)
+		LoginJob.Tag="home"
+		Dim M1 As Map
+		M1.Initialize
+		M1.Put("username",UserNameET.Text)
+		M1.Put("password",PasswordET.Text)
+		File.WriteMap(SaeloZahra.Dir,"UPTemp",M1)
+		LogColor(SaeloZahra.JsonUrl&"members/login?username="&UserNameET.Text&"&password="&PasswordET.Text,SaeloZahra.ColorDark)
+		LoginJob.PostMultipart(SaeloZahra.JsonUrl&"members/login",M1,Null)
+		
+		ProgressDialogShow(SaeloZahra.CSBTitle("کمی صبر کنید"))
+					
+	else If loginDialogResult == DialogResponse.NEGATIVE Then
+		SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+		Show.convertActivityFromTranslucent
+'		StartActivity(LoginAct) TODO
+	End If
+End Sub
+
+
+
+#Region MenuSearch
+
+'Inline Java code to initialize the Menu
+#If Java
+	public boolean _onCreateOptionsMenu(android.view.Menu menu) {
+		if (processBA.subExists("activity_createmenu")) {
+			processBA.raiseEvent2(null, true, "activity_createmenu", false, new de.amberhome.objects.appcompat.ACMenuWrapper(menu));
+			return true;
+		}
+		else
+			return false;
+	}
+#End If
+
+Sub Activity_CreateMenu(Menu As ACMenu)
+	
+	
+	Log("Create Menu")
+	
+	sv.Initialize2("search", sv.THEME_LIGHT)
+	sv.IconifiedByDefault = True
+
+	Menu.Clear
+	ActionBar.InitMenuListener
+	sv.QueryHint=SaeloZahra.csb("جستجو")
+	SI = Menu.Add2(1, 3, "جستجو",X1.GetDrawable("baseline_search_black_24") )
+	SI.SearchView = sv
+	
+	
+'	If LoginAct.UserInfo.IsInitialized Then Menu.Add2(2,2,"موارد ذخیره شده",X1.GetDrawable("twotone_bookmarks_white_24") ).ShowAsAction = 2
+	
+	
+	If ProfileAct.UserInfo.IsInitialized Then
+		If File.Exists(SaeloZahra.Dir, "avatar.jpg") Then
+			Dim Avatar As Bitmap
+			Avatar = LoadBitmapResize(SaeloZahra.Dir, "avatar.jpg" ,SaeloZahra.MaterialActionBarHeight,SaeloZahra.MaterialActionBarHeight ,True)
+			Try
+				Avatar = SaeloZahra.JO.RunMethod("getRoundBitmap",Array(Avatar,SaeloZahra.ColorLight, 20))
+			Catch
+				Log(LastException)
+			End Try
+			Menu.Add(3,1,"حساب کاربری",	Avatar).ShowAsAction = 2
+		Else
+			Menu.Add2(3,1,"حساب کاربری",	X1.GetDrawable("baseline_account_circle_black_24") 	).ShowAsAction = 2
+		End If
+		
+'		Menu.Add2(3,0,LoginAct.YourName, Null ).ShowAsAction = 2
+		
+		Dim LblYourName As Label
+		LblYourName.Initialize("3")
+		LblYourName.TextColor=SaeloZahra.ColorLight
+		LblYourName.Text=SaeloZahra.CSB(ProfileAct.YourName)
+		LblYourName.Gravity=Bit.Or(Gravity.CENTER_HORIZONTAL,Gravity.CENTER_VERTICAL)
+		ActionBar.AddView(LblYourName,-2,SaeloZahra.MaterialActionBarHeight,Gravity.CENTER)
+		
+	Else
+		Menu.Add2(3,1,"ورود",		X1.GetDrawable("round_login_black_24") 				).ShowAsAction = 2
+	End If
+	
+	
+'	Menu.Add2(3,3,"تارنمای "&application.labelname,	x1.GetDrawable("ic_gps_fixed_white_24dp") )
+'	Menu.Add2(5,5,"شاخه ها", 	X1.GetDrawable("ic_playlist_play_white_24dp") ).ShowAsAction = 2
+	
+	
+End Sub
+
+
+
+Sub Search_QuerySubmitted (Query As String)
+	
+	SaeloZahra.P.HideKeyboard(Activity)
+	Sleep(110)
+	sv.Iconfied = True
+	SI.ItemCollapsed = True
+   
+	Log("Search for '" & Query & "'")
+	
+	Dim KeyWord As String = Query.Trim
+	If KeyWord = "" Then
+		ProgressDialogHide
+		Return
+	End If
+'	KeyWord = KeyWord.Replace(" ", "+")
+
+'	Dim SU As StringUtils
+'	KeyWord = SU.EncodeUrl(Query,"UTF8")
+	
+	SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+	Show.convertActivityFromTranslucent
+	SearchAct.KeyWord = KeyWord
+	StartActivity(SearchAct)
+	
+End Sub
+
+
+
+
+Sub Actionbar_MenuItemClick (Item As ACMenuItem)
+	Log(Item.Id)
+	Select Item.Id
+		Case 0
+		Case 1
+		Case 2
+		Case 3
+'			If LoginAct.UserInfo.IsInitialized Then
+'				SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+'				Show.convertActivityFromTranslucent
+'				StartActivity(EditMemberInfoAct)
+'			Else
+'				LoginKon
+'			End If
+	End Select
+End Sub
+
+#End Region
+
+

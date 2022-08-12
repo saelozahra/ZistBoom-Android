@@ -6,8 +6,8 @@ C:\Android\platforms\android-30\android.jar
 --min-api
 21
 C:\Android\tools\..\extras\b4a_local\unpacked-b4ashared-63792602270000\dex_v1\b4ashared.zip
-c:\android\tools\..\extras\b4a_local\unpacked-cardview-1.0.0-63724016823195\jars\classes.zip
 c:\android\tools\..\extras\b4a_local\unpacked-appcompat.androidx-63740851595421\jars\classes.zip
+c:\android\tools\..\extras\b4a_local\unpacked-spacenavigation.androidx-63795782729622\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\legacy\legacy-support-v4\1.0.0\unpacked-legacy-support-v4-1.0.0\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\core\core\1.3.1\unpacked-core-1.3.1\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\lifecycle\lifecycle-runtime\2.2.0\unpacked-lifecycle-runtime-2.2.0\jars\classes.zip
@@ -42,13 +42,18 @@ c:\android\tools\..\extras\b4a_remote\androidx\appcompat\appcompat-resources\1.2
 c:\android\tools\..\extras\b4a_remote\androidx\vectordrawable\vectordrawable\1.1.0\unpacked-vectordrawable-1.1.0\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\vectordrawable\vectordrawable-animated\1.1.0\unpacked-vectordrawable-animated-1.1.0\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\browser\browser\1.0.0\unpacked-browser-1.0.0\jars\classes.zip
+c:\android\tools\..\extras\b4a_remote\com\google\android\material\material\1.2.0\unpacked-material-1.2.0\jars\classes.zip
+c:\android\tools\..\extras\b4a_remote\androidx\cardview\cardview\1.0.0\unpacked-cardview-1.0.0\jars\classes.zip
+c:\android\tools\..\extras\b4a_remote\androidx\annotation\annotation-experimental\1.2.0\unpacked-annotation-experimental-1.2.0\jars\classes.zip
+c:\android\tools\..\extras\b4a_remote\androidx\annotation\annotation-experimental\1.2.0\unpacked-annotation-experimental-1.2.0\jars\lint.zip
+c:\android\tools\..\extras\b4a_remote\androidx\recyclerview\recyclerview\1.1.0\unpacked-recyclerview-1.1.0\jars\classes.zip
+c:\android\tools\..\extras\b4a_remote\androidx\transition\transition\1.3.1\unpacked-transition-1.3.1\jars\classes.zip
+c:\android\tools\..\extras\b4a_remote\androidx\viewpager2\viewpager2\1.0.0\unpacked-viewpager2-1.0.0\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\multidex\multidex\2.0.1\unpacked-multidex-2.0.1\jars\classes.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-ahoyonboardingandroidx-63740856324657\dex_v1\ahoyonboardingandroidx.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-ahswipetorefresh.androidx-63703406823487\dex_v1\ahswipetorefresh.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-ahviewpager.androidx-63703406823954\dex_v1\ahviewpager.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-amir_activityslider.androidx-63703406824394\dex_v1\amir_activityslider.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-appcompat-63677010024000\dex_v1\appcompat.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-ax_smoothbottombar-63716262970760\dex_v1\ax_smoothbottombar.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-bitmapcreator-63792602270000\dex_v1\bitmapcreator.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-core-63792602270000\dex_v1\core.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-dateutils-63792602270000\dex_v1\dateutils.zip
@@ -61,9 +66,9 @@ C:\Android\tools\..\extras\b4a_local\unpacked-phone-63792602270000\dex_v1\phone.
 C:\Android\tools\..\extras\b4a_local\unpacked-reflection-63792602270000\dex_v1\reflection.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-runtimepermissions-63792602270000\dex_v1\runtimepermissions.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-smartstring-63561065684868\dex_v1\smartstring.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-spacenavigation-63608606582033\dex_v1\spacenavigation.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xmllayoutbuilder-63535649474000\dex_v1\xmllayoutbuilder.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xui-63792602270000\dex_v1\xui.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-ahoyonboarding.androidx-63740776886850\dex_v1\ahoyonboarding.androidx.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63792602270000\dex_v1\stringutils.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-richstring-63448528512000\dex_v1\richstring.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-animation-63792602270000\dex_v1\animation.zip
@@ -77,7 +82,26 @@ c:\android\tools\..\extras\b4a_remote\androidx\annotation\annotation\1.1.0\annot
 c:\android\tools\..\extras\b4a_remote\androidx\lifecycle\lifecycle-common\2.2.0\lifecycle-common-2.2.0.zip
 c:\android\tools\..\extras\b4a_remote\androidx\arch\core\core-common\2.1.0\core-common-2.1.0.zip
 c:\android\tools\..\extras\b4a_remote\androidx\collection\collection\1.1.0\collection-1.1.0.zip
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$animator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$attr.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$bool.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$color.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$dimen.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$drawable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$id.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$integer.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$interpolator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$layout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$plurals.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$string.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$style.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$styleable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R$xml.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\annotation\experimental\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$color.dex
@@ -88,12 +112,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$color.dex
@@ -104,12 +130,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\appcompat\resources\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$color.dex
@@ -120,12 +148,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\browser\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$color.dex
@@ -136,12 +166,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\cardview\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$color.dex
@@ -152,12 +184,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\coordinatorlayout\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$color.dex
@@ -168,12 +202,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\core\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$color.dex
@@ -184,12 +220,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\drawerlayout\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$color.dex
@@ -200,12 +238,14 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\fragment\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$color.dex
@@ -216,12 +256,32 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\media\R.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$animator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$attr.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$bool.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$color.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$dimen.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$drawable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$id.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$integer.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$interpolator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$layout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$plurals.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$string.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$style.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$styleable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R$xml.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\recyclerview\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$color.dex
@@ -232,12 +292,50 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\swiperefreshlayout\R.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$animator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$attr.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$bool.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$color.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$dimen.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$drawable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$id.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$integer.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$interpolator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$layout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$plurals.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$string.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$style.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$styleable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R$xml.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\transition\R.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$animator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$attr.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$bool.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$color.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$dimen.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$drawable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$id.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$integer.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$interpolator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$layout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$plurals.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$string.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$style.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$styleable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R$xml.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\androidx\viewpager2\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$color.dex
@@ -248,11 +346,48 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\a
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\anywheresoftware\b4a\objects\R.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$animator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$attr.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$bool.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$color.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$dimen.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$drawable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$id.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$integer.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$interpolator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$layout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$plurals.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$string.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$style.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$styleable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R$xml.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\google\android\material\R.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$animator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$attr.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$bool.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$color.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$dimen.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$drawable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$id.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$integer.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$interpolator.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$layout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$plurals.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$string.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$style.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$styleable.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R$xml.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\com\luseen\spacenavigation\R.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\doubletaptoclose.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\httpjob$_multipartfiledata.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\httpjob.dex
@@ -263,17 +398,12 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$1.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$B4AMenuItemsClickListener.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$HandleKeyDelayed.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_Activity_Create.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_OpenAppCounter.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_Search_QuerySubmitted.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumeMessage.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$WaitForLayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact$1.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact$B4AMenuItemsClickListener.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact$HandleKeyDelayed.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact$ResumableSub_Activity_Create.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact$ResumableSub_Search_QuerySubmitted.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact$ResumeMessage.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact$WaitForLayout.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\mainact.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\Manifest$permission.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\Manifest.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\profileact$1.dex
@@ -283,6 +413,7 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\profileact$WaitForLayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\profileact.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$anim.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$animator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$attr.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$bool.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$color.dex
@@ -293,6 +424,7 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$interpolator.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$layout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$mipmap.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$plurals.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$string.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$style.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$styleable.dex
