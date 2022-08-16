@@ -16,6 +16,6 @@ ModuleClosedNodes2=
 ModuleClosedNodes3=
 ModuleClosedNodes4=
 ModuleClosedNodes5=
-NavigationStack=Main,SpaceNavigationView1_onItemReselected,303,6,Main,InstallBottomMenu,239,1,Main,LoginKon,362,6,Main,HomeWV_PageFinished,250,4,Main,Actionbar_MenuItemClick,539,6,SaeloZahra,SetAnimation,543,0,SaeloZahra,CheckConnection,566,0,SaeloZahra,CheckSite,566,0,Main,JobDone,416,2,Main,Activity_Create,89,6
+NavigationStack=Main,SpaceNavigationView1_onItemClick,343,0,Main,Globals,53,0,Main,RestartApp,450,4,Main,Activity_Create,98,6,ProfileAct,Process_Globals,7,0,Main,Process_Globals,27,0,Main,Actionbar_MenuItemClick,560,2,Main,JobDone,408,5,Main,Activity_CreateMenu,469,0,Main,ime1_HeightChanged,168,3,Main,InstallBottomMenu,176,0
 SelectedBuild=0
 VisibleModules=5,3,4,2

@@ -77,7 +77,6 @@ Version=11.8
 
 Sub Process_Globals
 	Dim AppOpenCount As Int = 0
-	Dim UserInfo As Map
 End Sub
 
 Sub Globals
@@ -103,7 +102,6 @@ Sub Globals
 	Dim PasswordET,UserNameET As EditText
 	Private Panel As Panel
 	
-	Dim out As OutputStream
 End Sub
 
 
@@ -142,16 +140,14 @@ Sub Activity_Create(FirstTime As Boolean)
 			Msgbox2Async("خطای اینترنت", SaeloZahra.CSB(" اینترنتتون قطع شده "&CRLF&"و نمیتونید به سایت وصل بشید!!!"), "تلاش مجدد", "", "خروج", Null, False)
 			Wait For Msgbox_Result (Result As Int)
 			If Result = DialogResponse.POSITIVE Then
-				Activity.Finish
-				StartActivity(Me)
+				RestartApp
 			End If
 		End If
 	Else
 		Msgbox2Async("خطای شبکه", SaeloZahra.CSB("احتمالا اینترنتتون قطع شده "&CRLF&"وصلش کنین و دوباره برای ورود تلاش کنین"), "تلاش مجدد", "", "خروج", Null, False)
 		Wait For Msgbox_Result (Result As Int)
 		If Result = DialogResponse.POSITIVE Then
-			Activity.Finish
-			StartActivity(Me)
+			RestartApp
 		End If
 	End If
 	
@@ -222,13 +218,15 @@ End Sub
 #Region InstallBottomMenu
 
 Sub ime1_HeightChanged (NewHeight As Int, OldHeight As Int)
-		
+	Log("ime1_HeightChanged")
 	If SpaceNavigationView1.IsInitialized Then Panel.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
 	If SpaceNavigationView1.IsInitialized Then SpaceNavigationView1.SetLayout(0,Panel.Top+Panel.Height-SaeloZahra.StatusBarHeight,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
 	
 End Sub
 
 Sub InstallBottomMenu
+	
+	Log("InstallBottomMenu")
 	
 	SpaceNavigationView1.SpaceBackgroundColor = SaeloZahra.ColorDark
 	SpaceNavigationView1.ActiveSpaceItemColor = Colors.White
@@ -462,7 +460,8 @@ Sub JobDone(job As HttpJob)
 				Dim parser As JSONParser
 				parser.Initialize(job.GetString)
 				Dim jRoot As Map = parser.NextObject
-				UserInfo = jRoot
+				ProfileAct.UserInfo = jRoot
+				File.WriteMap(SaeloZahra.Dir,"UserInfo", jRoot)
 '				Dim id As Int = jRoot.Get("id")
 				Dim first_name As String = jRoot.Get("first_name")
 				Dim last_name As String = jRoot.Get("last_name")
@@ -485,6 +484,7 @@ Sub JobDone(job As HttpJob)
 '				Next
 				Log(job.GetString)
 				ToastMessageShow(SaeloZahra.CSB(first_name&" "&last_name&" خوش آمدید."),True)
+				RestartApp
 		End Select
 	Else
 		If job.ErrorMessage == "{""status"":""username is incorrect""}" Then
@@ -499,7 +499,10 @@ Sub JobDone(job As HttpJob)
 	End If
 End Sub
 
-
+Sub RestartApp
+	Activity.Finish
+	StartActivity(Me)
+End Sub
 
 #Region MenuSearch
 
@@ -534,20 +537,20 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 	
 	
 	If ProfileAct.UserInfo.IsInitialized Then
-		If File.Exists(SaeloZahra.Dir, "avatar.jpg") Then
-			Dim Avatar As Bitmap
-			Avatar = LoadBitmapResize(SaeloZahra.Dir, "avatar.jpg" ,SaeloZahra.MaterialActionBarHeight,SaeloZahra.MaterialActionBarHeight ,True)
-			Try
-				Avatar = SaeloZahra.JO.RunMethod("getRoundBitmap",Array(Avatar,SaeloZahra.ColorLight, 20))
-			Catch
-				Log(LastException)
-			End Try
-			Menu.Add(3,1,"حساب کاربری",	Avatar).ShowAsAction = 2
-		Else
+'		If File.Exists(SaeloZahra.Dir, "avatar.jpg") Then
+'			Dim Avatar As Bitmap
+'			Avatar = LoadBitmapResize(SaeloZahra.Dir, "avatar.jpg" ,SaeloZahra.MaterialActionBarHeight,SaeloZahra.MaterialActionBarHeight ,True)
+'			Try
+'				Avatar = SaeloZahra.JO.RunMethod("getRoundBitmap",Array(Avatar,SaeloZahra.ColorLight, 20))
+'			Catch
+'				Log(LastException)
+'			End Try
+'			Menu.Add(3,1,"حساب کاربری",	Avatar).ShowAsAction = 2
+'		Else
 			Menu.Add2(3,1,"حساب کاربری",	X1.GetDrawable("baseline_account_circle_black_24") 	).ShowAsAction = 2
-		End If
+'		End If
 		
-'		Menu.Add2(3,0,LoginAct.YourName, Null ).ShowAsAction = 2
+''		Menu.Add2(3,0,LoginAct.YourName, Null ).ShowAsAction = 2
 		
 		Dim LblYourName As Label
 		LblYourName.Initialize("3")
@@ -605,11 +608,11 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 		Case 1
 		Case 2
 		Case 3
-			If UserInfo.IsInitialized Then
+			If ProfileAct.UserInfo.IsInitialized Then
 				SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
 				Show.convertActivityFromTranslucent
 				StartActivity(ProfileAct)
-				ToastMessageShow(SaeloZahra.CSB(UserInfo.Get("first_name")&" "&UserInfo.Get("last_name")),True)
+				ToastMessageShow(SaeloZahra.CSB(ProfileAct.UserInfo.Get("first_name")&" "&ProfileAct.UserInfo.Get("last_name")),True)
 			Else
 				LoginKon
 			End If
