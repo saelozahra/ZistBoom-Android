@@ -134,7 +134,26 @@ Sub Activity_Create(FirstTime As Boolean)
 	LoadingWV.LoadHtml("<html><body style='margin:Auto;'><img src='file:///android_asset/loading_app.gif' style='width:100%;height:100%;' /></body></html>")
 '	LoadingWV.LoadHtml("<body> <img style='position:absolute; top:0; left:0; width:100%; height:100%;' src='file:///android_asset/loading_app.gif' > <img style='' src='file:///android_asset/load.gif' ></body>")
 	LoadingWV.BringToFront
-	InstallBottomMenu
+			
+	If SaeloZahra.CheckConnection Then
+		If SaeloZahra.CheckSite Then
+			InstallBottomMenu
+		Else
+			Msgbox2Async("خطای اینترنت", SaeloZahra.CSB(" اینترنتتون قطع شده "&CRLF&"و نمیتونید به سایت وصل بشید!!!"), "تلاش مجدد", "", "خروج", Null, False)
+			Wait For Msgbox_Result (Result As Int)
+			If Result = DialogResponse.POSITIVE Then
+				Activity.Finish
+				StartActivity(Me)
+			End If
+		End If
+	Else
+		Msgbox2Async("خطای شبکه", SaeloZahra.CSB("احتمالا اینترنتتون قطع شده "&CRLF&"وصلش کنین و دوباره برای ورود تلاش کنین"), "تلاش مجدد", "", "خروج", Null, False)
+		Wait For Msgbox_Result (Result As Int)
+		If Result = DialogResponse.POSITIVE Then
+			Activity.Finish
+			StartActivity(Me)
+		End If
+	End If
 	
 	Sleep(0)
 	
