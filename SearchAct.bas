@@ -51,31 +51,28 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	
 	ProgressDialogShow(SaeloZahra.csb("در حال جستجو..."))
-''	LvItemList.Add(CreateMap("id":1,"title":"سلام خلای دیووووووووونه","pic":"https://peyjoor.com/uploads/products/1399/11/1611316757_154458.jpg"))
-'	Log(SaeloZahra.JsonUrl&"hafez/search/"&KeyWord)
-'	SearchJob.Initialize("SearchJob",Me)
-'	SearchJob.Download(SaeloZahra.JsonUrl&"hafez/search/"&KeyWord)
-'	Wait For (SearchJob) JobDone(j As HttpJob)
-'	If j.Success Then
-'		Dim parser As JSONParser
-'		parser.Initialize(j.GetString)
-'		Dim root As List = parser.NextArray
-'		For Each colroot As Map In root
-''			Dim id As Int = colroot.Get("id")
-'			Dim title As String = colroot.Get("title")
-'			Log(title)
-''			Dim MyType As String = colroot.Get("type")
-''			Dim subtype As String = colroot.Get("subtype")
-''			Dim url As String = colroot.Get("url")
-'			LvItemList.Add(colroot)
-'		Next
-'	End If
-'	j.Release
-'	
-'	LoadingWV.SetVisibleAnimated(313,False)
-'	LV.Show
-'	
-'	LV.Divider.Add1(Colors.Transparent,18dip)
+'	LvItemList.Add(CreateMap("id":1,"title":"سلام خلای دیووووووووونه","pic":"https://peyjoor.com/uploads/products/1399/11/1611316757_154458.jpg"))
+	Log(SaeloZahra.JsonUrl&"hafez/search/"&KeyWord)
+	SearchJob.Initialize("SearchJob",Me)
+	SearchJob.Download(SaeloZahra.JsonUrl&"hafez/search/"&KeyWord)
+	Wait For (SearchJob) JobDone(j As HttpJob)
+	If j.Success Then
+		Dim parser As JSONParser
+		parser.Initialize(j.GetString)
+		Dim root As List = parser.NextArray
+		For Each colroot As Map In root
+'			Dim id As Int = colroot.Get("id")
+			Dim title As String = colroot.Get("title")
+			Log(title)
+'			Dim MyType As String = colroot.Get("type")
+'			Dim subtype As String = colroot.Get("subtype")
+'			Dim url As String = colroot.Get("url")
+			LvItemList.Add(colroot)
+		Next
+	End If
+	j.Release
+	
+	LoadingWV.SetVisibleAnimated(313,False)
 	
 	ProgressDialogHide
 	

@@ -12,7 +12,7 @@ Sub Process_Globals
 	Dim Font As Typeface=Typeface.LoadFromAssets("Samim-FD-WOL.ttf")
 	Dim fontBold As Typeface=Typeface.LoadFromAssets("Samim-Bold-FD-WOL.ttf")
 	Dim SiteUrl As String = "http://zistboom.farhangi-fars.com/"
-	Dim JsonUrl As String = SiteUrl&"json/"
+	Dim JsonUrl As String = SiteUrl&"api/"
 '	Dim SupportNumber As String = "09366208105"
 	Dim P As Phone
 	Dim Debug As Boolean = False
@@ -548,17 +548,17 @@ Sub SetAnimation(InAnimation As String, OutAnimation As String)
 End Sub
 
 
-'Sub CheckConnection As Boolean
-'	
-'	If (p.GetDataState == "CONNECTED") Or (p.GetSettings ("wifi_on") == 1) Then
-'		Return True
-'	else If (p.GetDataState == "DISCONNECTED") Or (p.GetDataState == "SUSPENDED") Then
-'		Return False
-'	Else
-'		Return True
-'	End If
-'	
-'End Sub
+Sub CheckConnection As Boolean
+	
+	If (p.GetDataState == "CONNECTED") Or (p.GetSettings ("wifi_on") == 1) Then
+		Return True
+	else If (p.GetDataState == "DISCONNECTED") Or (p.GetDataState == "SUSPENDED") Then
+		Return False
+	Else
+		Return True
+	End If
+	
+End Sub
 
 
 
@@ -570,16 +570,16 @@ End Sub
 '	media.Play
 'End Sub
 
-'Sub CheckSite As Boolean
-'	Dim sb As StringBuilder
-'	sb.Initialize
-'	p.Shell("ping -c 2 -W 10 -v mazraeyeman.ir", Null, sb, Null)
-'	If sb.Length = 0 Then
-'		Return False
-'	Else
-'		Return True
-'	End If
-'End Sub
+Sub CheckSite As Boolean
+	Dim sb As StringBuilder
+	sb.Initialize
+	p.Shell("ping -c 2 -W 10 -v mazraeyeman.ir", Null, sb, Null)
+	If sb.Length = 0 Then
+		Return False
+	Else
+		Return True
+	End If
+End Sub
 
 
 
