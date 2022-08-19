@@ -19,10 +19,10 @@ Sub Globals
 	Dim Config 	As Amir_SliderConfig
 	Dim Show 	As Amir_SliderShow
 	Dim X1 As XmlLayoutBuilder
-'	Dim LV As Hitex_LayoutView
 	Private ActionBar As ACToolBarDark
 	Private LoadingWV As WebView
 	Dim LvItemList As List
+	Private ListView1 As ListView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -32,7 +32,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	LoadingWV.LoadHtml("<body> <img style='position:absolute; top:0; left:0; width:100%; height:100%;' src='file:///android_asset/loading_app.gif' > <img style='' src='file:///android_asset/load.gif' ></body>")
 	ActionBar.Title=SaeloZahra.CSBTitle("جستجو")
 	ActionBar.Color=SaeloZahra.Color
-	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_white_24")
+	ActionBar.TitleTextColor = Colors.DarkGray
+	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_black_24")
 	
 	LvItemList.Initialize
 	
@@ -50,29 +51,50 @@ Sub Activity_Create(FirstTime As Boolean)
 	SaeloZahra.SetStatusBarColor(SaeloZahra.ColorDark)
 	
 	
+	
+	ListView1.TwoLinesAndBitmap.Label.Typeface=SaeloZahra.fontBold
+	ListView1.TwoLinesAndBitmap.Label.TextColor=Colors.DarkGray
+	ListView1.TwoLinesAndBitmap.Label.Width = ListView1.TwoLinesAndBitmap.Label.Width-20dip
+	ListView1.TwoLinesAndBitmap.SecondLabel.Typeface=SaeloZahra.font
+	ListView1.TwoLinesAndBitmap.SecondLabel.TextColor=Colors.LightGray
+	
+	
 	ProgressDialogShow(SaeloZahra.csb("در حال جستجو..."))
 '	LvItemList.Add(CreateMap("id":1,"title":"سلام خلای دیووووووووونه","pic":"https://peyjoor.com/uploads/products/1399/11/1611316757_154458.jpg"))
-	Log(SaeloZahra.JsonUrl&"hafez/search/"&KeyWord)
+	Log(SaeloZahra.JsonUrl&"search/"&KeyWord)
 	SearchJob.Initialize("SearchJob",Me)
-	SearchJob.Download(SaeloZahra.JsonUrl&"hafez/search/"&KeyWord)
+	SearchJob.Download(SaeloZahra.JsonUrl&"search/"&KeyWord)
 	Wait For (SearchJob) JobDone(j As HttpJob)
 	If j.Success Then
 		Dim parser As JSONParser
 		parser.Initialize(j.GetString)
 		Dim root As List = parser.NextArray
 		For Each colroot As Map In root
-'			Dim id As Int = colroot.Get("id")
+
 			Dim title As String = colroot.Get("title")
 			Log(title)
-'			Dim MyType As String = colroot.Get("type")
-'			Dim subtype As String = colroot.Get("subtype")
-'			Dim url As String = colroot.Get("url")
+			Dim Line2 As String = "خلق شده توسط "&colroot.Get("author")&" در "&colroot.Get("cat")
+			
+			Dim picture As String = colroot.Get("picture")
+			
+			Dim PicJob As HttpJob
+			PicJob.Initialize("PicJob",Me)
+			Log("downloading: "&SaeloZahra.SiteUrl&picture)
+			PicJob.Download(SaeloZahra.SiteUrl&picture)
+			Wait For (PicJob) JobDone(ja As HttpJob)
+			If ja.Success Then
+				ListView1.AddTwoLinesAndBitmap2(title, Line2, SaeloZahra.CreateRoundBitmap(PicJob.GetBitmap, ListView1.TwoLinesAndBitmap.ItemHeight ), colroot.Get("id"))
+			End If
+			ja.Release
+			
 			LvItemList.Add(colroot)
+			
 		Next
 	End If
 	j.Release
 	
 	LoadingWV.SetVisibleAnimated(313,False)
+	SaeloZahra.SetStatusBarColor(SaeloZahra.Color)
 	
 	ProgressDialogHide
 	

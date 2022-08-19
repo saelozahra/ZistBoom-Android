@@ -21,7 +21,7 @@ Sub Process_Globals
 	Dim I As Intent
 	Dim JO As JavaObject
 	Dim MaterialActionBarHeight,StatusBarHeight As Int
-	
+	Dim XUI As XUI
 	Dim Color 		As Int
 	Dim ColorDark 	As Int
 	Dim ColorLight 	As Int = 0xFFFFECB3
@@ -41,30 +41,29 @@ Sub Gradiant As GradientDrawable
 	Return Gradient1
 End Sub
 
-'Sub CreateRoundRectBitmap (Input As B4XBitmap, Radius As Float) As B4XBitmap
-'	Dim XUI As XUI
-'	Dim BorderColor As Int = ColorDark
-'	Dim BorderWidth As Int = 4dip
-'	Dim c As B4XCanvas
-'	Dim xview As B4XView = XUI.CreatePanel("")
-'	xview.SetLayoutAnimated(0, 0, 0, Input.Width, Input.Height)
-'	c.Initialize(xview)
-'	Dim path As B4XPath
-'	path.InitializeRoundedRect(c.TargetRect, Radius)
-'	c.ClipPath(path)
-'	c.DrawRect(c.TargetRect, BorderColor, True, BorderWidth) 'border
-'	c.RemoveClip
-'	Dim r As B4XRect
-'	r.Initialize(BorderWidth, BorderWidth, c.TargetRect.Width - BorderWidth, c.TargetRect.Height - BorderWidth)
-'	path.InitializeRoundedRect(r, Radius - 0.7 * BorderWidth)
-'	c.ClipPath(path)
-'	c.DrawBitmap(Input, r)
-'	c.RemoveClip
-'	c.Invalidate
-'	Dim res As B4XBitmap = c.CreateBitmap
-'	c.Release
-'	Return res
-'End Sub
+
+'xui is a global XUI variable.
+Sub CreateRoundBitmap (Input As B4XBitmap, Size As Int) As B4XBitmap
+	If Input.Width <> Input.Height Then
+		'if the image is not square then we crop it to be a square.
+		Dim l As Int = Min(Input.Width, Input.Height)
+		Input = Input.Crop(Input.Width / 2 - l / 2, Input.Height / 2 - l / 2, l, l)
+	End If
+	Dim c As B4XCanvas
+	Dim xview As B4XView = XUI.CreatePanel("")
+	xview.SetLayoutAnimated(0, 0, 0, Size, Size)
+	c.Initialize(xview)
+	Dim path As B4XPath
+	path.InitializeOval(c.TargetRect)
+	c.ClipPath(path)
+	c.DrawBitmap(Input.Resize(Size, Size, False), c.TargetRect)
+	c.RemoveClip
+	c.DrawCircle(c.TargetRect.CenterX, c.TargetRect.CenterY, c.TargetRect.Width / 2 - 2dip, ColorLight, False, 5dip) 'comment this line to remove the border
+	c.Invalidate
+	Dim res As B4XBitmap = c.CreateBitmap
+	c.Release
+	Return res
+End Sub
 
 Sub SetCornerRadii(v As View, Rx_TopLeft As Float, Ry_TopLeft As Float, Rx_TopRight As Float, Ry_TopRight As Float, Rx_BottomRight As Float, Ry_BottomRight As Float, Rx_BottomLeft As Float, Ry_BottomLeft As Float)
 	Dim JO As JavaObject = v.Background
@@ -573,7 +572,7 @@ End Sub
 Sub CheckSite As Boolean
 	Dim sb As StringBuilder
 	sb.Initialize
-	p.Shell("ping -c 2 -W 10 -v mazraeyeman.ir", Null, sb, Null)
+	p.Shell("ping -c 2 -W 10 -v "&SiteUrl.Replace("http://","").Replace("https://","").Replace("/",""), Null, sb, Null)
 	If sb.Length = 0 Then
 		Return False
 	Else

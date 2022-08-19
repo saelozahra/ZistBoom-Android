@@ -66,14 +66,14 @@ C:\Android\tools\..\extras\b4a_local\unpacked-persiandate-63524496090691\dex_v1\
 C:\Android\tools\..\extras\b4a_local\unpacked-phone-63792602270000\dex_v1\phone.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-reflection-63792602270000\dex_v1\reflection.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-runtimepermissions-63792602270000\dex_v1\runtimepermissions.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-smartstring-63561065684868\dex_v1\smartstring.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-spacenavigation-63608606582033\dex_v1\spacenavigation.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-webviewsettings-63531050906000\dex_v1\webviewsettings.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xmllayoutbuilder-63535649474000\dex_v1\xmllayoutbuilder.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xui-63792602270000\dex_v1\xui.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63792602270000\dex_v1\stringutils.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-richstring-63448528512000\dex_v1\richstring.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-webviewextras-63580143640000\dex_v1\webviewextras.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-animation-63792602270000\dex_v1\animation.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-63792602270000\dex_v1\okhttp.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63792602270000\dex_v1\stringutils.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-4.9.0-63792602270000\dex_v1\okhttp-4.9.0.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-okio-2.8.0-63792602270000\dex_v1\okio-2.8.0.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-urlconnection-4.9.3-63792602270000\dex_v1\okhttp-urlconnection-4.9.3.zip
@@ -401,6 +401,7 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$HandleKeyDelayed.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_Activity_Create.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_HomeWV_PageFinished.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_JobDone.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_OpenAppCounter.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumableSub_Search_QuerySubmitted.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main$ResumeMessage.dex

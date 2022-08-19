@@ -27,11 +27,12 @@ Library14=persiandate
 Library15=phone
 Library16=reflection
 Library17=runtimepermissions
-Library18=smartstring
-Library19=spacenavigation
+Library18=spacenavigation
+Library19=webviewsettings
 Library2=ahviewpager
 Library20=xmllayoutbuilder
 Library21=xui
+Library22=webviewextras
 Library3=amir_activityslider
 Library4=appcompat
 Library5=bitmapcreator
@@ -46,7 +47,7 @@ Module3=SaeloZahra
 Module4=SearchAct
 Module5=Starter
 NumberOfFiles=9
-NumberOfLibraries=21
+NumberOfLibraries=22
 NumberOfModules=5
 Version=11.8
 @EndOfDesignText@
@@ -65,7 +66,7 @@ Version=11.8
 '	#AdditionalRes: ..\activity_slider_resource
 	#AdditionalRes	: ..\Resource.Navigation
 	#AdditionalRes: ..\Resource
-'	#IgnoreWarnings	: 15
+	#IgnoreWarnings	: 15
 	#MultiDex		: true
 	#BridgeLogger	: True
 #End Region
@@ -77,6 +78,9 @@ Version=11.8
 
 Sub Process_Globals
 	Dim AppOpenCount As Int = 0
+	Dim GlobalFirstTime, CanInstallAct As Boolean
+	Dim RestartedBefore As Boolean = False
+	Dim UNQuery As String = ""
 End Sub
 
 Sub Globals
@@ -92,6 +96,8 @@ Sub Globals
 	Dim SI As ACMenuItem
 	Dim X1 As XmlLayoutBuilder
 	
+	Dim WebViewSettings1 As WebViewSettings
+	Dim WebViewExtras1 As WebViewExtras
 	Dim EndLoading As Boolean = False
 	Dim StrChat, StrProfile As AHSwipeToRefresh
 	Dim ChatWV, HomeWV, ProfileWV, LoadingWV As WebView
@@ -117,39 +123,31 @@ Sub Activity_Create(FirstTime As Boolean)
 	SaeloZahra.ColorDark	 			=	AC.GetThemeAttribute("colorPrimaryDark")
 	SaeloZahra.ColorAccent	 			=	AC.GetThemeAttribute("colorAccent")
 	
-	
+	GlobalFirstTime = FirstTime
 	
 	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
 	
+	
+	If File.Exists(SaeloZahra.Dir,"UPTemp") Then
+		UNQuery = "?username="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"&password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")
+	End If
 	
 	ActionBar.Color=SaeloZahra.Color
 '	ActionBar.Title=SaeloZahra.CSBTitle(Application.LabelName)
 '	ActionBar.TitleTextColor=Colors.White
 	ActionBar.SetLayout(0,0,100%x,SaeloZahra.MaterialActionBarHeight)
-	ActionBar.LogoBitmap=LoadBitmapResize(File.DirAssets,"icon.png",SaeloZahra.MaterialActionBarHeight-14,SaeloZahra.MaterialActionBarHeight-14,True)
+	ActionBar.LogoBitmap=LoadBitmapResize(File.DirAssets,"icon.png",SaeloZahra.MaterialActionBarHeight*1.5,SaeloZahra.MaterialActionBarHeight-14,True)
 	
 	LoadingWV.SetLayout(0, 0, 100%x, 100%y)
 	LoadingWV.LoadHtml("<html><body style='margin:Auto;'><img src='file:///android_asset/loading_app.gif' style='width:100%;height:100%;' /></body></html>")
 '	LoadingWV.LoadHtml("<body> <img style='position:absolute; top:0; left:0; width:100%; height:100%;' src='file:///android_asset/loading_app.gif' > <img style='' src='file:///android_asset/load.gif' ></body>")
 	LoadingWV.BringToFront
-			
-	If SaeloZahra.CheckConnection Then
-		If SaeloZahra.CheckSite Then
-			InstallBottomMenu
-		Else
-			Msgbox2Async("خطای اینترنت", SaeloZahra.CSB(" اینترنتتون قطع شده "&CRLF&"و نمیتونید به سایت وصل بشید!!!"), "تلاش مجدد", "", "خروج", Null, False)
-			Wait For Msgbox_Result (Result As Int)
-			If Result = DialogResponse.POSITIVE Then
-				RestartApp
-			End If
-		End If
-	Else
-		Msgbox2Async("خطای شبکه", SaeloZahra.CSB("احتمالا اینترنتتون قطع شده "&CRLF&"وصلش کنین و دوباره برای ورود تلاش کنین"), "تلاش مجدد", "", "خروج", Null, False)
-		Wait For Msgbox_Result (Result As Int)
-		If Result = DialogResponse.POSITIVE Then
-			RestartApp
-		End If
-	End If
+	
+	InstallBottomMenu
+	
+	LoginKon
+	
+	If CanInstallAct Then InstallActivity
 	
 	Sleep(0)
 	
@@ -176,13 +174,15 @@ End Sub
 Sub OpenAppCounter
 	Starter.RP.CheckAndRequest(Starter.RP.PERMISSION_WRITE_EXTERNAL_STORAGE)
 	Wait For ACtivity_PermissionResult (Permission As String, Result As Boolean)
-		If Result Then
-			If File.Exists(SaeloZahra.Dir,"AppOpenCount") Then
-				AppOpenCount = File.ReadString(SaeloZahra.Dir,"AppOpenCount")
-			End If
-			
-			File.WriteString(SaeloZahra.Dir,"AppOpenCount",AppOpenCount+2)
+	If Result Then
+		SaeloZahra.Dir = Starter.RP.GetSafeDirDefaultExternal("saelozahra_app")
+		If File.Exists(SaeloZahra.Dir,"AppOpenCount") Then
+			AppOpenCount = File.ReadString(SaeloZahra.Dir,"AppOpenCount")
+			Log("AppOpenCount Readed "&AppOpenCount)
 		End If
+			
+		File.WriteString(SaeloZahra.Dir,"AppOpenCount",AppOpenCount+2)
+	End If
 	
 	Log("AppOpenCount: "&AppOpenCount)
 	If AppOpenCount>0 And Not(SaeloZahra.Debug) Then
@@ -218,16 +218,14 @@ End Sub
 #Region InstallBottomMenu
 
 Sub ime1_HeightChanged (NewHeight As Int, OldHeight As Int)
-	Log("ime1_HeightChanged")
+		
 	If SpaceNavigationView1.IsInitialized Then Panel.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
 	If SpaceNavigationView1.IsInitialized Then SpaceNavigationView1.SetLayout(0,Panel.Top+Panel.Height-SaeloZahra.StatusBarHeight,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
 	
 End Sub
 
 Sub InstallBottomMenu
-	
-	Log("InstallBottomMenu")
-	
+
 	SpaceNavigationView1.SpaceBackgroundColor = SaeloZahra.ColorDark
 	SpaceNavigationView1.ActiveSpaceItemColor = Colors.White
 	SpaceNavigationView1.InActiveSpaceItemColor = Colors.LightGray
@@ -247,44 +245,40 @@ Sub InstallBottomMenu
 	SaeloZahra.SetElevation(SpaceNavigationView1,1)
 	AC.SetElevation(SpaceNavigationView1,1)
 	
-	
+End Sub
+
+Sub InstallActivity
 	
 	
 	ProfileWV.Initialize("ProfileWV")
-	If File.Exists(SaeloZahra.Dir, "username") Then
-		ProfileWV.LoadUrl(SaeloZahra.SiteUrl&"chat?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password"))
-	End If
+	LogColor(SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password"), Colors.Yellow)
+	ProfileWV.LoadUrl(SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password"))
 	ProfileWV.ZoomEnabled=False
 '	ProfileWV.Color=Colors.Transparent
 	StrProfile.Initialize("StrProfile")
 	StrProfile.SetColorScheme2(Array As Int(SaeloZahra.ColorDark, SaeloZahra.ColorAccent, SaeloZahra.ColorLightTransparent))
 	StrProfile.AddView(ProfileWV)
 	
-	
-	
-	Dim UNQuery As String
-	If File.Exists(SaeloZahra.Dir, "username") Then
-		UNQuery = "?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password")
-	End If
+	LogColor("loading HomeWV: "&SaeloZahra.SiteUrl&"home/mobile"&UNQuery,Colors.Magenta)
 	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&UNQuery)
 	HomeWV.ZoomEnabled=False
+	
+	WebViewSettings1.setSavePassword(ProfileWV, True)
+'	WebViewSettings1.setUserAgentString(ProfileWV, "Mozilla/5.0 (Linux; Win64; x64; rv:46.0) Gecko/20100101 Firefox/68.0")
+	WebViewSettings1.setGeolocationEnabled(ProfileWV, True)
+	WebViewSettings1.setDomStorageEnabled(ProfileWV, True)
+	WebViewSettings1.setDatabaseEnabled(ProfileWV, True)
+	WebViewExtras1.addWebChromeClient(ProfileWV, "WebViewExtras1")
+	
 '	HomeWV.Color=Colors.Transparent
 '	StrHome.Initialize("StrChat")
 '	StrHome.AddView(HomeWV)
 '	StrHome.SetColorScheme2(Array As Int(SaeloZahra.ColorDark, SaeloZahra.ColorAccent, SaeloZahra.ColorLightTransparent))
 	
 	ChatWV.Initialize("ChatWV")
-	If File.Exists(SaeloZahra.Dir, "username") Then
-		ChatWV.LoadUrl(SaeloZahra.SiteUrl&"chat?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password"))
-		ChatWV.LoadUrl("https://google.com")
-	Else
-		ChatWV.LoadUrl("https://google.com")
-'		LoginKon
-	End If
 	ChatWV.ZoomEnabled=False
 '	ChatWV.Color=Colors.Transparent
-	ChatWV.LoadUrl("http://rahpouyan.com")
-	ChatWV.ZoomEnabled=False
+	ChatWV.LoadUrl(SaeloZahra.SiteUrl&$"chat/${UNQuery}"$)
 	StrChat.Initialize("StrChat")
 	StrChat.SetColorScheme(SaeloZahra.Color,Colors.Yellow,SaeloZahra.ColorDark,SaeloZahra.ColorLight)
 	StrChat.AddView(ChatWV)
@@ -309,19 +303,19 @@ Sub InstallBottomMenu
 	
 End Sub
 
-Sub StrHome_Refresh
-	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile")
-	LogColor("Refreshing",Colors.DarkGray)
-End Sub
+'Sub StrHome_Refresh
+'	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile")
+'	LogColor("Refreshing",Colors.DarkGray)
+'End Sub
 
 Sub HomeWV_PageFinished (Url As String)
-	Log("HomeWV_PageFinished")
+	LogColor("HomeWV_PageFinished", SaeloZahra.ColorAccent)
 	EndLoading=True
 	LoadingWV.SetVisibleAnimated(2313, False)
 	Sleep(2313)
 	LoadingWV.SendToBack
 	Sleep(313)
-	CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
+	If SpaceNavigationView1.IsInitialized Then CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
 End Sub
 
 'Sub THideProgress_Tick
@@ -334,11 +328,11 @@ End Sub
 
 Private Sub VP_PageChanged (Position As Int)
 	
-	SpaceNavigationView1.changeCurrentItem(Position)
+	If SpaceNavigationView1.IsInitialized Then SpaceNavigationView1.changeCurrentItem(Position)
 	
 	If Position == 2 Then
-		If File.Exists(SaeloZahra.Dir, "username") Then
-			ChatWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile?username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password"))
+		If File.Exists(SaeloZahra.Dir,"UPTemp") Then
+			ChatWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&UNQuery)
 			ChatWV.Tag="home"
 		Else
 			LoginKon
@@ -370,7 +364,8 @@ End Sub
 
 Sub SpaceNavigationView1_onItemReselected(index As Int, text As String)
 	
-	SpaceNavigationView1.ActiveSpaceItemColor = SaeloZahra.ColorAccent
+	SpaceNavigationView1.ActiveSpaceItemColor = Colors.White
+	
 	Log("EndLoading: "&EndLoading)
 	If EndLoading Then
 		Log("EventName_onItemReselected "&index&" : "& text)
@@ -385,6 +380,9 @@ End Sub
 
 Sub SpaceNavigationView1_onItemClick(index As Int, text As String)
 	
+	SpaceNavigationView1_onItemReselected(index, text)
+	SpaceNavigationView1.ActiveSpaceItemColor = Colors.White
+	
 	VP.CurrentPage = index
 	Log($"SpaceNavi_onItemClick(${index},${text})"$)
 	
@@ -396,57 +394,56 @@ End Sub
 
 Sub LoginKon
 	
-	Dim PLogin As Panel
-	PLogin.Initialize("PLogin")
-	UserNameET.Initialize("UserNameET")
-'	UserNameET.InputType=UserNameET.INPUT_TYPE_PHONE
-	UserNameET.Typeface=SaeloZahra.Font
-	UserNameET.Text = "saelozahra"
-	UserNameET.Hint="شماره تماس"
-	PLogin.AddView(UserNameET,5%x,5%x,60%x,14%x)
-				
-	PasswordET.Initialize("PasswordET")
-	PasswordET.Typeface=SaeloZahra.Font
-	PasswordET.Text="Yaheydar!ZBF110"
-	PasswordET.Hint="کلمه عبور"
-	PasswordET.PasswordMode=True
-	PLogin.AddView(PasswordET,5%x,25%x,60%x,14%x)
-				
-	If File.Exists(SaeloZahra.Dir,"username") And File.Exists(SaeloZahra.Dir,"password") Then
-		UserNameET.Text= File.ReadString(SaeloZahra.Dir,"username")
-		PasswordET.Text= File.ReadString(SaeloZahra.Dir,"password")
+	LoginJob.Initialize("LoginJob", Me)
+	LoginJob.Tag="home"
+	
+	If File.Exists(SaeloZahra.Dir,"UPTemp") Then
+		
+		LoginJob.Download(SaeloZahra.JsonUrl&"login"&UNQuery)
+		LogColor(SaeloZahra.JsonUrl&"login"&UNQuery,Colors.Yellow)
+		
+	Else
+		Dim PLogin As Panel
+		PLogin.Initialize("PLogin")
+		UserNameET.Initialize("UserNameET")
+		'	UserNameET.InputType=UserNameET.INPUT_TYPE_PHONE
+		UserNameET.Typeface=SaeloZahra.Font
+		UserNameET.Hint="نام کاربری"
+		PLogin.AddView(UserNameET,5%x,5%x,60%x,14%x)
+					
+		PasswordET.Initialize("PasswordET")
+		PasswordET.Typeface=SaeloZahra.Font
+		PasswordET.Hint="کلمه عبور"
+		PasswordET.PasswordMode=True
+		PLogin.AddView(PasswordET,5%x,25%x,60%x,14%x)
+					
+		
+		LoginDialog.AddView(PLogin,72%x,45%x)
+		
+		Dim loginDialogResult As Int = LoginDialog.Show( SaeloZahra.CSB("ورود به حساب کاربری") , SaeloZahra.CSB("ورود") , SaeloZahra.CSB("لغو") , SaeloZahra.CSB("ثبت نام") , Null)
+		If loginDialogResult == DialogResponse.POSITIVE Then
+					
+			Dim M1 As Map
+			M1.Initialize
+			M1.Put("username",UserNameET.Text)
+			M1.Put("password",PasswordET.Text)
+			File.WriteMap(SaeloZahra.Dir,"UPTemp",M1)
+'			LoginJob.PostMultipart(SaeloZahra.JsonUrl&"login",M1,Null)
+			LoginJob.Download(SaeloZahra.JsonUrl&"login?username="&UserNameET.Text&"&password="&PasswordET.Text)
+			ProgressDialogShow(SaeloZahra.CSBTitle("کمی صبر کنید"))
+		
+		else If loginDialogResult == DialogResponse.NEGATIVE Then
+'			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+'			Show.convertActivityFromTranslucent
+'			StartActivity(ProfileAct) TODO
+			customBrowser.CreateNewTab(SaeloZahra.SiteUrl&"signup")
+		End If
+		
 	End If
 
-	LoginDialog.AddView(PLogin,72%x,45%x)
-	Dim loginDialogResult As Int = LoginDialog.Show( SaeloZahra.CSB("ورود به حساب کاربری") , SaeloZahra.CSB("ورود") , SaeloZahra.CSB("لغو") , SaeloZahra.CSB("ثبت نام") , Null)
-	If loginDialogResult == DialogResponse.POSITIVE Then
-					
-		LoginJob.Initialize("LoginJob", Me)
-		LoginJob.Tag="home"
-		Dim M1 As Map
-		M1.Initialize
-		M1.Put("username",UserNameET.Text)
-		M1.Put("password",PasswordET.Text)
-		File.WriteMap(SaeloZahra.Dir,"UPTemp",M1)
-'		LoginJob.PostMultipart(SaeloZahra.JsonUrl&"login",M1,Null)
-		LoginJob.Download(SaeloZahra.JsonUrl&"login?username="&M1.Get("username")&"&password="&M1.Get("password"))
-		Log(SaeloZahra.JsonUrl&"login?username="&M1.Get("username")&"&password="&M1.Get("password"))
-		ProgressDialogShow(SaeloZahra.CSBTitle("کمی صبر کنید"))
-		
-		
-'		Dim hc As OkHttpClient
-'		hc.InitializeAcceptAll("hc")
-'		Dim req As OkHttpRequest
-'		req.InitializePost2(SaeloZahra.JsonUrl&"login", "username=saelozahra&password=Yaheydar!ZBF110".GetBytes("UTF8"))
-'		req.SetHeader("User-Agent","insomnia/2022.5.0")
-'		req.SetHeader("Content-Type", "application/json")
-'		hc.Execute(req,1000)
-					
-	else If loginDialogResult == DialogResponse.NEGATIVE Then
-		SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
-		Show.convertActivityFromTranslucent
-		StartActivity(ProfileAct)
-	End If
+	Log(SaeloZahra.JsonUrl&"login"&UNQuery)
+	
+	
 End Sub
 
 
@@ -474,7 +471,7 @@ Sub JobDone(job As HttpJob)
 '					Dim city_id As Int = city.Get("city_id")
 '					Dim city_slug As String = city.Get("city_slug")
 '				Dim permission As String = jRoot.Get("permission")
-'				Dim avatar As String = jRoot.Get("avatar")
+				Dim Avatar As String = jRoot.Get("avatar")
 '				Dim asaar As List = jRoot.Get("asaar")
 '				For Each colasaar As Map In asaar
 '					Dim description As String = colasaar.Get("description")
@@ -482,26 +479,65 @@ Sub JobDone(job As HttpJob)
 '					Dim title As String = colasaar.Get("title")
 '					Dim picture As String = colasaar.Get("picture")
 '				Next
+				Dim AvatarJob As HttpJob
+				AvatarJob.Initialize("AvatarJob",Me)
+				Log("downloading: "&SaeloZahra.SiteUrl&Avatar)
+				AvatarJob.Download(SaeloZahra.SiteUrl&Avatar)
+				Wait For (AvatarJob) JobDone(ja As HttpJob)
+				If ja.Success Then
+					Dim out As OutputStream = File.OpenOutput(SaeloZahra.Dir, "avatar.jpg", False)
+					File.Copy2(ja.GetInputStream, out)
+					out.Close
+				End If
+				ja.Release
+				Log("First: "&GlobalFirstTime)
 				Log(job.GetString)
 				ToastMessageShow(SaeloZahra.CSB(first_name&" "&last_name&" خوش آمدید."),True)
-				RestartApp
+				
+				RestartApp(True)
+				
+	
 		End Select
 	Else
 		If job.ErrorMessage == "{""status"":""username is incorrect""}" Then
 			ToastMessageShow(SaeloZahra.CSB(" نام کاربری غلطه"), True)
+			File.Delete(SaeloZahra.Dir,"UPTemp")
+			LoginKon
 		else If job.ErrorMessage == "{""status"":""password is incorrect""}" Then
 			ToastMessageShow(SaeloZahra.CSB(" کلمه‌عبور غلطه"), True)
+			File.Delete(SaeloZahra.Dir,"UPTemp")
+			LoginKon
 		Else if job.ErrorMessage.Contains(" GET مجاز نیست.") Then
 			ToastMessageShow(SaeloZahra.CSB(" متد GET مجاز نیست"), True)
+
+		ELSE If Not(SaeloZahra.CheckConnection) Then
+			Msgbox2Async("خطای اینترنت", SaeloZahra.CSB(" شبکه قطع شده "&CRLF&"و نمیتونید به سایت وصل بشید!!!"), "تلاش مجدد", "", "خروج", Null, False)
+			Wait For Msgbox_Result (Result As Int)
+			If Result = DialogResponse.POSITIVE Then
+				RestartedBefore = False
+				RestartApp(False)
+			End If
+		else If Not(SaeloZahra.CheckSite) Then
+			Msgbox2Async("خطای اینترنت", SaeloZahra.CSB(" اینترنتتون قطع شده "&CRLF&"و نمیتونید به سایت وصل بشید!!!"), "تلاش مجدد", "", "خروج", Null, False)
+			Wait For Msgbox_Result (Result As Int)
+			If Result = DialogResponse.POSITIVE Then
+				RestartedBefore = False
+				RestartApp(False)
+			End If
 		Else
 			ToastMessageShow(job.ErrorMessage, True)
 		End If
 	End If
 End Sub
 
-Sub RestartApp
-	Activity.Finish
-	StartActivity(Me)
+Sub RestartApp(WithInstall As Boolean)
+	Log("RestartApp With Activity: "&WithInstall)
+	If Not(RestartedBefore) Then
+		RestartedBefore = True
+		Activity.Finish
+		StartActivity(Me)
+		CanInstallAct = WithInstall
+	End If
 End Sub
 
 #Region MenuSearch
@@ -537,20 +573,21 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 	
 	
 	If ProfileAct.UserInfo.IsInitialized Then
-'		If File.Exists(SaeloZahra.Dir, "avatar.jpg") Then
-'			Dim Avatar As Bitmap
-'			Avatar = LoadBitmapResize(SaeloZahra.Dir, "avatar.jpg" ,SaeloZahra.MaterialActionBarHeight,SaeloZahra.MaterialActionBarHeight ,True)
-'			Try
+		If File.Exists(SaeloZahra.Dir, "avatar.jpg") Then
+			Dim Avatar As Bitmap
+			Avatar = LoadBitmapResize(SaeloZahra.Dir, "avatar.jpg" ,SaeloZahra.MaterialActionBarHeight,SaeloZahra.MaterialActionBarHeight ,True)
+			Try
 '				Avatar = SaeloZahra.JO.RunMethod("getRoundBitmap",Array(Avatar,SaeloZahra.ColorLight, 20))
-'			Catch
-'				Log(LastException)
-'			End Try
-'			Menu.Add(3,1,"حساب کاربری",	Avatar).ShowAsAction = 2
-'		Else
+				Avatar = SaeloZahra.CreateRoundBitmap(Avatar, SaeloZahra.MaterialActionBarHeight)
+			Catch
+				Log(LastException)
+			End Try
+			Menu.Add(3,1,"حساب کاربری",	Avatar).ShowAsAction = 2
+		Else
 			Menu.Add2(3,1,"حساب کاربری",	X1.GetDrawable("baseline_account_circle_black_24") 	).ShowAsAction = 2
-'		End If
+		End If
 		
-''		Menu.Add2(3,0,LoginAct.YourName, Null ).ShowAsAction = 2
+'		Menu.Add2(3,0,LoginAct.YourName, Null ).ShowAsAction = 2
 		
 		Dim LblYourName As Label
 		LblYourName.Initialize("3")
@@ -620,5 +657,4 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 End Sub
 
 #End Region
-
 
