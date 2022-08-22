@@ -55,6 +55,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	ListView1.TwoLinesAndBitmap.Label.Typeface=SaeloZahra.fontBold
 	ListView1.TwoLinesAndBitmap.Label.TextColor=Colors.DarkGray
 	ListView1.TwoLinesAndBitmap.Label.Width = ListView1.TwoLinesAndBitmap.Label.Width-20dip
+	ListView1.TwoLinesAndBitmap.SecondLabel.Width = ListView1.TwoLinesAndBitmap.SecondLabel.Width-20dip
 	ListView1.TwoLinesAndBitmap.SecondLabel.Typeface=SaeloZahra.font
 	ListView1.TwoLinesAndBitmap.SecondLabel.TextColor=Colors.LightGray
 	

@@ -1,54 +1,68 @@
 ﻿Build1=Default,ir.saelozahra.zistboom.fars
 File1=db.db
+File10=searchlayout.bal
+File11=seprate.png
+File12=SingleAsaarLayout.bal
+File13=singleproductpanellayout.bal
+File14=slider_1.html
+File15=slider_2.html
 File2=HomeLayout.bal
 File3=icon.png
 File4=load.gif
 File5=loading_app.gif
-File6=samim-bold-fd-wol.ttf
-File7=samim-fd-wol.ttf
-File8=searchlayout.bal
-File9=seprate.png
+File6=s1.htm
+File7=s2.htm
+File8=samim-bold-fd-wol.ttf
+File9=samim-fd-wol.ttf
 FileGroup1=Default Group
+FileGroup10=Layout
+FileGroup11=img
+FileGroup12=Layout
+FileGroup13=Layout
+FileGroup14=Default Group
+FileGroup15=Default Group
 FileGroup2=Layout
 FileGroup3=img
 FileGroup4=img
 FileGroup5=img
 FileGroup6=Default Group
 FileGroup7=Default Group
-FileGroup8=Layout
-FileGroup9=img
+FileGroup8=Default Group
+FileGroup9=Default Group
 Group=Default Group
 Library1=ahswipetorefresh
-Library10=javaobject
-Library11=jk_customtabsbrowser
-Library12=json
-Library13=okhttputils2
-Library14=persiandate
-Library15=phone
-Library16=reflection
-Library17=runtimepermissions
-Library18=spacenavigation
-Library19=webviewsettings
+Library10=hitex_materialx
+Library11=ime
+Library12=javaobject
+Library13=jk_customtabsbrowser
+Library14=json
+Library15=okhttputils2
+Library16=persiandate
+Library17=phone
+Library18=reflection
+Library19=runtimepermissions
 Library2=ahviewpager
-Library20=xmllayoutbuilder
-Library21=xui
-Library22=webviewextras
+Library20=spacenavigation
+Library21=webviewextras2
+Library22=xmllayoutbuilder
+Library23=xui
 Library3=amir_activityslider
 Library4=appcompat
 Library5=bitmapcreator
 Library6=core
 Library7=dateutils
 Library8=dialogs
-Library9=ime
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~~\n~SetActivityAttribute(Main, android:windowSoftInputMode, adjustResize|stateHidden)~\n~~\n~'SetApplicationAttribute(android:theme, "@style/Theme.AppCompat")~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#fff</item>~\n~        <item name="colorPrimaryDark">#00A693</item>~\n~        <item name="colorAccent">#FFCC17</item>~\n~    	<item name="colorControlHighlight">#916D02</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDisablePreview">True</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~~\n~~\n~~\n~AddManifestText(~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~  android:maxSdkVersion="19" />~\n~)~\n~~\n~
+Library9=hitex_coordinatorlayout
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~~\n~SetActivityAttribute(SingleAsaarACT,android:theme, "@style/AppTheme.SimpleCoordinatorTheme")~\n~SetActivityAttribute(Main, android:windowSoftInputMode, adjustResize|stateHidden)~\n~~\n~'SetApplicationAttribute(android:theme, "@style/Theme.AppCompat")~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#00A693</item>~\n~        <item name="colorPrimaryDark">#0F8274</item>~\n~        <item name="colorAccent">#FFCC17</item>~\n~    	<item name="colorControlHighlight">#916D02</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDisablePreview">True</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~~\n~~\n~~\n~AddManifestText(~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~  android:maxSdkVersion="19" />~\n~)~\n~~\n~
 Module1=DoubleTaptoClose
 Module2=ProfileAct
 Module3=SaeloZahra
 Module4=SearchAct
-Module5=Starter
-NumberOfFiles=9
-NumberOfLibraries=22
-NumberOfModules=5
+Module5=SingleAsaarACT
+Module6=Starter
+NumberOfFiles=15
+NumberOfLibraries=23
+NumberOfModules=6
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -63,8 +77,9 @@ Version=11.8
 	#AdditionalJar: androidx.arch.core:core-runtime
 	#AdditionalJar: com.android.support:support-v4
 	#AdditionalJar: com.android.support:design
-'	#AdditionalRes: ..\activity_slider_resource
+	#AdditionalRes: ..\activity_slider_resource
 	#AdditionalRes	: ..\Resource.Navigation
+	#AdditionalRes: ..\CoordinatorRes
 	#AdditionalRes: ..\Resource
 	#IgnoreWarnings	: 15
 	#MultiDex		: true
@@ -96,7 +111,6 @@ Sub Globals
 	Dim SI As ACMenuItem
 	Dim X1 As XmlLayoutBuilder
 	
-	Dim WebViewSettings1 As WebViewSettings
 	Dim WebViewExtras1 As WebViewExtras
 	Dim EndLoading As Boolean = False
 	Dim StrChat, StrProfile As AHSwipeToRefresh
@@ -107,12 +121,12 @@ Sub Globals
 	Dim LoginDialog As CustomDialog2
 	Dim PasswordET,UserNameET As EditText
 	Private Panel As Panel
+	Dim wvc As DefaultWebViewClient
 	
 End Sub
 
 
 Sub Activity_Create(FirstTime As Boolean)
-	
 	
 	Activity.LoadLayout("HomeLayout")
 	
@@ -143,6 +157,7 @@ Sub Activity_Create(FirstTime As Boolean)
 '	LoadingWV.LoadHtml("<body> <img style='position:absolute; top:0; left:0; width:100%; height:100%;' src='file:///android_asset/loading_app.gif' > <img style='' src='file:///android_asset/load.gif' ></body>")
 	LoadingWV.BringToFront
 	
+	
 	InstallBottomMenu
 	
 	LoginKon
@@ -168,7 +183,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	OpenAppCounter
 	
 	
-	
+End Sub
+
+Sub wvc_ReceivedError(ErrorCode As Int, Description As String, FailingUrl As String)
+	Log(ErrorCode)
+	Log(Description)
+	Log(FailingUrl)
 End Sub
 
 Sub OpenAppCounter
@@ -251,24 +271,33 @@ Sub InstallActivity
 	
 	
 	ProfileWV.Initialize("ProfileWV")
-	LogColor(SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password"), Colors.Yellow)
 	ProfileWV.LoadUrl(SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password"))
 	ProfileWV.ZoomEnabled=False
 '	ProfileWV.Color=Colors.Transparent
 	StrProfile.Initialize("StrProfile")
 	StrProfile.SetColorScheme2(Array As Int(SaeloZahra.ColorDark, SaeloZahra.ColorAccent, SaeloZahra.ColorLightTransparent))
+	StrProfile.Tag=SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")
+	LogColor(StrProfile.Tag, Colors.Yellow)
 	StrProfile.AddView(ProfileWV)
 	
 	LogColor("loading HomeWV: "&SaeloZahra.SiteUrl&"home/mobile"&UNQuery,Colors.Magenta)
 	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&UNQuery)
 	HomeWV.ZoomEnabled=False
 	
-	WebViewSettings1.setSavePassword(ProfileWV, True)
-'	WebViewSettings1.setUserAgentString(ProfileWV, "Mozilla/5.0 (Linux; Win64; x64; rv:46.0) Gecko/20100101 Firefox/68.0")
-	WebViewSettings1.setGeolocationEnabled(ProfileWV, True)
-	WebViewSettings1.setDomStorageEnabled(ProfileWV, True)
-	WebViewSettings1.setDatabaseEnabled(ProfileWV, True)
-	WebViewExtras1.addWebChromeClient(ProfileWV, "WebViewExtras1")
+'	WebViewSettings1.setSavePassword(ProfileWV, True)
+''	WebViewSettings1.setUserAgentString(ProfileWV, "Mozilla/5.0 (Linux; Win64; x64; rv:46.0) Gecko/20100101 Firefox/68.0")
+'	WebViewSettings1.setGeolocationEnabled(ProfileWV, True)
+'	WebViewSettings1.setDomStorageEnabled(ProfileWV, True)
+'	WebViewSettings1.setDatabaseEnabled(ProfileWV, True)
+'	WebViewExtras1.addWebChromeClient(ProfileWV, "WebViewExtras1")
+
+	Dim wcc As DefaultWebChromeClient
+	wcc.Initialize("wcc")
+	
+	WebViewExtras1.Initialize(HomeWV)
+	WebViewExtras1.SetWebChromeClient(wcc)
+	
+	wvc.Initialize("wvc")
 	
 '	HomeWV.Color=Colors.Transparent
 '	StrHome.Initialize("StrChat")
@@ -280,7 +309,8 @@ Sub InstallActivity
 '	ChatWV.Color=Colors.Transparent
 	ChatWV.LoadUrl(SaeloZahra.SiteUrl&$"chat/${UNQuery}"$)
 	StrChat.Initialize("StrChat")
-	StrChat.SetColorScheme(SaeloZahra.Color,Colors.Yellow,SaeloZahra.ColorDark,SaeloZahra.ColorLight)
+	StrChat.SetColorScheme(SaeloZahra.Color,SaeloZahra.ColorAccent,SaeloZahra.ColorDark,SaeloZahra.ColorLight)
+	StrChat.Tag = SaeloZahra.SiteUrl&$"chat/${UNQuery}"$
 	StrChat.AddView(ChatWV)
 	
 	Dim PC As AHPageContainer
@@ -303,10 +333,20 @@ Sub InstallActivity
 	
 End Sub
 
-'Sub StrHome_Refresh
-'	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile")
-'	LogColor("Refreshing",Colors.DarkGray)
-'End Sub
+Sub StrChat_Refresh
+	ChatWV.LoadUrl(StrChat.Tag)
+	LogColor("Refreshing Chat",Colors.DarkGray)
+	Log(StrChat.Tag)
+End Sub
+
+Sub StrProfile_Refresh
+	LogColor("Refreshing Profile",Colors.DarkGray)
+	ProfileWV.LoadUrl(StrProfile.Tag)
+End Sub
+
+Sub ChatWV_PageFinished (Url As String)
+	StrChat.Refreshing=False
+End Sub
 
 Sub HomeWV_PageFinished (Url As String)
 	LogColor("HomeWV_PageFinished", SaeloZahra.ColorAccent)
@@ -318,12 +358,15 @@ Sub HomeWV_PageFinished (Url As String)
 	If SpaceNavigationView1.IsInitialized Then CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
 End Sub
 
-'Sub THideProgress_Tick
-'	IHideProgress=IHideProgress+1
-'	If IHideProgress = 2 Then
-'		ProgressDialogHide
-'	End If
-'End Sub
+Sub HomeWV_OverrideUrl (Url As String) As Boolean
+	Log(Url)
+	If Url.Contains(SaeloZahra.SiteUrl&"asaar/") Then
+		SingleAsaarACT.AsaarID=Url.Replace(SaeloZahra.SiteUrl&"asaar/","")
+		StartActivity(SingleAsaarACT)
+	End If
+	Return True
+End Sub
+
 
 
 Private Sub VP_PageChanged (Position As Int)

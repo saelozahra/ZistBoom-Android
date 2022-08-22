@@ -24,8 +24,8 @@ Sub Process_Globals
 	Dim XUI As XUI
 	Dim Color 		As Int
 	Dim ColorDark 	As Int
-	Dim ColorLight 	As Int = 0xFFFFECB3
-	Dim ColorLightTransparent As Int = 0xDDFFECB3
+	Dim ColorLight 	As Int = 0xFF00A693
+	Dim ColorLightTransparent As Int = 0xAA00A693
 	Dim ColorAccent As Int
 	
 End Sub

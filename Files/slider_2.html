@@ -1,0 +1,99 @@
+  
+          
+          
+      </div>
+      
+    <style>
+        #owl-demo .item img {
+            display: block;
+            float: right;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .owl-theme .owl-controls .owl-buttons div {
+            background: #CDDC39CC;
+            padding: 10px 2px 5px 2px;
+            margin: auto 14px;
+        }
+        .owl-buttons {
+            width: 100%;
+        }
+        .owl-prev {
+            float: left;
+        }
+        .owl-next {
+            float: right;
+        }
+        i.next {
+            background-image: url(http://peyjoor.com/template_files/next.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+        i.back {
+            background-image: url(http://peyjoor.com/template_files/back.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+        
+        
+        .item h1 {
+            position: absolute;
+            top: 5%;
+            width: 90%;
+            text-align: center;
+            left: 5%;
+            color: white;
+            text-shadow: 0 0 5px #222;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+        .item h4 {
+            position: absolute;
+            top: 25%;
+            width: 90%;
+            text-align: center;
+            left: 5%;
+            color: #fff;
+            text-shadow: 0 0 5px #222;
+            font-weight: normal;
+        }
+        
+        .item::after{
+            background: -moz-linear-gradient(-45deg,  rgba(229,239,123,0.33) 0%, rgba(161,179,0,0.44) 100%); /* FF3.6-15 */
+            background: -webkit-linear-gradient(-45deg,  rgba(229,239,123,0.33) 0%,rgba(161,179,0,0.44) 100%); /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(135deg,  rgba(229,239,123,0.33) 0%,rgba(161,179,0,0.44) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#54e5ef7b', endColorstr='#70a1b300',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+            content: " ";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0.6;
+        }
+    </style>
+
+
+    <script>
+    $(document).ready(function() {
+      $('#owl-demo').owlCarousel({
+        navigation : true,
+        navigationText : ["<i class='back'>","<i class='next'>"],
+        slideSpeed : 300,
+        pagination : false,
+        paginationSpeed : 400,
+        autoPlay: 5000,
+        singleItem : true
+      });
+    });
+    </script>
+  </body>
+</html>
+
