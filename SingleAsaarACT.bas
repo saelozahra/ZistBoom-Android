@@ -37,7 +37,16 @@ Sub Globals
 	Private RelatedTitleLBL As Label
 	Private Tag1Lbl, Tag2Lbl, Tag3Lbl, CategoryLbl As Label
 	
-	Private ImageWV, RelatedWV As WebView
+	Private RelatedWV, PIC_WV As WebView
+	
+	Dim WebViewExtras1 As WebViewExtras
+	
+	Private HonarmandPanel As Panel
+	Private NameLbl As Label
+	Private BioLbl As Label
+	Private CityLbl As Label
+	Private AvatarWV As WebView
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -46,8 +55,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	CF.Panel.LoadLayout("SingleProductPanelLayout")
 	CF.CardElevation=0
 	CF.CardBackgroundColor=Colors.Transparent
-
-	CF.ImageBitmap = LoadBitmap(File.DirAssets,"photography.jpg")
+	CF.ImageBitmap = LoadBitmap(File.DirAssets,"load.gif")
 	CF.ImageScaleType = CF.SCALE_CENTER_CROP
 	CF.Icon = XML.GetDrawable("twotone_perm_phone_msg_white_24")
 	CF.SetToolbarColor(SaeloZahra.ColorDark,SaeloZahra.ColorLightTransparent)
@@ -64,12 +72,16 @@ Sub Activity_Create(FirstTime As Boolean)
 	Jo.RunMethod("addView",Array(ToolBar))
 	ToolBar.Height = 56dip
 	ToolBar.SetSupportActionBar
-	ToolBar.Title = "     "&Application.LabelName
-	ToolBar.TitleTextSize = 12
 	
 	ToolBar.Color = Colors.Transparent
-	ToolBar.NavigationIcon = XML.GetDrawable("round_arrow_back_black_24")
+	ToolBar.NavigationIcon = XML.GetDrawable("round_arrow_back_white_24")
 
+	Dim wcc As DefaultWebChromeClient
+	wcc.Initialize("wcc")
+	
+	WebViewExtras1.Initialize(RelatedWV)
+	WebViewExtras1.SetWebChromeClient(wcc)
+	
 	ImageJob.Initialize("ImageJob", Me)
 	AsarJob.Initialize("AsarJob", Me)
 	AsarJob.Download(SaeloZahra.JsonUrl&"asaar/"&AsaarID)
@@ -102,6 +114,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	TextLbl.SetLayout(1%x,TextLbl.Top,78%x,TextLbl.Height)
 	ImagesSliderPanel.SetLayout(3%x,ImagesSliderPanel.Top,83%x,ImagesSliderPanel.Height)
 	
+	SaeloZahra.SetStatusBarColor(SaeloZahra.Color)
 	
 	Responsive
 	
@@ -125,6 +138,13 @@ End Sub
 
 Sub Responsive
 	
+	RelatedTitleLBL.TextColor=Colors.DarkGray
+	RelatedTitleLBL.Text=SaeloZahra.CSBTitle("آثار دیگر این هنرمند")
+	RelatedTitleLBL.SetLayout(0,0,RelatedTitleLBL.Width,RelatedTitleLBL.Height)
+	RelatedWV.SetLayout(0,RelatedTitleLBL.Height,RelatedPanel.Width,RelatedPanel.Height-10dip)
+	
+	PIC_WV.SetLayout(0,0,ImagesSliderPanel.Width,ImagesSliderPanel.Height)
+	
 	Dim SU As StringUtils
 	TextLbl.Height = SU.MeasureMultilineTextHeight(TextLbl,TextLbl.text)+5%y
 	TextPanel.Height = TextLbl.Height
@@ -134,7 +154,10 @@ Sub Responsive
 	CategoryLbl.Top = TextLbl.Height-5%y
 	
 	ImagesSliderPanel.Top=TextPanel.top+TextPanel.Height+20dip
-	CF.Panel.Height = ImagesSliderPanel.top+ImagesSliderPanel.Height+20dip
+	
+	HonarmandPanel.SetLayout(ImagesSliderPanel.Left, ImagesSliderPanel.top+ImagesSliderPanel.Height+20dip, 83%x, HonarmandPanel.Height)
+	
+	CF.Panel.Height = HonarmandPanel.top+HonarmandPanel.Height+20dip
 	
 	RelatedPanel.SetLayout(3%x, CF.Panel.Height, 83%x, RelatedPanel.Height)
 	If RelatedPanel.Visible==True Then
@@ -161,48 +184,54 @@ Sub jobDone(J As HttpJob)
 				parser.Initialize(J.GetString)
 				Dim jRoot As Map = parser.NextObject
 				Dim RelatedPosts As List = jRoot.Get("RelatedPosts")
-				Dim SliderHTML As String = File.ReadString(File.DirAssets, "slider_1.html")
+				Dim SliderHTML As String = File.ReadString(File.DirAssets, "slider.html")
 				For Each colRelatedPosts As Map In RelatedPosts
 '					Dim dateCreated As String = colRelatedPosts.Get("dateCreated")
 '					Dim like_count As Int = colRelatedPosts.Get("like_count")
 					Dim colRelatedPosts_id As Int = colRelatedPosts.Get("id")
 					Dim title As String = colRelatedPosts.Get("title")
+					Log("rel: "&title)
 					Dim picture As String = colRelatedPosts.Get("picture")
 '					Dim view_count As Int = colRelatedPosts.Get("view_count")
-					SliderHTML = SliderHTML & " <div class='item'><a href='rel/"&colRelatedPosts_id &SaeloZahra.SiteUrl&picture&"'<img src='"&SaeloZahra.SiteUrl&picture&"'><h3>"&title&"</h3></a></div>"
+					SliderHTML = SliderHTML &" <a href='http://rel/"&colRelatedPosts_id&"'><img src='"&SaeloZahra.SiteUrl&picture&"'><h3>"&title&"</h3></a>"
 				Next
-'				Dim CommentsFields As Map = jRoot.Get("CommentsFields")
-'				Dim RowID As Int = CommentsFields.Get("RowID")
-'				Dim CommentType As String = CommentsFields.Get("CommentType")
 
-				Dim bio As String = jRoot.Get("bio")
-				phone_number = jRoot.Get("phone_number")
-'				Dim avatar As String = jRoot.Get("avatar")
 				
 				Dim SinglePost As Map = jRoot.Get("SinglePost")
-'				Dim rating As Int = SinglePost.Get("rating")
+				Dim rating As Int = SinglePost.Get("rating")
 				Dim title As String = SinglePost.Get("title")
 				username = SinglePost.Get("username")
 '				Dim productionTeam As String = SinglePost.Get("productionTeam")
 				honarmand_name = jRoot.Get("user_name_family")
 				
-				Tag1Lbl.Text = SinglePost.Get("dateCreated")
+				
+				phone_number = jRoot.Get("phone_number")
+				AvatarWV.LoadHtml("<html><body style='margin:Auto; border-radius:50%;'><img src='"&SaeloZahra.SiteUrl&jRoot.Get("avatar")&"' style='position:absolute; width:100%; height:100%; left:0; top:0; border-radius:50%; object-fit:cover;' /></body></html>")
+				BioLbl.Text = SaeloZahra.CSB(jRoot.Get("bio"))
+				CityLbl.Text = SaeloZahra.CSB(jRoot.Get("city"))
+				NameLbl.Text = SaeloZahra.CSBtitle(honarmand_name)
+				
+				
+				Tag1Lbl.Text = SinglePost.Get("category")
 				Tag2Lbl.Text = jRoot.Get("city")
-				CategoryLbl.Text = SinglePost.Get("category")
+				CategoryLbl.Text = SinglePost.Get("dateCreated")
+				CategoryLbl.Text = CategoryLbl.Text.Replace("-", "/")
 				
 				Dim CSBText As CSBuilder
-				CSBText.Initialize.Append(SinglePost.Get("description")).Append(CRLF).Size(10).Color(Colors.DarkGray).Append("تعداد بازدید: ").Bold.Append(SinglePost.Get("view_count")).Append(CRLF).Append("تعداد پسند: ").Bold.Append(SinglePost.Get("like_count")).PopAll
+				CSBText.Initialize.Append(Regex.Replace("<[^>]*>",SinglePost.Get("description")," ")).Append(CRLF).Size(10).Color(Colors.DarkGray).Append("امتیاز: ").Bold.Append(rating).Append(CRLF).Append("تعداد بازدید: ").Bold.Append(SinglePost.Get("view_count")).Append(CRLF).Append("تعداد پسند: ").Bold.Append(SinglePost.Get("like_count")).PopAll
 				TextLbl.Text= CSBText
 				
-				ImageWV.LoadHtml("<style>img{position:absolute; width: 100%; height: 100%; top: 0; left: 0; max-width:none; max-height:none; object-fit:cover; } </style><img src='"&SaeloZahra.SiteUrl&SinglePost.Get("picture")&"' >"&SaeloZahra.SiteUrl&SinglePost.Get("picture"))
-				ImageJob.Download(SaeloZahra.SiteUrl&SinglePost.Get("picture"))
+				Dim PICURL As String = SaeloZahra.SiteUrl&SinglePost.Get("picture")
+				Log(PICURL)
+				PIC_WV.LoadHtml("<html><body style='margin:Auto; border-radius:14px; overflow:hidden;'><img src='"&PICURL&"' style='position:absolute; width:100%; height:100%; left:0; top:0; border-radius:14px; object-fit:cover;' /></body></html>")
+				SaeloZahra.SetCornerRadii(PIC_WV, 14,14,14,14,14,14,14,14)
+				ImageJob.Download(PICURL)
 				
-				CF.Title = SaeloZahra.CSBTitle("     "&title)
-				ToolBar.Title = SaeloZahra.CSBTitle("     "&title)
-				ToolBar.Subtitle = SaeloZahra.CSB(bio)
+				CF.Title = SaeloZahra.CSBTitle("   "&title)
 				
-				SliderHTML = SliderHTML & File.ReadString(File.DirAssets, "slider_2.html") & "<style>#owl-demo .item img{width: 100%; height: 100%; top: 0; left: 0; max-width:none; max-height:none; object-fit:cover; } .owl-buttons {top: 27%;} </style>"
-				RelatedWV.LoadHtml(SliderHTML)
+'				SliderHTML = SliderHTML & File.ReadString(File.DirAssets, "slider_2.html") & "<style>#owl-demo .item img{width: 100%; height: 100%; top: 0; left: 0; max-width:none; max-height:none; object-fit:cover; } .owl-buttons {top: 27%;} </style>"
+'				RelatedWV.LoadHtml(File.ReadString(File.DirAssets, "slide.html"))
+				RelatedWV.LoadHtml(SliderHTML&"    </div> </body> </html>")
 					
 				ImagesSliderPanel.SetVisibleAnimated(313,True)
 				
@@ -266,10 +295,10 @@ End Sub
 
 Sub Activity_CreateOptionsMenu (Menu As Hi_Menu)
 
-	Menu.Add2(1,2,"مورد علاقه",XML.GetDrawable("round_arrow_back_black_24")).SetShowAsAction(2)
-	Menu.Add2(2,0,"وب سایت یا شبکه‌های اجتماعی",XML.GetDrawable("round_arrow_back_black_24")).SetShowAsAction(2)
-	Menu.Add2(2,1,"صحبت با فروشنده",XML.GetDrawable("round_arrow_back_black_24")).SetShowAsAction(2)
-	Menu.Add2(2,3,"پروفایل",XML.GetDrawable("twotone_account_circle_white_24")).SetShowAsAction(2)
+'	Menu.Add2(1,2,"مورد علاقه",XML.GetDrawable("twotone_bookmarks_white_24")).SetShowAsAction(2)
+	Menu.Add2(2,0,"پسندیدن",XML.GetDrawable("twotone_thumb_up_white_24")).SetShowAsAction(2)
+	Menu.Add2(2,1,"نظرات",XML.GetDrawable("twotone_chat_white_24")).SetShowAsAction(2)
+'	Menu.Add2(2,3,"پروفایل",XML.GetDrawable("twotone_account_circle_white_24")).SetShowAsAction(2)
 	
 End Sub
 
@@ -326,4 +355,8 @@ End Sub
  
  
  
- 
+Sub RelatedWV_OverrideUrl (Url As String) As Boolean
+	AsaarID = Url.Replace("http://rel/", "")
+	StartActivity(Me)
+	Return True
+ End Sub

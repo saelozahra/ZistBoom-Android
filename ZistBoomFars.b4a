@@ -1,34 +1,32 @@
 ﻿Build1=Default,ir.saelozahra.zistboom.fars
 File1=db.db
-File10=searchlayout.bal
-File11=seprate.png
-File12=SingleAsaarLayout.bal
-File13=singleproductpanellayout.bal
-File14=slider_1.html
-File15=slider_2.html
+File10=SingleAsaarLayout.bal
+File11=singleproductpanellayout.bal
+File12=slider.html
+File13=slider_1.html
+File14=slider_2.html
 File2=HomeLayout.bal
 File3=icon.png
 File4=load.gif
 File5=loading_app.gif
-File6=s1.htm
-File7=s2.htm
-File8=samim-bold-fd-wol.ttf
-File9=samim-fd-wol.ttf
+File6=samim-bold-fd-wol.ttf
+File7=samim-fd-wol.ttf
+File8=searchlayout.bal
+File9=seprate.png
 FileGroup1=Default Group
 FileGroup10=Layout
-FileGroup11=img
-FileGroup12=Layout
-FileGroup13=Layout
+FileGroup11=Layout
+FileGroup12=Default Group
+FileGroup13=Default Group
 FileGroup14=Default Group
-FileGroup15=Default Group
 FileGroup2=Layout
 FileGroup3=img
 FileGroup4=img
 FileGroup5=img
 FileGroup6=Default Group
 FileGroup7=Default Group
-FileGroup8=Default Group
-FileGroup9=Default Group
+FileGroup8=Layout
+FileGroup9=img
 Group=Default Group
 Library1=ahswipetorefresh
 Library10=hitex_materialx
@@ -60,7 +58,7 @@ Module3=SaeloZahra
 Module4=SearchAct
 Module5=SingleAsaarACT
 Module6=Starter
-NumberOfFiles=15
+NumberOfFiles=14
 NumberOfLibraries=23
 NumberOfModules=6
 Version=11.8
@@ -351,8 +349,8 @@ End Sub
 Sub HomeWV_PageFinished (Url As String)
 	LogColor("HomeWV_PageFinished", SaeloZahra.ColorAccent)
 	EndLoading=True
-	LoadingWV.SetVisibleAnimated(2313, False)
-	Sleep(2313)
+	LoadingWV.SetVisibleAnimated(1313, False)
+	Sleep(1313)
 	LoadingWV.SendToBack
 	Sleep(313)
 	If SpaceNavigationView1.IsInitialized Then CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
