@@ -69,6 +69,14 @@
 			android:exported="true"
 			android:theme="@style/AppTheme.SimpleCoordinatorTheme">
 		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".webviewact"
+			android:label="زیست بوم فرهنگ و ارشاد فارس"
+			android:screenOrientation="unspecified"
+			android:exported="true">
+		</activity>
 		<service
 			android:name=".httputils2service"
 			android:exported="true">

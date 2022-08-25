@@ -5,6 +5,7 @@ File11=singleproductpanellayout.bal
 File12=slider.html
 File13=slider_1.html
 File14=slider_2.html
+File15=WVLayout.bal
 File2=HomeLayout.bal
 File3=icon.png
 File4=load.gif
@@ -19,6 +20,7 @@ FileGroup11=Layout
 FileGroup12=Default Group
 FileGroup13=Default Group
 FileGroup14=Default Group
+FileGroup15=Default Group
 FileGroup2=Layout
 FileGroup3=img
 FileGroup4=img
@@ -58,9 +60,10 @@ Module3=SaeloZahra
 Module4=SearchAct
 Module5=SingleAsaarACT
 Module6=Starter
-NumberOfFiles=14
+Module7=WebViewACT
+NumberOfFiles=15
 NumberOfLibraries=23
-NumberOfModules=6
+NumberOfModules=7
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -76,12 +79,12 @@ Version=11.8
 	#AdditionalJar: com.android.support:support-v4
 	#AdditionalJar: com.android.support:design
 	#AdditionalRes: ..\activity_slider_resource
-	#AdditionalRes	: ..\Resource.Navigation
+	#AdditionalRes: ..\Resource.Navigation
 	#AdditionalRes: ..\CoordinatorRes
 	#AdditionalRes: ..\Resource
 	#IgnoreWarnings	: 15
-	#MultiDex		: true
-	#BridgeLogger	: True
+	#MultiDex	  : true
+	#BridgeLogger : True
 #End Region
 
 #Region  Activity Attributes 
@@ -94,6 +97,8 @@ Sub Process_Globals
 	Dim GlobalFirstTime, CanInstallAct As Boolean
 	Dim RestartedBefore As Boolean = False
 	Dim UNQuery As String = ""
+	Dim UserInfo As Map
+	Dim YourID As Int = 0
 End Sub
 
 Sub Globals
@@ -361,6 +366,14 @@ Sub HomeWV_OverrideUrl (Url As String) As Boolean
 	If Url.Contains(SaeloZahra.SiteUrl&"asaar/") Then
 		SingleAsaarACT.AsaarID=Url.Replace(SaeloZahra.SiteUrl&"asaar/","")
 		StartActivity(SingleAsaarACT)
+	else If Url.Contains(SaeloZahra.SiteUrl&"profile/") Then
+		WebViewACT.Link = Url&"?mobile=true"
+		StartActivity(WebViewACT)
+	else If Url.Contains(SaeloZahra.SiteUrl&"institute/") Then
+		SingleAsaarACT.AsaarID=Url.Replace(SaeloZahra.SiteUrl&"institute/","")
+		StartActivity(SingleAsaarACT)
+	Else
+		customBrowser.CreateNewTab(Url)
 	End If
 	Return True
 End Sub
@@ -498,9 +511,10 @@ Sub JobDone(job As HttpJob)
 				Dim parser As JSONParser
 				parser.Initialize(job.GetString)
 				Dim jRoot As Map = parser.NextObject
-				ProfileAct.UserInfo = jRoot
+				UserInfo = jRoot
+				ProfileAct.UserInfo = UserInfo
 				File.WriteMap(SaeloZahra.Dir,"UserInfo", jRoot)
-'				Dim id As Int = jRoot.Get("id")
+				YourID = jRoot.Get("id")
 				Dim first_name As String = jRoot.Get("first_name")
 				Dim last_name As String = jRoot.Get("last_name")
 '				Dim username As String = jRoot.Get("username")

@@ -2,35 +2,43 @@
 Group=Default Group
 ModulesStructureVersion=1
 Type=Activity
-Version=10.2
+Version=11.8
 @EndOfDesignText@
 #Region  Activity Attributes 
 	#FullScreen: False
 	#IncludeTitle: True
+	#Extends: android.support.v7.app.AppCompatActivity
 #End Region
 
 Sub Process_Globals
-	Dim WVURL,WVTitle As String
+	DIm URL as String
 End Sub
 
 Sub Globals
-	Private X1 As XmlLayoutBuilder
+	
+	Dim X1 As XmlLayoutBuilder
+	
 	Dim Config 	As Amir_SliderConfig
 	Dim Show 	As Amir_SliderShow
-	Private ActionBar As ACToolBarLight
-	Private WV As WebView
+	
+	Private ActionBar As ACToolBarDark
+	Private WebView1 As WebView
+
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	
 	Activity.LoadLayout("WVLayout")
-	WV.Color=Colors.Transparent
-	
-	ActionBar.Title=SaeloZahra.CSBTitle("ویرایش اطلاعات کاربری")
+
+	ActionBar.Title=SaeloZahra.CSBTitle("جستجو")
 	ActionBar.Color=SaeloZahra.Color
-	ActionBar.TitleTextColor = Colors.White
-	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_white_24")
-	ActionBar.Title = SaeloZahra.CSB(WVTitle)
+	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_black_24")
+	
+	SaeloZahra.SetStatusBarColor(SaeloZahra.Color)
+	
+	
+	WebView1.LoadUrl(URL)
+	
 	
 	If SaeloZahra.P.SdkVersion>23 Then
 		Config.Initialize
@@ -46,12 +54,13 @@ Sub Activity_Create(FirstTime As Boolean)
 End Sub
 
 Sub Activity_Resume
-	WV.LoadUrl(WVURL)
+
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
 
 End Sub
+
 
 Sub Actionbar_NavigationItemClick
 	Activity.Finish
@@ -67,4 +76,3 @@ Sub Activity_KeyPress (KeyCode As Int) As Boolean
 		Return True
 	End If
 End Sub
-

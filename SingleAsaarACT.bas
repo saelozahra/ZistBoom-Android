@@ -15,6 +15,8 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
+	Dim Loved As Boolean = False
+	Dim LoveList As List
 	Private CF As Hitex_FlexibleSpace
 	Private XML As XmlLayoutBuilder
 	Dim ToolBar As Hitex_Toolbar
@@ -22,7 +24,7 @@ Sub Globals
 	Dim Config 	As Amir_SliderConfig
 	Dim Show 	As Amir_SliderShow
 	
-	Dim AsarJob, ImageJob As HttpJob
+	Dim AsarJob, ImageJob, LoveJob As HttpJob
 	
 	Dim phone_number As String
 	Dim username As String
@@ -50,7 +52,16 @@ Sub Globals
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
-		
+	
+	If File.Exists(SaeloZahra.Dir, "LoveAsaar") Then
+		LoveList = File.ReadList(SaeloZahra.Dir, "LoveAsaar")
+		For Each n As Int In LoveList
+			If n == AsaarID Then Loved = True
+		Next
+	Else
+		LoveList.Initialize
+	End If
+	
 	Activity.LoadLayout("SingleAsaarLayout")
 	CF.Panel.LoadLayout("SingleProductPanelLayout")
 	CF.CardElevation=0
@@ -81,6 +92,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	WebViewExtras1.Initialize(RelatedWV)
 	WebViewExtras1.SetWebChromeClient(wcc)
+	
+	LoveJob.Initialize("LoveJob", Me)
 	
 	ImageJob.Initialize("ImageJob", Me)
 	AsarJob.Initialize("AsarJob", Me)
@@ -237,6 +250,13 @@ Sub jobDone(J As HttpJob)
 				
 				Responsive
 				
+			Case "LoveJob"
+				Loved=True
+				LoveList.Add(AsaarID)
+'				TODO: Update Loves Realtime
+				File.WriteList(SaeloZahra.Dir, "LoveAsaar", LoveList )
+				Activity.Finish
+				StartActivity(Me)
 			Case "ImageJob"
 				Try
 					CF.ImageBitmap = J.GetBitmap
@@ -307,23 +327,18 @@ Sub ToolBar_MenuItemClick (Item As Hi_MenuItem)
 	Log(Item.ItemId)
 	Select Item.ItemId
 		Case 0
+			If Loved Then
+'				@TODO: remove like
+'				Log(SaeloZahra.JsonUrl&"wish/remove/"&ProductID&"/products/"&LoginAct.YourID)
+'				LoveJob.Download(SaeloZahra.JsonUrl&"wish/remove/"&ProductID&"/products/"&LoginAct.YourID)
+			Else
+				LoveJob.PostString(SaeloZahra.JsonUrl&"asaar/"&AsaarID,"")
+			End If
 '		Case 1
 '			If LoginAct.YourID<>"" Then
 '				WVAct.WVTitle 	= "مکالمه با "&seller_name
 '				WVAct.WVURL 	= SaeloZahra.SiteUrl&"chat/pm/"&seller_id&"?hidetitle=true&username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password")
 '				StartActivity(WVAct)
-'			Else
-'				CallSubDelayed(MainAct,"LoginKon")
-'			End If
-'		Case 2
-'			If LoginAct.YourID<>"" Then
-'				If Wished Then
-'					Log(SaeloZahra.JsonUrl&"wish/remove/"&ProductID&"/products/"&LoginAct.YourID)
-'					WishJob.Download(SaeloZahra.JsonUrl&"wish/remove/"&ProductID&"/products/"&LoginAct.YourID)
-'				Else
-'					Log(SaeloZahra.JsonUrl&"wish/add/"&ProductID&"/products/"&LoginAct.YourID)
-'					WishJob.Download(SaeloZahra.JsonUrl&"wish/add/"&ProductID&"/products/"&LoginAct.YourID)
-'				End If
 '			Else
 '				CallSubDelayed(MainAct,"LoginKon")
 '			End If
