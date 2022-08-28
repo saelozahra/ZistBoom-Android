@@ -25,6 +25,6 @@ ModuleClosedNodes5=
 ModuleClosedNodes6=
 ModuleClosedNodes7=
 ModuleClosedNodes8=
-NavigationStack=Main,ChatWV_OverrideUrl,308,4,Main,HomeWV_OverrideUrl,299,0,SaeloZahra,WVRoles,116,3,NewsAct,Process_Globals,7,1,NewsAct,Responsive,154,0,SingleAsaarACT,Activity_CreateOptionsMenu,315,0,Visual Designer,singleproductpanellayout.bal,-100,1,NewsAct,jobDone,200,6,NewsAct,Activity_Create,48,0,NewsAct,Globals,26,0
+NavigationStack=Visual Designer,SingleAsaarLayout.bal,-100,1,Visual Designer,SingleNewsLayout.bal,-100,3,Main,Activity_Create,63,0,NewsAct,Responsive,132,5,NewsAct,Activity_KeyPress,254,0,NewsAct,CF_LongClick,226,1,NewsAct,Globals,13,1,WebViewACT,Activity_Create,23,0,NewsAct,Activity_Create,29,6,NewsAct,jobDone,148,6
 SelectedBuild=0
 VisibleModules=5,3,4,6,8,2
