@@ -12,6 +12,7 @@ Version=11.8
 
 Sub Process_Globals
 	Dim Link As String
+	Dim PageTitle As String
 End Sub
 
 Sub Globals
@@ -32,7 +33,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	Activity.LoadLayout("WVLayout")
 
-	ActionBar.Title=SaeloZahra.CSBTitle("پروفایل هنرمند")
+	ActionBar.Title=SaeloZahra.CSBTitle(PageTitle)
 	ActionBar.Color=SaeloZahra.Color
 	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_white_24")
 	

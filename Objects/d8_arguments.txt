@@ -8,6 +8,7 @@ C:\Android\platforms\android-30\android.jar
 C:\Android\tools\..\extras\b4a_local\unpacked-b4ashared-63792602270000\dex_v1\b4ashared.zip
 c:\android\tools\..\extras\b4a_local\unpacked-appcompat.androidx-63740851595421\jars\classes.zip
 c:\android\tools\..\extras\b4a_local\unpacked-spacenavigation.androidx-63795782729622\jars\classes.zip
+c:\android\tools\..\extras\b4a_local\unpacked-designsupport.androidx-63703406849491\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\legacy\legacy-support-v4\1.0.0\unpacked-legacy-support-v4-1.0.0\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\core\core\1.3.1\unpacked-core-1.3.1\jars\classes.zip
 c:\android\tools\..\extras\b4a_remote\androidx\lifecycle\lifecycle-runtime\2.2.0\unpacked-lifecycle-runtime-2.2.0\jars\classes.zip
@@ -72,6 +73,7 @@ C:\Android\tools\..\extras\b4a_local\unpacked-spacenavigation-63608606582033\dex
 C:\Android\tools\..\extras\b4a_local\unpacked-webviewextras2-63581186426000\dex_v1\webviewextras2.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xmllayoutbuilder-63535649474000\dex_v1\xmllayoutbuilder.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xui-63792602270000\dex_v1\xui.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-designsupport-63677020972867\dex_v1\designsupport.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-animation-63792602270000\dex_v1\animation.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-63792602270000\dex_v1\okhttp.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63792602270000\dex_v1\stringutils.zip
@@ -477,6 +479,12 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$styleable.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R$xml.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\R.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\registeract$1.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\registeract$B4AMenuItemsClickListener.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\registeract$HandleKeyDelayed.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\registeract$ResumeMessage.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\registeract$WaitForLayout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\registeract.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\saelozahra.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\searchact$1.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\searchact$B4AMenuItemsClickListener.dex
@@ -502,6 +510,7 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\webviewact$WaitForLayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\webviewact.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_homelayout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_registerlayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_searchlayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_singleasaarlayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_singlenewslayout.dex

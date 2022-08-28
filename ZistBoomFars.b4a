@@ -1,36 +1,38 @@
 ﻿Build1=Default,ir.saelozahra.zistboom.fars
 File1=db.db
-File10=SingleAsaarLayout.bal
-File11=SingleNewsLayout.bal
-File12=singleproductpanellayout.bal
-File13=slider.html
-File14=slider_1.html
-File15=slider_2.html
-File16=WVLayout.bal
+File10=seprate.png
+File11=SingleAsaarLayout.bal
+File12=SingleNewsLayout.bal
+File13=singleproductpanellayout.bal
+File14=slider.html
+File15=slider_1.html
+File16=slider_2.html
+File17=WVLayout.bal
 File2=HomeLayout.bal
 File3=icon.png
 File4=load.gif
 File5=loading_app.gif
-File6=samim-bold-fd-wol.ttf
-File7=samim-fd-wol.ttf
-File8=searchlayout.bal
-File9=seprate.png
+File6=RegisterLayout.bal
+File7=samim-bold-fd-wol.ttf
+File8=samim-fd-wol.ttf
+File9=searchlayout.bal
 FileGroup1=Default Group
-FileGroup10=Layout
-FileGroup11=Default Group
-FileGroup12=Layout
-FileGroup13=Default Group
+FileGroup10=img
+FileGroup11=Layout
+FileGroup12=Default Group
+FileGroup13=Layout
 FileGroup14=Default Group
 FileGroup15=Default Group
 FileGroup16=Default Group
+FileGroup17=Default Group
 FileGroup2=Layout
 FileGroup3=img
 FileGroup4=img
 FileGroup5=img
 FileGroup6=Default Group
 FileGroup7=Default Group
-FileGroup8=Layout
-FileGroup9=img
+FileGroup8=Default Group
+FileGroup9=Layout
 Group=Default Group
 Library1=ahswipetorefresh
 Library10=hitex_materialx
@@ -48,6 +50,7 @@ Library20=spacenavigation
 Library21=webviewextras2
 Library22=xmllayoutbuilder
 Library23=xui
+Library24=designsupport
 Library3=amir_activityslider
 Library4=appcompat
 Library5=bitmapcreator
@@ -59,14 +62,15 @@ ManifestCode='This code will be applied to the manifest file during compilation.
 Module1=DoubleTaptoClose
 Module2=NewsAct
 Module3=ProfileAct
-Module4=SaeloZahra
-Module5=SearchAct
-Module6=SingleAsaarACT
-Module7=Starter
-Module8=WebViewACT
-NumberOfFiles=16
-NumberOfLibraries=23
-NumberOfModules=8
+Module4=RegisterAct
+Module5=SaeloZahra
+Module6=SearchAct
+Module7=SingleAsaarACT
+Module8=Starter
+Module9=WebViewACT
+NumberOfFiles=17
+NumberOfLibraries=24
+NumberOfModules=9
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -304,6 +308,7 @@ Sub InstallActivity
 	WebViewExtras1.Initialize(HomeWV)
 	WebViewExtras1.SetWebChromeClient(wcc)
 	
+
 	wvc.Initialize("wvc")
 	
 '	HomeWV.Color=Colors.Transparent
@@ -319,6 +324,13 @@ Sub InstallActivity
 	StrChat.SetColorScheme(SaeloZahra.Color,SaeloZahra.ColorAccent,SaeloZahra.ColorDark,SaeloZahra.ColorLight)
 	StrChat.Tag = SaeloZahra.SiteUrl&$"chat/${UNQuery}"$
 	StrChat.AddView(ChatWV)
+	
+	Dim wccc As DefaultWebChromeClient
+	wccc.Initialize("wccc")
+	
+	WebViewExtras1.Initialize(ChatWV)
+	WebViewExtras1.SetWebChromeClient(wccc)
+	
 	
 	Dim PC As AHPageContainer
 	PC.Initialize
@@ -376,8 +388,9 @@ Sub HomeWV_OverrideUrl (Url As String) As Boolean
 End Sub
 
 Sub ChatWV_OverrideUrl (Url As String) As Boolean
+	customBrowser.CreateNewTab(Url)
 	Log(Url)
-	Return True
+	Return False
 End Sub
 
 Private Sub VP_PageChanged (Position As Int)
@@ -620,11 +633,10 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 	Menu.Clear
 	ActionBar.InitMenuListener
 	sv.QueryHint=SaeloZahra.csb("جستجو")
-	SI = Menu.Add2(1, 3, "جستجو",X1.GetDrawable("baseline_search_black_24") )
+	SI = Menu.Add2(1, 3, "جستجو",X1.GetDrawable("baseline_search_white_24") )
 	SI.SearchView = sv
 	
 	
-'	If LoginAct.UserInfo.IsInitialized Then Menu.Add2(2,2,"موارد ذخیره شده",X1.GetDrawable("twotone_bookmarks_white_24") ).ShowAsAction = 2
 	
 	
 	If ProfileAct.UserInfo.IsInitialized Then
@@ -655,8 +667,9 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 		Menu.Add2(3,1,"ورود",		X1.GetDrawable("round_login_black_24") 				).ShowAsAction = 2
 	End If
 	
+'	If UserInfo.IsInitialized Then Menu.Add2(2,2,"موارد ذخیره شده",X1.GetDrawable("twotone_bookmarks_white_24") ).ShowAsAction = 2
 	
-'	Menu.Add2(3,3,"تارنمای "&application.labelname,	x1.GetDrawable("ic_gps_fixed_white_24dp") )
+	Menu.Add2(4, 4, "ثبت‌نام", X1.GetDrawable("twotone_app_registration_white_24") ).ShowAsAction = 2
 '	Menu.Add2(5,5,"شاخه ها", 	X1.GetDrawable("ic_playlist_play_white_24dp") ).ShowAsAction = 2
 	
 	
@@ -708,6 +721,11 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 			Else
 				LoginKon
 			End If
+		Case 4
+			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+			Show.convertActivityFromTranslucent
+			StartActivity(RegisterAct)
+			
 	End Select
 End Sub
 
