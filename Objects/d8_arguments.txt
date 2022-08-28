@@ -446,6 +446,12 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\main.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\Manifest$permission.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\Manifest.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\newsact$1.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\newsact$B4AMenuItemsClickListener.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\newsact$HandleKeyDelayed.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\newsact$ResumeMessage.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\newsact$WaitForLayout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\newsact.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\profileact$1.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\profileact$B4AMenuItemsClickListener.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\profileact$HandleKeyDelayed.dex

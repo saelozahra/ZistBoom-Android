@@ -111,7 +111,28 @@ End Sub
 '	
 'End Sub
 
-
+Sub WVRoles(URL As String) As String
+	
+	If URL.Contains(SiteUrl&"asaar/") Then
+		SingleAsaarACT.AsaarID=URL.Replace(SiteUrl&"asaar/","")
+		StartActivity(SingleAsaarACT)
+	else If URL.Contains(SiteUrl&"profile/") Then
+		WebViewACT.Link = URL&"?for_mobile=true"
+		StartActivity(WebViewACT)
+	else If URL.Contains(SiteUrl&"news/") Then
+		NewsAct.NewsID=URL.Replace(SiteUrl&"news/","")
+		StartActivity(NewsAct)
+	else If URL.Contains(SiteUrl&"institute/") Then
+		SingleAsaarACT.AsaarID=URL.Replace(SiteUrl&"institute/","")
+		StartActivity(SingleAsaarACT)
+	else If URL.Contains("tel:") Then
+		I.Initialize(I.ACTION_VIEW, URL)
+		StartActivity(I)
+	Else
+		Return URL
+	End If
+	
+End Sub
 
 Sub getCurrentActivity As Activity
 	Dim R1 As Reflector

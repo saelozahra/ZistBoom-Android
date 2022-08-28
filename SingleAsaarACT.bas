@@ -316,7 +316,11 @@ End Sub
 Sub Activity_CreateOptionsMenu (Menu As Hi_Menu)
 
 '	Menu.Add2(1,2,"مورد علاقه",XML.GetDrawable("twotone_bookmarks_white_24")).SetShowAsAction(2)
-	Menu.Add2(2,0,"پسندیدن",XML.GetDrawable("twotone_thumb_up_white_24")).SetShowAsAction(2)
+	If Loved Then
+		Menu.Add2(2,0,"پسندیدن",XML.GetDrawable("baseline_thumb_up_white_24")).SetShowAsAction(2)
+	Else
+		Menu.Add2(2,0,"پسندیدن",XML.GetDrawable("twotone_thumb_up_white_24")).SetShowAsAction(2)
+	End If
 	Menu.Add2(2,1,"نظرات",XML.GetDrawable("twotone_chat_white_24")).SetShowAsAction(2)
 '	Menu.Add2(2,3,"پروفایل",XML.GetDrawable("twotone_account_circle_white_24")).SetShowAsAction(2)
 	

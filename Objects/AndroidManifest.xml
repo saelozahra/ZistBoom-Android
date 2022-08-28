@@ -36,14 +36,6 @@
 			</intent-filter>
 			
 		</activity>
-		<service
-			android:name=".starter"
-			android:exported="true">
-		</service>
-		<receiver
-			android:name=".starter$starter_BR"
-			android:exported="true">
-		</receiver>
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
@@ -77,6 +69,22 @@
 			android:screenOrientation="unspecified"
 			android:exported="true">
 		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
+			android:name=".newsact"
+			android:label="زیست بوم فرهنگ و ارشاد فارس"
+			android:screenOrientation="unspecified"
+			android:exported="true">
+		</activity>
+		<service
+			android:name=".starter"
+			android:exported="true">
+		</service>
+		<receiver
+			android:name=".starter$starter_BR"
+			android:exported="true">
+		</receiver>
 		<service
 			android:name=".httputils2service"
 			android:exported="true">

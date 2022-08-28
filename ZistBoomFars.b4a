@@ -55,15 +55,16 @@ Library8=dialogs
 Library9=hitex_coordinatorlayout
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~~\n~SetActivityAttribute(SingleAsaarACT,android:theme, "@style/AppTheme.SimpleCoordinatorTheme")~\n~SetActivityAttribute(Main, android:windowSoftInputMode, adjustResize|stateHidden)~\n~~\n~'SetApplicationAttribute(android:theme, "@style/Theme.AppCompat")~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#00A693</item>~\n~        <item name="colorPrimaryDark">#0F8274</item>~\n~        <item name="colorAccent">#FFCC17</item>~\n~    	<item name="colorControlHighlight">#916D02</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDisablePreview">True</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~~\n~~\n~~\n~AddManifestText(~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~  android:maxSdkVersion="19" />~\n~)~\n~~\n~
 Module1=DoubleTaptoClose
-Module2=ProfileAct
-Module3=SaeloZahra
-Module4=SearchAct
-Module5=SingleAsaarACT
-Module6=Starter
-Module7=WebViewACT
+Module2=NewsAct
+Module3=ProfileAct
+Module4=SaeloZahra
+Module5=SearchAct
+Module6=SingleAsaarACT
+Module7=Starter
+Module8=WebViewACT
 NumberOfFiles=15
 NumberOfLibraries=23
-NumberOfModules=7
+NumberOfModules=8
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -204,7 +205,8 @@ Sub OpenAppCounter
 			Log("AppOpenCount Readed "&AppOpenCount)
 		End If
 			
-		File.WriteString(SaeloZahra.Dir,"AppOpenCount",AppOpenCount+2)
+		File.WriteString(SaeloZahra.Dir,"AppOpenCount",AppOpenCount+1)
+		AppOpenCount = File.ReadString(SaeloZahra.Dir,"AppOpenCount")
 	End If
 	
 	Log("AppOpenCount: "&AppOpenCount)
@@ -363,22 +365,18 @@ End Sub
 
 Sub HomeWV_OverrideUrl (Url As String) As Boolean
 	Log(Url)
-	If Url.Contains(SaeloZahra.SiteUrl&"asaar/") Then
-		SingleAsaarACT.AsaarID=Url.Replace(SaeloZahra.SiteUrl&"asaar/","")
-		StartActivity(SingleAsaarACT)
-	else If Url.Contains(SaeloZahra.SiteUrl&"profile/") Then
-		WebViewACT.Link = Url&"?mobile=true"
-		StartActivity(WebViewACT)
-	else If Url.Contains(SaeloZahra.SiteUrl&"institute/") Then
-		SingleAsaarACT.AsaarID=Url.Replace(SaeloZahra.SiteUrl&"institute/","")
-		StartActivity(SingleAsaarACT)
-	Else
+	
+	If SaeloZahra.WVRoles(Url) == Url Then
 		customBrowser.CreateNewTab(Url)
 	End If
+	
 	Return True
 End Sub
 
-
+Sub ChatWV_OverrideUrl (Url As String) As Boolean
+	Log(Url)
+	Return True
+End Sub
 
 Private Sub VP_PageChanged (Position As Int)
 	

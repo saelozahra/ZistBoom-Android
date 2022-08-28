@@ -17,7 +17,7 @@ End Sub
 Sub Globals
 	
 	Dim X1 As XmlLayoutBuilder
-	
+	Dim customBrowser As JK_CustomTabsBrowser
 	Dim Config 	As Amir_SliderConfig
 	Dim Show 	As Amir_SliderShow
 	
@@ -37,6 +37,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_white_24")
 	
 	SaeloZahra.SetStatusBarColor(SaeloZahra.Color)
+	
+	customBrowser.Initialize
+	customBrowser.ToolbarColor = SaeloZahra.Color
+	customBrowser.ShowTitle = True
+	customBrowser.Build
+	
 	
 	
 	WebView1.LoadUrl(Link)
@@ -80,5 +86,15 @@ Sub Activity_KeyPress (KeyCode As Int) As Boolean
 End Sub
 
 Sub WebView1_PageFinished (URL As String)
+	ProgressDialogHide
+End Sub
+
+Sub WebView1_OverrideUrl (Url As String) As Boolean
+	Log(Url)
 	
+	If SaeloZahra.WVRoles(Url) == Url Then
+		customBrowser.CreateNewTab(Url)
+	End If
+	
+	Return True
 End Sub
