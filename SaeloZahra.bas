@@ -116,6 +116,10 @@ Sub WVRoles(URL As String) As String
 	If URL.Contains(SiteUrl&"asaar/") Then
 		SingleAsaarACT.AsaarID=URL.Replace(SiteUrl&"asaar/","")
 		StartActivity(SingleAsaarACT)
+	else If URL.Contains("http://ins_news/") Then
+		NewsAct.NewsID=URL.Replace("http://ins_news/","")
+'		@todo: ins_News
+		StartActivity(NewsAct)
 	else If URL.Contains(SiteUrl&"city/") Then
 		WebViewACT.Link = URL&"?for_mobile=true"
 		WebViewACT.PageTitle = "زیست‌بوم شهرستان"
@@ -128,8 +132,8 @@ Sub WVRoles(URL As String) As String
 		NewsAct.NewsID=URL.Replace(SiteUrl&"news/","")
 		StartActivity(NewsAct)
 	else If URL.Contains(SiteUrl&"institute/") Then
-		SingleAsaarACT.AsaarID=URL.Replace(SiteUrl&"institute/","")
-		StartActivity(SingleAsaarACT)
+		InstituteAct.InsID=URL.Replace(SiteUrl&"institute/","")
+		StartActivity(InstituteAct)
 	else If URL.Contains("tel:") Then
 		I.Initialize(I.ACTION_VIEW, URL)
 		StartActivity(I)

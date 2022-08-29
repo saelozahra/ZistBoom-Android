@@ -66,7 +66,6 @@ Sub Activity_Create(FirstTime As Boolean)
 	CF.Panel.LoadLayout("SingleProductPanelLayout")
 	CF.CardElevation=0
 	CF.CardBackgroundColor=Colors.Transparent
-	CF.ImageBitmap = LoadBitmap(File.DirAssets,"load.gif")
 	CF.ImageScaleType = CF.SCALE_CENTER_CROP
 	CF.Icon = XML.GetDrawable("twotone_perm_phone_msg_white_24")
 	CF.SetToolbarColor(SaeloZahra.ColorDark,SaeloZahra.ColorLightTransparent)

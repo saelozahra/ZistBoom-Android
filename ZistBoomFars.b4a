@@ -60,17 +60,18 @@ Library8=dialogs
 Library9=hitex_coordinatorlayout
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~'CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~~\n~~\n~SetActivityAttribute(SingleAsaarACT,android:theme, "@style/AppTheme.SimpleCoordinatorTheme")~\n~SetActivityAttribute(Main, android:windowSoftInputMode, adjustResize|stateHidden)~\n~~\n~'SetApplicationAttribute(android:theme, "@style/Theme.AppCompat")~\n~SetApplicationAttribute(android:theme, "@style/MyAppTheme")~\n~CreateResource(values, theme.xml,~\n~<resources>~\n~    <style name="MyAppTheme" parent="Theme.AppCompat.Light.NoActionBar">~\n~        <item name="colorPrimary">#00A693</item>~\n~        <item name="colorPrimaryDark">#0F8274</item>~\n~        <item name="colorAccent">#FFCC17</item>~\n~    	<item name="colorControlHighlight">#916D02</item>~\n~        <item name="windowNoTitle">true</item>~\n~        <item name="windowActionBar">false</item>~\n~		<item name="android:windowDisablePreview">True</item>~\n~    </style>~\n~</resources>~\n~)~\n~~\n~CreateResourceFromFile(Macro, Core.NetworkClearText)~\n~~\n~~\n~~\n~AddManifestText(~\n~<uses-permission~\n~  android:name="android.permission.WRITE_EXTERNAL_STORAGE"~\n~  android:maxSdkVersion="19" />~\n~)~\n~~\n~
 Module1=DoubleTaptoClose
-Module2=NewsAct
-Module3=ProfileAct
-Module4=RegisterAct
-Module5=SaeloZahra
-Module6=SearchAct
-Module7=SingleAsaarACT
-Module8=Starter
-Module9=WebViewACT
+Module10=WebViewACT
+Module2=InstituteAct
+Module3=NewsAct
+Module4=ProfileAct
+Module5=RegisterAct
+Module6=SaeloZahra
+Module7=SearchAct
+Module8=SingleAsaarACT
+Module9=Starter
 NumberOfFiles=17
 NumberOfLibraries=24
-NumberOfModules=9
+NumberOfModules=10
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -387,11 +388,11 @@ Sub HomeWV_OverrideUrl (Url As String) As Boolean
 	Return True
 End Sub
 
-Sub ChatWV_OverrideUrl (Url As String) As Boolean
-	customBrowser.CreateNewTab(Url)
-	Log(Url)
-	Return False
-End Sub
+'Sub ChatWV_OverrideUrl (Url As String) As Boolean
+'	customBrowser.CreateNewTab(Url)
+'	Log(Url)
+'	Return False
+'End Sub
 
 Private Sub VP_PageChanged (Position As Int)
 	
@@ -665,11 +666,11 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 		
 	Else
 		Menu.Add2(3,1,"ورود",		X1.GetDrawable("round_login_black_24") 				).ShowAsAction = 2
+		Menu.Add2(4, 4, "ثبت‌نام", X1.GetDrawable("twotone_app_registration_white_24") ).ShowAsAction = 2
 	End If
 	
 '	If UserInfo.IsInitialized Then Menu.Add2(2,2,"موارد ذخیره شده",X1.GetDrawable("twotone_bookmarks_white_24") ).ShowAsAction = 2
 	
-	Menu.Add2(4, 4, "ثبت‌نام", X1.GetDrawable("twotone_app_registration_white_24") ).ShowAsAction = 2
 '	Menu.Add2(5,5,"شاخه ها", 	X1.GetDrawable("ic_playlist_play_white_24dp") ).ShowAsAction = 2
 	
 	

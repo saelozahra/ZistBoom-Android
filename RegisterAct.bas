@@ -18,7 +18,7 @@ Sub Globals
 	Dim Config 	As Amir_SliderConfig
 	Dim Show 	As Amir_SliderShow
 	
-	Dim CityMap as Map
+	Dim CityMap As Map
 	
 	Private ActionBar As ACToolBarDark
 	Private NameET As DSFloatLabelEditText
