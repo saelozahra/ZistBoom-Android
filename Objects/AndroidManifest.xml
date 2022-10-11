@@ -72,6 +72,14 @@
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
+			android:name=".instituteact"
+			android:label="زیست بوم فرهنگ و ارشاد فارس"
+			android:screenOrientation="unspecified"
+			android:exported="true">
+		</activity>
+		<activity
+			android:windowSoftInputMode="stateHidden"
+			android:launchMode="singleTop"
 			android:name=".newsact"
 			android:label="زیست بوم فرهنگ و ارشاد فارس"
 			android:screenOrientation="unspecified"
@@ -96,7 +104,7 @@
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"
-			android:name=".instituteact"
+			android:name=".homeact"
 			android:label="زیست بوم فرهنگ و ارشاد فارس"
 			android:screenOrientation="unspecified"
 			android:exported="true">

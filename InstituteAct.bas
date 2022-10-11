@@ -8,6 +8,7 @@ Version=11.8
 	#FullScreen: False
 	#IncludeTitle: True
 	#Extends: android.support.v7.app.AppCompatActivity
+	#IgnoreWarnings	: 9
 #End Region
 
 Sub Process_Globals
@@ -263,8 +264,8 @@ Sub jobDone(J As HttpJob)
 				CSBText.Bold.Append("آدرس: ").Pop.Append(instituteAddress).Append(CRLF)
 				CSBText.Bold.Append("وب‌سایت: ").Pop.Append(siteAddress).Append(CRLF).Size(14).Color(Colors.LightGray)
 				CSBText.Bold.Append("پست‌الکترونیک: ").Pop.Append(email).Append(CRLF)
-				CSBText.Bold.Append("واتس‌آپ: ").Pop.Append(whatsapp).Append(CRLF)
-				CSBText.Bold.Append("‌اینستاگرام: ").Pop.Append(instagram).Append(CRLF)
+'				CSBText.Bold.Append("واتس‌آپ: ").Pop.Append(whatsapp).Append(CRLF)
+'				CSBText.Bold.Append("‌اینستاگرام: ").Pop.Append(instagram).Append(CRLF)
 				CSBText.Append("تعداد بازدید: ").Bold.Append(institute.Get("view_count")).Append(CRLF)
 				CSBText.Append("تعداد پسند: ").Bold.Append(institute.Get("like_count")).Append(CRLF)
 				CSBText.PopAll

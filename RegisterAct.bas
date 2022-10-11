@@ -129,13 +129,15 @@ Private Sub SubmitBtn_Click
 	
 	Dim M1 As Map
 	M1.Initialize
-	M1.Put("name", NameET.Text)
-	M1.Put("family", FamilyET.Text)
-	M1.Put("city", CitySlug)
+	M1.Put("firstname", NameET.Text)
+	M1.Put("lastname", FamilyET.Text)
 	M1.Put("username", UserNameET.Text)
-	M1.Put("mail", MailET.Text)
+	M1.Put("email", MailET.Text)
+	M1.Put("number", TelET.Text)
+	M1.Put("city", CitySlug)
+	M1.Put("password", PassET1.Text)
 	
-	SubmitJob.PostMultipart(SaeloZahra.JsonUrl&"register", M1, Null)
+	SubmitJob.PostMultipart(SaeloZahra.JsonUrl&"account/create/", M1, Null)
 	
 End Sub
 
