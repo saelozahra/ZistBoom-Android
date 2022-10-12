@@ -37,6 +37,6 @@ ModuleClosedNodes6=
 ModuleClosedNodes7=
 ModuleClosedNodes8=
 ModuleClosedNodes9=
-NavigationStack=LoginAct,Globals,12,0,RegisterAct,Activity_Create,69,0,ProfileAct,Activity_Create,35,0,LoginAct,Activity_Create,36,6,LoginAct,LoginBtn_Click,60,6,HomeAct,Globals,15,0,Visual Designer,LoginAct.bal,-100,3,HomeAct,Activity_Create,41,0,LoginAct,LoginKon,169,4,LoginAct,JobDone,138,6
+NavigationStack=LoginAct,Activity_Create,35,6,Visual Designer,HomeLayout.bal,-100,1,HomeAct,InstallActivity,152,0,HomeAct,Globals,28,0,LoginAct,JobDone,115,6,Main,Globals,37,0,HomeAct,Activity_Create,37,0,RegisterAct,Activity_Create,69,0,Visual Designer,LoginAct.bal,-100,6,RegisterAct,SubmitBtn_Click,145,4
 SelectedBuild=0
 VisibleModules=4,2,9,6,10,7,3,8

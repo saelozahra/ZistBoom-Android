@@ -16,11 +16,11 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
+	Dim ParallaxDesign As Hitex_ParallaxDesign
 	Dim LoginJob As HttpJob
-	Private ImageView1 As ImageView
 	Private UserNameFLET As DSFloatLabelEditText
 	Private PasswordFLET As DSFloatLabelEditText
-	Private RegBtn As ACButton
+	Private RegBtn As Label
 	Private LoginBtn As ACButton
 End Sub
 
@@ -28,7 +28,14 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	Activity.LoadLayout("LoginAct")
 	Activity.Color=SaeloZahra.Color
-	ImageView1.SetBackgroundImage(LoadBitmapResize(File.DirAssets, "login.png", ImageView1.Width, ImageView1.Height, True)).Gravity=Gravity.CENTER
+	
+	ParallaxDesign.Initialize
+	Activity.AddView(ParallaxDesign,0,-18dip,100%x,100%y+36dip)
+	ParallaxDesign.setMargins(88, 10)
+	ParallaxDesign.setMultipliers(1.5f, 1.5f)
+	ParallaxDesign.SetImageBitmap(LoadBitmap(File.DirAssets, "login.jpg"))
+	ParallaxDesign.SendToBack
+	
 	
 	Dim Csl As CSBuilder
 	Csl.Initialize

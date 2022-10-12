@@ -7,6 +7,7 @@ Version=11.8
 #Region  Activity Attributes 
 	#FullScreen: False
 	#IncludeTitle: True
+	#Extends: android.support.v7.app.AppCompatActivity
 #End Region
 
 Sub Process_Globals
@@ -42,14 +43,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("HomeLayout")
 	
 	ActionBar.Color=SaeloZahra.Color
-'	ActionBar.Title=SaeloZahra.CSBTitle(Application.LabelName)
-'	ActionBar.TitleTextColor=Colors.White
 	ActionBar.SetLayout(0,0,100%x,SaeloZahra.MaterialActionBarHeight)
 	ActionBar.LogoBitmap=LoadBitmapResize(File.DirAssets,"icon.png",SaeloZahra.MaterialActionBarHeight*1.5,SaeloZahra.MaterialActionBarHeight-14,True)
 	
 	LoadingWV.SetLayout(0, 0, 100%x, 100%y)
 	LoadingWV.LoadHtml("<html><body style='margin:Auto;'><img src='file:///android_asset/loading_app.gif' style='width:100%;height:100%;' /></body></html>")
-'	LoadingWV.LoadHtml("<body> <img style='position:absolute; top:0; left:0; width:100%; height:100%;' src='file:///android_asset/loading_app.gif' > <img style='' src='file:///android_asset/load.gif' ></body>")
 	LoadingWV.BringToFront
 	
 	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")

@@ -139,7 +139,17 @@ Private Sub SubmitBtn_Click
 	M1.Put("city", CitySlug)
 	M1.Put("password", PassET1.Text)
 	
-	SubmitJob.PostMultipart(SaeloZahra.JsonUrl&"account/create/", M1, Null)
+	Dim files As List
+	files.Initialize
+	Dim fd1 As MultipartFileData
+	fd1.Initialize
+	fd1.KeyName = "avatar"
+	fd1.Dir = File.DirAssets
+	fd1.FileName = "icon.png"
+	fd1.ContentType = "image/jpg"
+	files.Add(fd1)
+
+	SubmitJob.PostMultipart(SaeloZahra.JsonUrl&"account/create/", M1, files)
 	
 End Sub
 
