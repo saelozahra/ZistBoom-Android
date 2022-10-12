@@ -72,6 +72,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	SaeloZahra.SetStatusBarColor(SaeloZahra.Color)
 	
+'	customBrowser.CreateNewTab(SaeloZahra.SiteUrl&"signup")
+
 End Sub
 
 Sub Activity_Resume

@@ -59,9 +59,9 @@ C:\Android\tools\..\extras\b4a_local\unpacked-bitmapcreator-63792602270000\dex_v
 C:\Android\tools\..\extras\b4a_local\unpacked-core-63792602270000\dex_v1\core.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-dateutils-63792602270000\dex_v1\dateutils.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-designsupport-63677020972867\dex_v1\designsupport.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-dialogs-63632238842000\dex_v1\dialogs.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-hitex_coordinatorlayout.androidx-63740492786700\dex_v1\hitex_coordinatorlayout.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-hitex_materialx.androidx-63742284117720\dex_v1\hitex_materialx.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-hitex_parallaxdesign-63603169643560\dex_v1\hitex_parallaxdesign.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-ime-63792602270000\dex_v1\ime.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-javaobject-63792602270000\dex_v1\javaobject.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-jk_customtabsbrowser-63709315841080\dex_v1\jk_customtabsbrowser.zip
@@ -74,7 +74,6 @@ C:\Android\tools\..\extras\b4a_local\unpacked-spacenavigation-63608606582033\dex
 C:\Android\tools\..\extras\b4a_local\unpacked-webviewextras2-63581186426000\dex_v1\webviewextras2.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xmllayoutbuilder-63535649474000\dex_v1\xmllayoutbuilder.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xui-63792602270000\dex_v1\xui.zip
-C:\Android\tools\..\extras\b4a_local\unpacked-hitex_parallaxdesign-63603169643560\dex_v1\hitex_parallaxdesign.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-animation-63792602270000\dex_v1\animation.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-63792602270000\dex_v1\okhttp.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63792602270000\dex_v1\stringutils.zip
@@ -435,7 +434,6 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\homeact$HandleKeyDelayed.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\homeact$ResumableSub_Activity_Create.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\homeact$ResumableSub_HomeWV_PageFinished.dex
-D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\homeact$ResumableSub_JobDone.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\homeact$ResumableSub_Search_QuerySubmitted.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\homeact$ResumeMessage.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\homeact$WaitForLayout.dex
@@ -455,6 +453,7 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\loginact$1.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\loginact$B4AMenuItemsClickListener.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\loginact$HandleKeyDelayed.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\loginact$ResumableSub_JobDone.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\loginact$ResumeMessage.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\loginact$WaitForLayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\loginact.dex

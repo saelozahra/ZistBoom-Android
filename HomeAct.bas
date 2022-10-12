@@ -10,8 +10,6 @@ Version=11.8
 #End Region
 
 Sub Process_Globals
-	Dim RestartedBefore As Boolean = False
-	Dim CanInstallAct As Boolean
 End Sub
 
 Sub Globals
@@ -32,9 +30,6 @@ Sub Globals
 	Dim StrChat, StrProfile As AHSwipeToRefresh
 	Dim ChatWV, HomeWV, ProfileWV, LoadingWV As WebView
 	Dim customBrowser As JK_CustomTabsBrowser
-	Dim LoginJob As HttpJob
-	Dim LoginDialog As CustomDialog2
-	Dim PasswordET,UserNameET As EditText
 	Private Panel As Panel
 	Dim wvc As DefaultWebViewClient
 	
@@ -62,9 +57,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	InstallBottomMenu
 	
-	LoginKon
 	
-	If CanInstallAct Then InstallActivity
+	InstallActivity
 	
 	Sleep(0)
 	
@@ -284,12 +278,8 @@ Private Sub VP_PageChanged (Position As Int)
 	If SpaceNavigationView1.IsInitialized Then SpaceNavigationView1.changeCurrentItem(Position)
 	
 	If Position == 2 Then
-		If File.Exists(SaeloZahra.Dir,"UPTemp") Then
-			ChatWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery)
-			ChatWV.Tag="home"
-		Else
-			LoginKon
-		End If
+		ChatWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery)
+		ChatWV.Tag="home"
 '		sv.QueryHint=SaeloZahra.CSB("جستجو در بازارچه")
 	Else If Position == 1 Then
 '		sv.QueryHint=SaeloZahra.CSB("جستجو در سایت")
@@ -345,154 +335,6 @@ End Sub
 #End Region
 
 
-Sub LoginKon
-	
-	LoginJob.Initialize("LoginJob", Me)
-	LoginJob.Tag="home"
-	
-	If File.Exists(SaeloZahra.Dir,"UPTemp") Then
-		
-		LoginJob.Download(SaeloZahra.JsonUrl&"login"&Main.UNQuery)
-		LogColor(SaeloZahra.JsonUrl&"login"&Main.UNQuery,Colors.Yellow)
-		
-	Else
-		Dim PLogin As Panel
-		PLogin.Initialize("PLogin")
-		UserNameET.Initialize("UserNameET")
-		'	UserNameET.InputType=UserNameET.INPUT_TYPE_PHONE
-		UserNameET.Typeface=SaeloZahra.Font
-		UserNameET.Hint="نام کاربری"
-		PLogin.AddView(UserNameET,5%x,5%x,60%x,14%x)
-					
-		PasswordET.Initialize("PasswordET")
-		PasswordET.Typeface=SaeloZahra.Font
-		PasswordET.Hint="کلمه عبور"
-		PasswordET.PasswordMode=True
-		PLogin.AddView(PasswordET,5%x,25%x,60%x,14%x)
-					
-		
-		LoginDialog.AddView(PLogin,72%x,45%x)
-		
-		Dim loginDialogResult As Int = LoginDialog.Show( SaeloZahra.CSB("ورود به حساب کاربری") , SaeloZahra.CSB("ورود") , SaeloZahra.CSB("لغو") , SaeloZahra.CSB("ثبت نام") , Null)
-		If loginDialogResult == DialogResponse.POSITIVE Then
-					
-			Dim M1 As Map
-			M1.Initialize
-			M1.Put("username",UserNameET.Text)
-			M1.Put("password",PasswordET.Text)
-			File.WriteMap(SaeloZahra.Dir,"UPTemp",M1)
-'			LoginJob.PostMultipart(SaeloZahra.JsonUrl&"login",M1,Null)
-			LoginJob.Download(SaeloZahra.JsonUrl&"login?username="&UserNameET.Text&"&password="&PasswordET.Text)
-			ProgressDialogShow(SaeloZahra.CSBTitle("کمی صبر کنید"))
-		
-		else If loginDialogResult == DialogResponse.NEGATIVE Then
-'			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
-'			Show.convertActivityFromTranslucent
-'			StartActivity(ProfileAct) TODO
-			customBrowser.CreateNewTab(SaeloZahra.SiteUrl&"signup")
-		End If
-		
-	End If
-
-	Log(SaeloZahra.JsonUrl&"login"&Main.UNQuery)
-	
-	
-End Sub
-
-
-
-
-Sub JobDone(job As HttpJob)
-	ProgressDialogHide
-	If job.Success Then
-		Select job.JobName
-			Case "LoginJob"
-				Dim parser As JSONParser
-				parser.Initialize(job.GetString)
-				Dim jRoot As Map = parser.NextObject
-				Main.UserInfo = jRoot
-				ProfileAct.UserInfo = Main.UserInfo
-				File.WriteMap(SaeloZahra.Dir,"UserInfo", jRoot)
-				Main.YourID = jRoot.Get("id")
-				Dim first_name As String = jRoot.Get("first_name")
-				Dim last_name As String = jRoot.Get("last_name")
-'				Dim username As String = jRoot.Get("username")
-'				Dim email As String = jRoot.Get("email")
-'				Dim bio As String = jRoot.Get("bio")
-'				Dim phone_number As String = jRoot.Get("phone_number")
-'				Dim city As Map = jRoot.Get("city")
-'					Dim city_name As String = city.Get("city_name")
-'					Dim city_id As Int = city.Get("city_id")
-'					Dim city_slug As String = city.Get("city_slug")
-'				Dim permission As String = jRoot.Get("permission")
-				Dim Avatar As String = jRoot.Get("avatar")
-'				Dim asaar As List = jRoot.Get("asaar")
-'				For Each colasaar As Map In asaar
-'					Dim description As String = colasaar.Get("description")
-'					Dim id As Int = colasaar.Get("id")
-'					Dim title As String = colasaar.Get("title")
-'					Dim picture As String = colasaar.Get("picture")
-'				Next
-				Dim AvatarJob As HttpJob
-				AvatarJob.Initialize("AvatarJob",Me)
-				Log("downloading: "&SaeloZahra.SiteUrl&Avatar)
-				AvatarJob.Download(SaeloZahra.SiteUrl&Avatar)
-				Wait For (AvatarJob) JobDone(ja As HttpJob)
-				If ja.Success Then
-					Dim out As OutputStream = File.OpenOutput(SaeloZahra.Dir, "avatar.jpg", False)
-					File.Copy2(ja.GetInputStream, out)
-					out.Close
-				End If
-				ja.Release
-				Log("First: "&Main.GlobalFirstTime)
-				Log(job.GetString)
-				ToastMessageShow(SaeloZahra.CSB(first_name&" "&last_name&" خوش آمدید."),True)
-				
-				RestartApp(True)
-				
-	
-		End Select
-	Else
-		If job.ErrorMessage == "{""status"":""username is incorrect""}" Then
-			ToastMessageShow(SaeloZahra.CSB(" نام کاربری غلطه"), True)
-			File.Delete(SaeloZahra.Dir,"UPTemp")
-			LoginKon
-		else If job.ErrorMessage == "{""status"":""password is incorrect""}" Then
-			ToastMessageShow(SaeloZahra.CSB(" کلمه‌عبور غلطه"), True)
-			File.Delete(SaeloZahra.Dir,"UPTemp")
-			LoginKon
-		Else if job.ErrorMessage.Contains(" GET مجاز نیست.") Then
-			ToastMessageShow(SaeloZahra.CSB(" متد GET مجاز نیست"), True)
-
-		ELSE If Not(SaeloZahra.CheckConnection) Then
-			Msgbox2Async("خطای اینترنت", SaeloZahra.CSB(" شبکه قطع شده "&CRLF&"و نمیتونید به سایت وصل بشید!!!"), "تلاش مجدد", "", "خروج", Null, False)
-			Wait For Msgbox_Result (Result As Int)
-			If Result = DialogResponse.POSITIVE Then
-				RestartedBefore = False
-				RestartApp(False)
-			End If
-		else If Not(SaeloZahra.CheckSite) Then
-			Msgbox2Async("خطای اینترنت", SaeloZahra.CSB(" اینترنتتون قطع شده "&CRLF&"و نمیتونید به سایت وصل بشید!!!"), "تلاش مجدد", "", "خروج", Null, False)
-			Wait For Msgbox_Result (Result As Int)
-			If Result = DialogResponse.POSITIVE Then
-				RestartedBefore = False
-				RestartApp(False)
-			End If
-		Else
-			ToastMessageShow(job.ErrorMessage, True)
-		End If
-	End If
-End Sub
-
-Sub RestartApp(WithInstall As Boolean)
-	Log("RestartApp With Activity: "&WithInstall)
-	If Not(RestartedBefore) Then
-		RestartedBefore = True
-		Activity.Finish
-		StartActivity(Me)
-		CanInstallAct = WithInstall
-	End If
-End Sub
 
 #Region MenuSearch
 
@@ -549,9 +391,6 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 		LblYourName.Gravity=Bit.Or(Gravity.CENTER_HORIZONTAL,Gravity.CENTER_VERTICAL)
 		ActionBar.AddView(LblYourName,-2,SaeloZahra.MaterialActionBarHeight,Gravity.CENTER)
 		
-	Else
-		Menu.Add2(3,1,"ورود",		X1.GetDrawable("round_login_white_24") 				).ShowAsAction = 2
-		Menu.Add2(4, 4, "ثبت‌نام", X1.GetDrawable("twotone_app_registration_white_24") ).ShowAsAction = 2
 	End If
 	
 '	If UserInfo.IsInitialized Then Menu.Add2(2,2,"موارد ذخیره شده",X1.GetDrawable("twotone_bookmarks_white_24") ).ShowAsAction = 2
@@ -599,14 +438,10 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 		Case 1
 		Case 2
 		Case 3
-			If ProfileAct.UserInfo.IsInitialized Then
-				SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
-				Show.convertActivityFromTranslucent
+			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+			Show.convertActivityFromTranslucent
 				StartActivity(ProfileAct)
-				ToastMessageShow(SaeloZahra.CSB(ProfileAct.UserInfo.Get("first_name")&" "&ProfileAct.UserInfo.Get("last_name")),True)
-			Else
-				LoginKon
-			End If
+			ToastMessageShow(SaeloZahra.CSB(ProfileAct.UserInfo.Get("first_name")&" "&ProfileAct.UserInfo.Get("last_name")),True)
 		Case 4
 			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
 			Show.convertActivityFromTranslucent
