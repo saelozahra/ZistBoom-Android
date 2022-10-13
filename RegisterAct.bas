@@ -124,12 +124,23 @@ Sub JobDone(j As HttpJob)
 					CityMap.Put(name, slug)
 				Next
 			Case "SubmitJob"
+				
 				If j.GetString == "{""status"":""email exist""}" Then
 					
-					snake.Initialize("snake", Activity,SaeloZahra.CSB("ثبت‌نام با موفقیت انجام شد..."), snake.DURATION_LONG)
+					snake.Initialize("snake", Activity,SaeloZahra.CSB("ایمیل تکراریست..."), snake.DURATION_LONG)
 					snake.Show
 					
+					MailET.RequestFocus
+					
+				else If j.GetString == "{""status"":""username exist""}" Then
+					
+					snake.Initialize("snake", Activity,SaeloZahra.CSB("نام‌کاربری تکراریست..."), snake.DURATION_LONG)
+					snake.Show
+					
+					UserNameET.RequestFocus
+					
 				else If j.GetString == "{""status"":""created""}" Then
+					
 					Dim M1 As Map
 					M1.Initialize
 					M1.Put("username",UserNameET.Text)
@@ -144,6 +155,7 @@ Sub JobDone(j As HttpJob)
 					Activity.Finish
 					
 				End If
+				
 		End Select
 	Else
 		Log(j.ErrorMessage)
