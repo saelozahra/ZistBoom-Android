@@ -18,6 +18,8 @@ Sub Globals
 	Dim Config 	As Amir_SliderConfig
 	Dim Show 	As Amir_SliderShow
 	
+	Dim snake As DSSnackbar
+	
 	Dim CityMap As Map
 	
 	Private ActionBar As ACToolBarDark
@@ -51,6 +53,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	PassET1.Typeface = SaeloZahra.Font
 	PassET2.Typeface = SaeloZahra.Font
 	SubmitBtn.Typeface = SaeloZahra.Font
+	TelET.InputType = TelET.INPUT_TYPE_PHONE
 	SubmitBtn.SetButtonColors(SaeloZahra.ColorDark, SaeloZahra.Color,Colors.LightGray)
 	
 	CityMap.Initialize
@@ -105,19 +108,45 @@ End Sub
 
 Sub JobDone(j As HttpJob)
 	If j.Success Then
-		Dim parser As JSONParser
-		parser.Initialize(j.GetString)
-		Dim jRoot As List = parser.NextArray
-		For Each coljRoot As Map In jRoot
-'			Dim province_id As Int = coljRoot.Get("province_id")
-			Dim name As String = coljRoot.Get("name")
-'			Dim description As String = coljRoot.Get("description")
-'			Dim id As Int = coljRoot.Get("id")
-			Dim slug As String = coljRoot.Get("slug")
-			CitySpinner.Add(name)
-			CityMap.Put(name, slug)
-		Next
+		Log(j.GetString)
+		Select j.JobName
+			Case "CityJob"
+				Dim parser As JSONParser
+				parser.Initialize(j.GetString)
+				Dim jRoot As List = parser.NextArray
+				For Each coljRoot As Map In jRoot
+		'			Dim province_id As Int = coljRoot.Get("province_id")
+					Dim name As String = coljRoot.Get("name")
+		'			Dim description As String = coljRoot.Get("description")
+		'			Dim id As Int = coljRoot.Get("id")
+					Dim slug As String = coljRoot.Get("slug")
+					CitySpinner.Add(name)
+					CityMap.Put(name, slug)
+				Next
+			Case "SubmitJob"
+				If j.GetString == "{""status"":""email exist""}" Then
+					
+					snake.Initialize("snake", Activity,SaeloZahra.CSB("ثبت‌نام با موفقیت انجام شد..."), snake.DURATION_LONG)
+					snake.Show
+					
+				else If j.GetString == "{""status"":""created""}" Then
+					Dim M1 As Map
+					M1.Initialize
+					M1.Put("username",UserNameET.Text)
+					M1.Put("password",PassET1.Text)
+					File.WriteMap(SaeloZahra.Dir,"UPTemp",M1)
+					
+					snake.Initialize("snake", Activity,SaeloZahra.CSB("ثبت‌نام با موفقیت انجام شد..."), snake.DURATION_LONG)
+					snake.Show
+					
+					Sleep(1000)
+					
+					Activity.Finish
+					
+				End If
+		End Select
 	Else
+		Log(j.ErrorMessage)
 		ToastMessageShow(j.ErrorMessage, True)
 	End If
 End Sub
@@ -139,12 +168,14 @@ Private Sub SubmitBtn_Click
 	M1.Put("city", CitySlug)
 	M1.Put("password", PassET1.Text)
 	
+	File.Copy(File.DirAssets, "icon.png", File.DirInternal, "icon.png")
+	
 	Dim files As List
 	files.Initialize
 	Dim fd1 As MultipartFileData
 	fd1.Initialize
 	fd1.KeyName = "avatar"
-	fd1.Dir = File.DirAssets
+	fd1.Dir = File.DirInternal
 	fd1.FileName = "icon.png"
 	fd1.ContentType = "image/jpg"
 	files.Add(fd1)
