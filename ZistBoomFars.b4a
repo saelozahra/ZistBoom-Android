@@ -1,49 +1,51 @@
 ﻿Build1=Default,ir.saelozahra.zistboom.fars
 File1=db.db
-File10=login.jpg
-File11=LoginAct.bal
-File12=RegisterLayout.bal
-File13=samim-bold-fd-wol.ttf
-File14=samim-fd-wol.ttf
-File15=searchlayout.bal
-File16=seprate.png
-File17=SingleAsaarLayout.bal
-File18=SingleNewsLayout.bal
-File19=singleproductpanellayout.bal
+File10=loading_app.gif
+File11=login.png
+File12=LoginAct.bal
+File13=RegisterLayout.bal
+File14=samim-bold-fd-wol.ttf
+File15=samim-fd-wol.ttf
+File16=searchlayout.bal
+File17=seprate.png
+File18=SingleAsaarLayout.bal
+File19=SingleNewsLayout.bal
 File2=farhang.png
-File20=slider.html
-File21=slider_1.html
-File22=slider_2.html
-File23=WVLayout.bal
-File24=zistboom.png
+File20=singleproductpanellayout.bal
+File21=slider.html
+File22=slider_1.html
+File23=slider_2.html
+File24=WVLayout.bal
+File25=zistboom.png
 File3=fars.png
-File4=greenhover.png
-File5=HomeLayout.bal
-File6=icon.png
-File7=intro.jpg
-File8=load.gif
-File9=loading_app.gif
+File4=granim.html
+File5=greenhover.png
+File6=HomeLayout.bal
+File7=icon.png
+File8=intro.jpg
+File9=load.gif
 FileGroup1=Default Group
 FileGroup10=img
-FileGroup11=Layout
+FileGroup11=img
 FileGroup12=Layout
-FileGroup13=Default Group
+FileGroup13=Layout
 FileGroup14=Default Group
-FileGroup15=Layout
-FileGroup16=img
-FileGroup17=Layout
+FileGroup15=Default Group
+FileGroup16=Layout
+FileGroup17=img
 FileGroup18=Layout
 FileGroup19=Layout
 FileGroup2=img
-FileGroup20=Default Group
+FileGroup20=Layout
 FileGroup21=Default Group
 FileGroup22=Default Group
-FileGroup23=Layout
-FileGroup24=img
+FileGroup23=Default Group
+FileGroup24=Layout
+FileGroup25=img
 FileGroup3=img
-FileGroup4=img
-FileGroup5=Layout
-FileGroup6=img
+FileGroup4=Default Group
+FileGroup5=img
+FileGroup6=Layout
 FileGroup7=img
 FileGroup8=img
 FileGroup9=img
@@ -65,6 +67,7 @@ Library21=spacenavigation
 Library22=webviewextras2
 Library23=xmllayoutbuilder
 Library24=xui
+Library25=sql
 Library3=amir_activityslider
 Library4=appcompat
 Library5=bitmapcreator
@@ -85,15 +88,15 @@ Module6=ProfileAct
 Module7=RegisterAct
 Module8=SaeloZahra
 Module9=SearchAct
-NumberOfFiles=24
-NumberOfLibraries=24
+NumberOfFiles=25
+NumberOfLibraries=25
 NumberOfModules=12
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: زیست بوم فرهنگ و ارشاد فارس
-	#VersionCode: 1
-	#VersionName: 1
+	#VersionCode: 2
+	#VersionName: 2
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: true

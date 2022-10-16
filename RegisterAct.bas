@@ -10,7 +10,8 @@ Version=11.8
 #End Region
 
 Sub Process_Globals
-	
+	Dim cc As ContentChooser
+	Dim files As List
 End Sub
 
 Sub Globals
@@ -35,6 +36,7 @@ Sub Globals
 	
 	Dim CityJob, SubmitJob As HttpJob
 	
+	Private AvatarIV As ImageView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -77,6 +79,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 '	customBrowser.CreateNewTab(SaeloZahra.SiteUrl&"signup")
 
+	cc.Initialize("cc")
+	
 End Sub
 
 Sub Activity_Resume
@@ -104,6 +108,35 @@ Sub Activity_KeyPress (KeyCode As Int) As Boolean
 	End If
 End Sub
 
+
+Sub cc_Result (Success As Boolean, Dir As String, FileName As String)
+	
+	Log(Success&" | "&Dir&" | "&FileName)
+	
+	AvatarIV.Bitmap = LoadBitmapSample(Dir, FileName, AvatarIV.Width*1.5, AvatarIV.Height*1.5 )
+	files.Initialize
+
+	Try
+		Dim fd As MultipartFileData
+		fd.Initialize
+		fd.KeyName="avatar"
+
+		fd.ContentType = "image/jpeg"
+		
+		File.Copy(Dir, FileName, File.DirInternalCache, "image1.jpg")
+		
+		fd.Dir= File.DirInternalCache
+		fd.FileName="image1.jpg"
+'		CropImageInGallery(fd.Dir,fd.FileName)
+		files.Add(fd)
+		
+		
+	Catch
+		Log(LastException.Message)
+		AvatarIV.Tag=""
+	End Try
+	
+End Sub
 
 
 Sub JobDone(j As HttpJob)
@@ -182,16 +215,6 @@ Private Sub SubmitBtn_Click
 	
 	File.Copy(File.DirAssets, "icon.png", File.DirInternal, "icon.png")
 	
-	Dim files As List
-	files.Initialize
-	Dim fd1 As MultipartFileData
-	fd1.Initialize
-	fd1.KeyName = "avatar"
-	fd1.Dir = File.DirInternal
-	fd1.FileName = "icon.png"
-	fd1.ContentType = "image/jpg"
-	files.Add(fd1)
-
 	SubmitJob.PostMultipart(SaeloZahra.JsonUrl&"account/create/", M1, files)
 	
 End Sub
@@ -209,4 +232,8 @@ Private Sub MailET_FocusChanged (HasFocus As Boolean)
 			SubmitBtn.Enabled=False
 		End If
 	End If
+End Sub
+
+Private Sub AvatarBtn_Click
+	cc.Show("image/*", "تصویر مورد نظر خود را انتخاب کنید")
 End Sub

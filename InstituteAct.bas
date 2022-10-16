@@ -205,6 +205,7 @@ Sub jobDone(J As HttpJob)
 				Dim SliderHTML As String = File.ReadString(File.DirAssets, "slider.html")
 				Dim contents As List = jRoot.Get("contents")
 				For Each colcontents As Map In contents
+					Log(colcontents)
 					Dim cover As String = colcontents.Get("cover")
 					Dim contents_id As String = ""'colcontents.Get("id")
 '					Dim createdAt As String = colcontents.Get("createdAt")

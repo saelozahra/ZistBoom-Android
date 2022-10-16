@@ -631,30 +631,30 @@ End Sub
 '	Return jo.RunMethod("setMapStyle", Array(Style)) 'returns True if successful
 'End Sub
 
-'Sub GetPathFromContentResult(UriString As String) As String
-'	If UriString.StartsWith("/") Then Return UriString 'If the user used a file manager to choose the image
-'	Dim Proj() As String
-'	Proj = Array As String("_data")
-'	Dim Cursor As Cursor
-'	Dim r As Reflector
-'	Dim Uri As Object
-'	Uri = r.RunStaticMethod("android.net.Uri", "parse", _
-'      Array As Object(UriString), _
-'      Array As String("java.lang.String"))
-'	r.Target = r.GetContext
-'	r.Target = r.RunMethod("getContentResolver")
-'	Cursor = r.RunMethod4("query", _
-'   Array As Object(Uri, Proj, Null, Null, Null), _
-'   Array As String("android.net.Uri", _
-'      "[Ljava.lang.String;", "java.lang.String", _
-'      "[Ljava.lang.String;", "java.lang.String"))
-' 
-'	Cursor.Position = 0
-'	Dim res As String
-'	res = Cursor.GetString("_data")
-'	Cursor.Close
-'	Return res
-'End Sub
+Sub GetPathFromContentResult(UriString As String) As String
+	If UriString.StartsWith("/") Then Return UriString 'If the user used a file manager to choose the image
+	Dim Proj() As String
+	Proj = Array As String("_data")
+	Dim Cursor As Cursor
+	Dim r As Reflector
+	Dim Uri As Object
+	Uri = r.RunStaticMethod("android.net.Uri", "parse", _
+      Array As Object(UriString), _
+      Array As String("java.lang.String"))
+	r.Target = r.GetContext
+	r.Target = r.RunMethod("getContentResolver")
+	Cursor = r.RunMethod4("query", _
+   Array As Object(Uri, Proj, Null, Null, Null), _
+   Array As String("android.net.Uri", _
+      "[Ljava.lang.String;", "java.lang.String", _
+      "[Ljava.lang.String;", "java.lang.String"))
+ 
+	Cursor.Position = 0
+	Dim res As String
+	res = Cursor.GetString("_data")
+	Cursor.Close
+	Return res
+End Sub
 
 'Sub SetColorStateList(Btn As Label,Pressed As Int,Enabled As Int)
 '	Dim States(2,1) As Int

@@ -74,6 +74,7 @@ C:\Android\tools\..\extras\b4a_local\unpacked-spacenavigation-63608606582033\dex
 C:\Android\tools\..\extras\b4a_local\unpacked-webviewextras2-63581186426000\dex_v1\webviewextras2.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xmllayoutbuilder-63535649474000\dex_v1\xmllayoutbuilder.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-xui-63792602270000\dex_v1\xui.zip
+C:\Android\tools\..\extras\b4a_local\unpacked-sql-63792602270000\dex_v1\sql.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-animation-63792602270000\dex_v1\animation.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-okhttp-63792602270000\dex_v1\okhttp.zip
 C:\Android\tools\..\extras\b4a_local\unpacked-stringutils-63792602270000\dex_v1\stringutils.zip

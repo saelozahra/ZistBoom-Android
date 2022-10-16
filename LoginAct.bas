@@ -10,18 +10,18 @@ Version=11.8
 #End Region
 
 Sub Process_Globals
-	'These global variables will be declared once when the application starts.
-	'These variables can be accessed from all modules.
 
 End Sub
 
 Sub Globals
+	Dim DTTC As DoubleTaptoClose
 	Dim ParallaxDesign As Hitex_ParallaxDesign
 	Dim LoginJob As HttpJob
 	Private UserNameFLET As DSFloatLabelEditText
 	Private PasswordFLET As DSFloatLabelEditText
 	Private RegBtn As Label
 	Private LoginBtn As ACButton
+	Private bg_wv As WebView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -33,9 +33,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	Activity.AddView(ParallaxDesign,0,-18dip,100%x,100%y+36dip)
 	ParallaxDesign.setMargins(88, 10)
 	ParallaxDesign.setMultipliers(1.5f, 1.5f)
-	ParallaxDesign.SetImageBitmap(LoadBitmap(File.DirAssets, "login.jpg"))
+	ParallaxDesign.SetImageBitmap(LoadBitmap(File.DirAssets, "login.png"))
 	ParallaxDesign.SendToBack
 	
+	bg_wv.LoadHtml(File.ReadString(File.DirAssets, "granim.html"))
+	bg_wv.SendToBack
+	bg_wv.Color=Colors.Transparent
 	
 	Dim Csl As CSBuilder
 	Csl.Initialize
@@ -51,6 +54,9 @@ Sub Activity_Create(FirstTime As Boolean)
 	End If
 '	Menu.Add2(3,1,"ورود",		X1.GetDrawable("round_login_white_24") 				).ShowAsAction = 2
 '	Menu.Add2(4, 4, "ثبت‌نام", X1.GetDrawable("twotone_app_registration_white_24") ).ShowAsAction = 2
+
+	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
+
 End Sub
 
 Sub Activity_Resume
@@ -187,5 +193,17 @@ Sub LoginKon
 	
 	
 End Sub
+
+
+
+Sub Activity_KeyPress (KeyCode As Int) As Boolean
+	If KeyCode = KeyCodes.KEYCODE_BACK Then
+		DTTC.TapToClose
+		Return True
+	Else
+		Return False
+	End If
+End Sub
+
 
 

@@ -74,6 +74,30 @@ Sub Actionbar_NavigationItemClick
 End Sub
 
 
+Sub Actionbar_MenuItemClick (Item As ACMenuItem)
+	Log(Item.Id)
+	Select Item.Id
+		Case 0
+		Case 1
+			File.Delete(SaeloZahra.Dir,"UPTemp")
+			Dim snake As DSSnackbar
+			snake.Initialize("snake", Activity,SaeloZahra.CSB("در حال خروج..."), snake.DURATION_LONG)
+			snake.SetAction("ورود مجدد")
+			snake.Show
+	End Select
+End Sub
+
+Sub snake_Click()
+	Activity.Finish
+	Activity.Finish
+	StartActivity(LoginAct)
+End Sub
+
+Sub snake_Dismissed(Event As Int)
+	Log(Event)
+	ExitApplication
+	
+End Sub
 
 Sub Activity_KeyPress (KeyCode As Int) As Boolean
 	If KeyCode==KeyCodes.KEYCODE_BACK Then

@@ -374,6 +374,8 @@ End Sub
  
  
 Sub RelatedWV_OverrideUrl (Url As String) As Boolean
+	Log(Url)
+	Log(AsaarID)
 	AsaarID = Url.Replace("http://rel/", "")
 	StartActivity(Me)
 	Return True
