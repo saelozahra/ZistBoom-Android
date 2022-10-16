@@ -113,6 +113,7 @@ Sub WebView1_PageFinished (URL As String)
 End Sub
 
 Sub WebView1_OverrideUrl (Url As String) As Boolean
+	
 	Log(Url)
 	
 	If SaeloZahra.WVRoles(Url) == Url Then
@@ -120,4 +121,5 @@ Sub WebView1_OverrideUrl (Url As String) As Boolean
 	End If
 	
 	Return True
+	
 End Sub

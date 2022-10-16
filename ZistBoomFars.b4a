@@ -191,7 +191,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	
 	If File.Exists(SaeloZahra.Dir,"UPTemp") Then
-		UNQuery = "?username="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"&password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")
+		UNQuery = "?username="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"&password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")&"&for_mobile=true"
 	End If
 	
 	

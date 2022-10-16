@@ -128,6 +128,10 @@ Sub WVRoles(URL As String) As String
 		WebViewACT.Link = URL&"?for_mobile=true"
 		WebViewACT.PageTitle = "پروفایل هنرمند"
 		StartActivity(WebViewACT)
+	else If URL.Contains(SiteUrl&"chat/") Then
+		WebViewACT.Link = URL&"?for_mobile=true"
+		WebViewACT.PageTitle = "گفتگو"
+		StartActivity(WebViewACT)
 	else If URL.Contains(SiteUrl&"news/") Then
 		NewsAct.NewsID=URL.Replace(SiteUrl&"news/","")
 		StartActivity(NewsAct)

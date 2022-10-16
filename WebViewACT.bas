@@ -93,7 +93,12 @@ End Sub
 Sub WebView1_OverrideUrl (Url As String) As Boolean
 	Log(Url)
 	
-	If SaeloZahra.WVRoles(Url) == Url Then
+	If Url.Contains(SaeloZahra.SiteUrl&"chat/") Then
+		Link = Url&Main.UNQuery
+		PageTitle = "گفتگو"
+		Activity.Finish
+		StartActivity(Me)
+	Else If SaeloZahra.WVRoles(Url) == Url Then
 		customBrowser.CreateNewTab(Url)
 	End If
 	
