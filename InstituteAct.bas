@@ -355,13 +355,9 @@ Sub ToolBar_MenuItemClick (Item As Hi_MenuItem)
 	Log(Item.ItemId)
 	Select Item.ItemId
 		Case 0
-			If Main.YourID>0 Then
-				WebViewACT.PageTitle = "مکالمه با مدیر "&institute_name
-				WebViewACT.Link = SaeloZahra.SiteUrl&"chat/pm/"&username&"?hidetitle=true&username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password")
-				StartActivity(WVAct)
-			Else
-				CallSubDelayed(MainAct,"LoginKon")
-			End If
+			WebViewACT.PageTitle = "مکالمه با مدیر "&institute_name
+			WebViewACT.Link = SaeloZahra.SiteUrl&"chat/"&File.ReadMap(SaeloZahra.Dir,"UPTemp").Get("username")&"/"&username
+			StartActivity(WebViewACT)
 		Case 1
 			ToastMessageShow(username&" "&phone_number,True)
 '			ProductsListAct.UserID = seller_id
