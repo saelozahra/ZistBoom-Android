@@ -37,6 +37,6 @@ ModuleClosedNodes6=
 ModuleClosedNodes7=
 ModuleClosedNodes8=
 ModuleClosedNodes9=
-NavigationStack=ProfileAct,Actionbar_MenuItemClick,75,6,LoginAct,JobDone,139,0,Main,Activity_Create,93,0,LoginAct,Activity_Create,52,6,LoginAct,Globals,12,0,Main,Globals,37,0,Main,Activity_Pause,147,0,LoginAct,Process_Globals,6,0,LoginAct,Activity_KeyPress,203,0,InstituteAct,RelatedWV_OverrideUrl,384,0,InstituteAct,jobDone,201,1
+NavigationStack=LoginAct,Globals,12,0,Main,Globals,37,0,Main,Activity_Pause,147,0,LoginAct,Process_Globals,6,0,LoginAct,Activity_KeyPress,203,0,InstituteAct,RelatedWV_OverrideUrl,384,0,HomeAct,Actionbar_MenuItemClick,435,0,InstituteAct,Activity_KeyPress,331,0,InstituteAct,jobDone,275,1,InstituteAct,ToolBar_MenuItemClick,353,6
 SelectedBuild=0
 VisibleModules=4,2,9,6,10,7,3

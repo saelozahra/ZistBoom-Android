@@ -207,7 +207,7 @@ Sub jobDone(J As HttpJob)
 				For Each colcontents As Map In contents
 					Log(colcontents)
 					Dim cover As String = colcontents.Get("cover")
-					Dim contents_id As String = ""'colcontents.Get("id")
+					Dim contents_id As String = colcontents.Get("id")
 '					Dim createdAt As String = colcontents.Get("createdAt")
 '					Dim like_count As Int = colcontents.Get("like_count")
 '					Dim tag As String = colcontents.Get("tag")
@@ -278,6 +278,7 @@ Sub jobDone(J As HttpJob)
 				ImageJob.Download(logo)
 				
 				CF.Title = SaeloZahra.CSBTitle("   "&institute_name)
+				Activity.Title = institute_name
 				
 				RelatedWV.LoadHtml(SliderHTML&"    </div> </body> </html>")
 					
@@ -353,15 +354,15 @@ End Sub
 Sub ToolBar_MenuItemClick (Item As Hi_MenuItem)
 	Log(Item.ItemId)
 	Select Item.ItemId
-'		Case 1
-'			If LoginAct.YourID<>"" Then
-'				WVAct.WVTitle 	= "مکالمه با "&seller_name
-'				WVAct.WVURL 	= SaeloZahra.SiteUrl&"chat/pm/"&seller_id&"?hidetitle=true&username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password")
-'				StartActivity(WVAct)
-'			Else
-'				CallSubDelayed(MainAct,"LoginKon")
-'			End If
-		Case 3
+		Case 0
+			If Main.YourID>0 Then
+				WebViewACT.PageTitle = "مکالمه با مدیر "&institute_name
+				WebViewACT.Link = SaeloZahra.SiteUrl&"chat/pm/"&username&"?hidetitle=true&username="&File.ReadString(SaeloZahra.Dir, "username")&"&password="&File.ReadString(SaeloZahra.Dir, "password")
+				StartActivity(WVAct)
+			Else
+				CallSubDelayed(MainAct,"LoginKon")
+			End If
+		Case 1
 			ToastMessageShow(username&" "&phone_number,True)
 '			ProductsListAct.UserID = seller_id
 '			StartActivity(ProductsListAct)
