@@ -355,13 +355,13 @@ Sub ToolBar_MenuItemClick (Item As Hi_MenuItem)
 	Log(Item.ItemId)
 	Select Item.ItemId
 		Case 0
-			WebViewACT.PageTitle = "مکالمه با مدیر "&institute_name
-			WebViewACT.Link = SaeloZahra.SiteUrl&"chat/"&File.ReadMap(SaeloZahra.Dir,"UPTemp").Get("username")&"/"&username
-			StartActivity(WebViewACT)
-		Case 1
 			ToastMessageShow(username&" "&phone_number,True)
 '			ProductsListAct.UserID = seller_id
 '			StartActivity(ProductsListAct)
+		Case 1
+			WebViewACT.PageTitle = "مکالمه با مدیر "&institute_name
+			WebViewACT.Link = SaeloZahra.SiteUrl&"chat/"&File.ReadMap(SaeloZahra.Dir,"UPTemp").Get("username")&"/"&username
+			StartActivity(WebViewACT)
 	End Select
 End Sub
 

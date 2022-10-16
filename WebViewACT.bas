@@ -45,7 +45,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	customBrowser.Build
 	
 	
-	
+	Log(Link)
 	WebView1.LoadUrl(Link)
 	
 	
