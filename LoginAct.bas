@@ -137,11 +137,9 @@ Sub JobDone(job As HttpJob)
 		If job.ErrorMessage == "{""status"":""username is incorrect""}" Then
 			ToastMessageShow(SaeloZahra.CSB(" نام کاربری غلطه"), True)
 			File.Delete(SaeloZahra.Dir,"UPTemp")
-			LoginKon
 		else If job.ErrorMessage == "{""status"":""password is incorrect""}" Then
 			ToastMessageShow(SaeloZahra.CSB(" کلمه‌عبور غلطه"), True)
 			File.Delete(SaeloZahra.Dir,"UPTemp")
-			LoginKon
 		Else if job.ErrorMessage.Contains(" GET مجاز نیست.") Then
 			ToastMessageShow(SaeloZahra.CSB(" متد GET مجاز نیست"), True)
 
