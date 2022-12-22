@@ -537,4 +537,5 @@ D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\i
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_singleasaarlayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_singlenewslayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_singleproductpanellayout.dex
+D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_svlayout.dex
 D:\Project\FullStack Projects\ZistBoomFars\android zistboom fars\Objects\dexed\ir\saelozahra\zistboom\fars\designerscripts\LS_wvlayout.dex

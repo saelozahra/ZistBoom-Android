@@ -37,6 +37,6 @@ ModuleClosedNodes6=
 ModuleClosedNodes7=
 ModuleClosedNodes8=
 ModuleClosedNodes9=
-NavigationStack=HomeAct,InstallHome,247,6,HomeAct,Activity_CreateMenu,415,5,HomeAct,Actionbar_MenuItemClick,472,1,HomeAct,SpaceNavigationView1_onCentreButtonClick,313,0,HomeAct,Activity_Create,54,3,HomeAct,Activity_Pause,85,0,HomeAct,wvc_ReceivedError,116,0,HomeAct,InstallBottomMenu,145,0,HomeAct,InstallActivity,171,6,HomeAct,HomeWV_PageFinished,278,1
+NavigationStack=HomeAct,Activity_Pause,85,0,HomeAct,wvc_ReceivedError,116,0,HomeAct,InstallBottomMenu,145,0,HomeAct,InstallActivity,171,6,HomeAct,HomeWV_PageFinished,278,1,RegisterAct,Process_Globals,7,0,Visual Designer,SVLayout.bal,-100,3,Visual Designer,RegisterLayout.bal,-100,6,RegisterAct,Globals,34,0,RegisterAct,Activity_Create,40,6
 SelectedBuild=0
 VisibleModules=4,2,9,10,7,3,12,8

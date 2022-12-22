@@ -36,12 +36,16 @@ Sub Globals
 	Dim CityJob, SubmitJob As HttpJob
 	
 	Private AvatarIV As ImageView
+	Private ResumeET As DSFloatLabelEditText
+	Private ScrollView1 As ScrollView
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	
-	Activity.LoadLayout("RegisterLayout")
-
+	Activity.LoadLayout("SVLayout")
+	ScrollView1.Panel.LoadLayout("RegisterLayout")
+	ScrollView1.Panel.Height = SubmitBtn.Top+202dip
+	
 	ActionBar.Title=SaeloZahra.CSBTitle("ثبت نام")
 	ActionBar.Color=SaeloZahra.Color
 	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_white_24")
