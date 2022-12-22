@@ -54,9 +54,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	
 	InstallBottomMenu
+	If File.Exists(SaeloZahra.Dir, "UPTemp") Then
+		InstallActivity
+	Else
+		InstallHome
+	End If
 	
-	
-	InstallActivity
 	
 	Sleep(0)
 	
@@ -156,8 +159,8 @@ Sub InstallBottomMenu
 End Sub
 
 Sub InstallActivity
-	
-	Dim ProfileURL As String = SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")
+	Dim ProfileURL As String = ""
+	ProfileURL = SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")
 	ProfileAct.ProfileURL = ProfileURL
 	ProfileWV.Initialize("ProfileWV")
 	ProfileWV.LoadUrl(ProfileURL)
@@ -165,7 +168,7 @@ Sub InstallActivity
 '	ProfileWV.Color=Colors.Transparent
 	StrProfile.Initialize("StrProfile")
 	StrProfile.SetColorScheme2(Array As Int(SaeloZahra.ColorDark, SaeloZahra.ColorAccent, SaeloZahra.ColorLightTransparent))
-	StrProfile.Tag=SaeloZahra.SiteUrl&"profile/"&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"?password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")
+	StrProfile.Tag=ProfileURL
 	LogColor(StrProfile.Tag, Colors.Yellow)
 	StrProfile.AddView(ProfileWV)
 	
@@ -230,6 +233,33 @@ Sub InstallActivity
 	
 End Sub
 
+
+Sub InstallHome
+	
+	LogColor("loading HomeWV: "&SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery,Colors.Magenta)
+	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery)
+	HomeWV.ZoomEnabled=False
+	
+	Dim wcc As DefaultWebChromeClient
+	wcc.Initialize("wcc")
+	
+	WebViewExtras1.Initialize(HomeWV)
+	WebViewExtras1.SetWebChromeClient(wcc)
+	
+
+	wvc.Initialize("wvc")
+	
+	
+	
+	Panel.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,100%y-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	HomeWV.SetLayout(0, 0, 100%x, -2)
+	VP.Visible=False
+	LoadingWV.SetLayout(0, 0, 100%x, 100%y)
+	SpaceNavigationView1.Visible=False
+	SpaceNavigationView1.SendToBack
+	
+End Sub
+
 Sub StrChat_Refresh
 	ChatWV.LoadUrl(StrChat.Tag)
 	LogColor("Refreshing Chat",Colors.DarkGray)
@@ -252,7 +282,9 @@ Sub HomeWV_PageFinished (Url As String)
 	Sleep(1313)
 	LoadingWV.SendToBack
 	Sleep(313)
-	If SpaceNavigationView1.IsInitialized Then CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
+	If SpaceNavigationView1.IsInitialized And File.Exists(SaeloZahra.Dir, "UPTemp") Then
+		CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
+	End If
 End Sub
 
 Sub HomeWV_OverrideUrl (Url As String) As Boolean
@@ -388,10 +420,10 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 		LblYourName.Text=SaeloZahra.CSB(ProfileAct.YourName)
 		LblYourName.Gravity=Bit.Or(Gravity.CENTER_HORIZONTAL,Gravity.CENTER_VERTICAL)
 		ActionBar.AddView(LblYourName,-2,SaeloZahra.MaterialActionBarHeight,Gravity.CENTER)
-		
+	Else
+		Menu.Add2(2,2,"ورود به حساب کاربری",X1.GetDrawable("round_login_white_24") ).ShowAsAction = 2
 	End If
 	
-'	If UserInfo.IsInitialized Then Menu.Add2(2,2,"موارد ذخیره شده",X1.GetDrawable("twotone_bookmarks_white_24") ).ShowAsAction = 2
 	
 '	Menu.Add2(5,5,"شاخه ها", 	X1.GetDrawable("ic_playlist_play_white_24dp") ).ShowAsAction = 2
 	
@@ -435,6 +467,9 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 		Case 0
 		Case 1
 		Case 2
+			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+			Show.convertActivityFromTranslucent
+			StartActivity(LoginAct)
 		Case 3
 			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
 			Show.convertActivityFromTranslucent
@@ -444,7 +479,6 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
 			Show.convertActivityFromTranslucent
 			StartActivity(RegisterAct)
-			
 	End Select
 End Sub
 

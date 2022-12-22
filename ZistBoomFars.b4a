@@ -190,12 +190,6 @@ Sub Activity_Create(FirstTime As Boolean)
 	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
 	
 	
-	If File.Exists(SaeloZahra.Dir,"UPTemp") Then
-		UNQuery = "?username="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"&password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")&"&for_mobile=true"
-	End If
-	
-	
-	
 	
 	Ime1.Initialize("ime1")
 	Ime1.AddHeightChangedEvent
@@ -207,9 +201,16 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	Sleep(3313)
 	
-	Activity.Finish
 	
-	StartActivity(LoginAct)
+	
+	If File.Exists(SaeloZahra.Dir,"UPTemp") Then
+		UNQuery = "?username="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("username")&"&password="&File.ReadMap(SaeloZahra.Dir, "UPTemp").Get("password")&"&for_mobile=true"
+		CallSubDelayed(LoginAct, "LoginBtn_Click")
+	Else
+		Activity.Finish
+		StartActivity(HomeAct)
+	End If
+	
 	
 End Sub
 

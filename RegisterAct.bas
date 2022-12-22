@@ -28,7 +28,6 @@ Sub Globals
 	Private FamilyET As DSFloatLabelEditText
 	Private UserNameET As DSFloatLabelEditText
 	Private MailET As DSFloatLabelEditText
-	Private TelET As DSFloatLabelEditText
 	Private PassET1 As DSFloatLabelEditText
 	Private PassET2 As DSFloatLabelEditText
 	Private CitySpinner As ACSpinner
@@ -50,12 +49,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	NameET.Typeface = SaeloZahra.Font
 	FamilyET.Typeface = SaeloZahra.Font
 	UserNameET.Typeface = SaeloZahra.Font
+	UserNameET.InputType = UserNameET.INPUT_TYPE_PHONE
 	MailET.Typeface = SaeloZahra.Font
-	TelET.Typeface = SaeloZahra.Font
 	PassET1.Typeface = SaeloZahra.Font
 	PassET2.Typeface = SaeloZahra.Font
 	SubmitBtn.Typeface = SaeloZahra.Font
-	TelET.InputType = TelET.INPUT_TYPE_PHONE
 	SubmitBtn.SetButtonColors(SaeloZahra.ColorDark, SaeloZahra.Color,Colors.LightGray)
 	
 	CityMap.Initialize
@@ -209,7 +207,6 @@ Private Sub SubmitBtn_Click
 	M1.Put("lastname", FamilyET.Text)
 	M1.Put("username", UserNameET.Text)
 	M1.Put("email", MailET.Text)
-	M1.Put("number", TelET.Text)
 	M1.Put("city", CitySlug)
 	M1.Put("password", PassET1.Text)
 	
