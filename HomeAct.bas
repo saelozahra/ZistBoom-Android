@@ -297,6 +297,16 @@ Sub HomeWV_OverrideUrl (Url As String) As Boolean
 	Return True
 End Sub
 
+Sub ProfileWV_OverrideUrl (Url As String) As Boolean
+	Log(Url)
+	
+	If SaeloZahra.WVRoles(Url) == Url Then
+		customBrowser.CreateNewTab(Url)
+	End If
+	
+	Return True
+End Sub
+
 'Sub ChatWV_OverrideUrl (Url As String) As Boolean
 '	customBrowser.CreateNewTab(Url)
 '	Log(Url)
