@@ -432,12 +432,14 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 		LblYourName.Text=SaeloZahra.CSB(ProfileAct.YourName)
 		LblYourName.Gravity=Bit.Or(Gravity.CENTER_HORIZONTAL,Gravity.CENTER_VERTICAL)
 		ActionBar.AddView(LblYourName,-2,SaeloZahra.MaterialActionBarHeight,Gravity.CENTER)
+		
+		Menu.Add2(5,5,"افزودن اثر هنری", 	X1.GetDrawable("baseline_control_point_duplicate_white_24") ).ShowAsAction = 2
+		
 	Else
 		Menu.Add2(2,2,"ورود به حساب کاربری",X1.GetDrawable("round_login_white_24") ).ShowAsAction = 2
 	End If
 	
 	
-'	Menu.Add2(5,5,"شاخه ها", 	X1.GetDrawable("ic_playlist_play_white_24dp") ).ShowAsAction = 2
 	
 	
 End Sub
@@ -491,6 +493,10 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
 			Show.convertActivityFromTranslucent
 			StartActivity(RegisterAct)
+		Case 5
+			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+			Show.convertActivityFromTranslucent
+			StartActivity(SubmitEffectAct)
 	End Select
 End Sub
 
