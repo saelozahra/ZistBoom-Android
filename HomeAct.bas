@@ -400,11 +400,13 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 	If ProfileAct.UserInfo.IsInitialized Then
 		If File.Exists(SaeloZahra.Dir, "avatar.jpg") Then
 			Dim Avatar As Bitmap
-			Avatar = LoadBitmapResize(SaeloZahra.Dir, "avatar.jpg" ,SaeloZahra.MaterialActionBarHeight,SaeloZahra.MaterialActionBarHeight ,True)
+			Avatar.Initialize(File.DirAssets, "avatar.png")
 			Try
+				Avatar = LoadBitmapResize(SaeloZahra.Dir, "avatar.jpg" ,SaeloZahra.MaterialActionBarHeight,SaeloZahra.MaterialActionBarHeight ,True)
 '				Avatar = SaeloZahra.JO.RunMethod("getRoundBitmap",Array(Avatar,SaeloZahra.ColorLight, 20))
 				Avatar = SaeloZahra.CreateRoundBitmap(Avatar, SaeloZahra.MaterialActionBarHeight)
 			Catch
+				File.Delete(SaeloZahra.Dir, "avatar.jpg")
 				Log(LastException)
 			End Try
 			Menu.Add(3,1,"حساب کاربری",	Avatar).ShowAsAction = 2

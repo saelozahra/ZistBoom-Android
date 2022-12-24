@@ -12,6 +12,7 @@ Version=11.8
 Sub Process_Globals
 	Dim cc As ContentChooser
 	Dim files As List
+	Dim RegOperation As Boolean = True
 End Sub
 
 Sub Globals
@@ -20,8 +21,8 @@ Sub Globals
 	Dim Show 	As Amir_SliderShow
 	
 	Dim snake As DSSnackbar
-	
-	Dim CityMap As Map
+	Dim Ime1 As IME
+	Dim CityMap, ReshteMap As Map
 	
 	Private ActionBar As ACToolBarDark
 	Private NameET As DSFloatLabelEditText
@@ -30,10 +31,11 @@ Sub Globals
 	Private MailET As DSFloatLabelEditText
 	Private PassET1 As DSFloatLabelEditText
 	Private PassET2 As DSFloatLabelEditText
-	Private CitySpinner As ACSpinner
+	Private CitySpinner, ReshteSpinner As ACSpinner
+	Private ReshteLbl, CityLbl As Label
 	Private SubmitBtn As ACButton
 	
-	Dim CityJob, SubmitJob As HttpJob
+	Dim CityJob, SubmitJob, ReshteJob As HttpJob
 	
 	Private AvatarIV As ImageView
 	Private ResumeET As DSFloatLabelEditText
@@ -44,9 +46,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	
 	Activity.LoadLayout("SVLayout")
 	ScrollView1.Panel.LoadLayout("RegisterLayout")
-	ScrollView1.Panel.Height = SubmitBtn.Top+202dip
+	ScrollView1.Panel.Height = SubmitBtn.Top+133dip
 	
-	ActionBar.Title=SaeloZahra.CSBTitle("ثبت نام")
+	Ime1.Initialize("ime1")
+	Ime1.AddHeightChangedEvent
+	
+	ActionBar.Title=SaeloZahra.CSBTitle("ثبت‌نام")
 	ActionBar.Color=SaeloZahra.Color
 	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_white_24")
 	
@@ -57,10 +62,16 @@ Sub Activity_Create(FirstTime As Boolean)
 	MailET.Typeface = SaeloZahra.Font
 	PassET1.Typeface = SaeloZahra.Font
 	PassET2.Typeface = SaeloZahra.Font
+	ReshteLbl.Typeface = SaeloZahra.Font
+	CityLbl.Typeface = SaeloZahra.Font
 	SubmitBtn.Typeface = SaeloZahra.Font
 	SubmitBtn.SetButtonColors(SaeloZahra.ColorDark, SaeloZahra.Color,Colors.LightGray)
 	
 	CityMap.Initialize
+	ReshteMap.Initialize
+	
+	ReshteJob.Initialize("ReshteJob", Me)
+	ReshteJob.Download(SaeloZahra.JsonUrl&"reshte")
 	
 	CityJob.Initialize("CityJob", Me)
 	CityJob.Download(SaeloZahra.JsonUrl&"city")
@@ -82,6 +93,20 @@ Sub Activity_Create(FirstTime As Boolean)
 '	customBrowser.CreateNewTab(SaeloZahra.SiteUrl&"signup")
 
 	cc.Initialize("cc")
+	
+	If Not(RegOperation) Then
+		NameET.Text = Main.UserInfo.Get("first_name")
+		FamilyET.Text = Main.UserInfo.Get("last_name")
+		UserNameET.Text = Main.UserInfo.Get("username")
+		UserNameET.Enabled=False
+		MailET.Text = Main.UserInfo.Get("email")
+		ResumeET.Text = Main.UserInfo.Get("bio") 'todo resume
+		CitySpinner.SelectedIndex = CitySpinner.IndexOf(Main.UserInfo.Get("city_name"))
+		
+		ActionBar.Title= SaeloZahra.CSBTitle("‌ویرایش حساب کاربری")
+		SubmitBtn.Text = SaeloZahra.CSBTitle("‌ذخیره اطلاعات")
+		'todo avatar
+	End If
 	
 End Sub
 
@@ -150,13 +175,26 @@ Sub JobDone(j As HttpJob)
 				parser.Initialize(j.GetString)
 				Dim jRoot As List = parser.NextArray
 				For Each coljRoot As Map In jRoot
-		'			Dim province_id As Int = coljRoot.Get("province_id")
+					'			Dim province_id As Int = coljRoot.Get("province_id")
 					Dim name As String = coljRoot.Get("name")
-		'			Dim description As String = coljRoot.Get("description")
-		'			Dim id As Int = coljRoot.Get("id")
+					'			Dim description As String = coljRoot.Get("description")
+					'			Dim id As Int = coljRoot.Get("id")
 					Dim slug As String = coljRoot.Get("slug")
 					CitySpinner.Add(name)
 					CityMap.Put(name, slug)
+				Next
+			Case "ReshteJob"
+				Dim parser As JSONParser
+				parser.Initialize(j.GetString)
+				Dim jRoot As List = parser.NextArray
+				For Each coljRoot As Map In jRoot
+					'			Dim province_id As Int = coljRoot.Get("province_id")
+					Dim title As String = coljRoot.Get("title")
+					'			Dim description As String = coljRoot.Get("description")
+					'			Dim id As Int = coljRoot.Get("id")
+					Dim slug As String = coljRoot.Get("slug")
+					ReshteSpinner.Add(title)
+					ReshteMap.Put(title, slug)
 				Next
 			Case "SubmitJob"
 				
@@ -193,6 +231,25 @@ Sub JobDone(j As HttpJob)
 				
 		End Select
 	Else
+		Select j.JobName
+			Case "SubmitJob"
+				If j.ErrorMessage == "{""status"":""email exist""}" Then
+					
+					snake.Initialize("snake", Activity,SaeloZahra.CSB("ایمیل تکراریست..."), snake.DURATION_LONG)
+					snake.Show
+					
+					MailET.RequestFocus
+					
+				else If j.ErrorMessage == "{""status"":""username exist""}" Then
+					
+					snake.Initialize("snake", Activity,SaeloZahra.CSB("نام‌کاربری تکراریست..."), snake.DURATION_LONG)
+					snake.Show
+					
+					UserNameET.RequestFocus
+					
+				End If
+				
+		End Select
 		Log(j.ErrorMessage)
 		ToastMessageShow(j.ErrorMessage, True)
 	End If
@@ -204,14 +261,18 @@ End Sub
 Private Sub SubmitBtn_Click
 	
 	Dim CitySlug As String = CityMap.Get(CitySpinner.SelectedItem)
+	Dim ReshteSlug As String = ReshteMap.Get(ReshteSpinner.SelectedItem)
 	
 	Dim M1 As Map
 	M1.Initialize
 	M1.Put("firstname", NameET.Text)
 	M1.Put("lastname", FamilyET.Text)
 	M1.Put("username", UserNameET.Text)
+	M1.Put("number", UserNameET.Text)
 	M1.Put("email", MailET.Text)
 	M1.Put("city", CitySlug)
+	M1.Put("resume", ResumeET.Text)
+	M1.Put("reshte", ReshteSlug)
 	M1.Put("password", PassET1.Text)
 	
 	File.Copy(File.DirAssets, "icon.png", File.DirInternal, "icon.png")
@@ -237,4 +298,11 @@ End Sub
 
 Private Sub AvatarBtn_Click
 	cc.Show("image/*", "تصویر مورد نظر خود را انتخاب کنید")
+End Sub
+
+
+Sub ime1_HeightChanged (NewHeight As Int, OldHeight As Int)
+		
+	ScrollView1.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	
 End Sub

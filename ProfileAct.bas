@@ -34,6 +34,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	ActionBar.NavigationIconDrawable = X1.GetDrawable("round_arrow_back_white_24")
 	ActionBar.SetLayout(0,0,100%x,SaeloZahra.MaterialActionBarHeight)
 	
+	ActionBar.Menu.Add2(0,0 ,SaeloZahra.CSB("ویرایش اطلاعات"), X1.GetDrawable("twotone_edit_white_24"))
 	ActionBar.Menu.Add2(1 ,1 ,SaeloZahra.CSB("خروج از حساب کاربری"), X1.GetDrawable("baseline_logout_white_24"))
 	
 	customBrowser.Initialize
@@ -78,6 +79,10 @@ Sub Actionbar_MenuItemClick (Item As ACMenuItem)
 	Log(Item.Id)
 	Select Item.Id
 		Case 0
+			RegisterAct.RegOperation=False
+			SaeloZahra.SetAnimation("zoom_exit","zoom_enter")
+			Show.convertActivityFromTranslucent
+			StartActivity(RegisterAct)
 		Case 1
 			File.Delete(SaeloZahra.Dir,"UPTemp")
 			Dim snake As DSSnackbar

@@ -70,7 +70,7 @@
 			android:theme="@style/AppTheme.SimpleCoordinatorTheme">
 		</activity>
 		<activity
-			android:windowSoftInputMode="stateHidden"
+			android:windowSoftInputMode="adjustResize|stateHidden"
 			android:launchMode="singleTop"
 			android:name=".registeract"
 			android:label="زیست بوم فرهنگ و ارشاد فارس"

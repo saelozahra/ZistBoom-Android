@@ -14,7 +14,7 @@ Sub Process_Globals
 End Sub
 
 Sub Globals
-	Dim DTTC As DoubleTaptoClose
+'	Dim DTTC As DoubleTaptoClose
 	Dim ParallaxDesign As Hitex_ParallaxDesign
 	Dim LoginJob As HttpJob
 	Private UserNameFLET As DSFloatLabelEditText
@@ -55,7 +55,7 @@ Sub Activity_Create(FirstTime As Boolean)
 '	Menu.Add2(3,1,"ورود",		X1.GetDrawable("round_login_white_24") 				).ShowAsAction = 2
 '	Menu.Add2(4, 4, "ثبت‌نام", X1.GetDrawable("twotone_app_registration_white_24") ).ShowAsAction = 2
 
-	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
+'	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
 
 End Sub
 
@@ -194,14 +194,14 @@ End Sub
 
 
 
-Sub Activity_KeyPress (KeyCode As Int) As Boolean
-	If KeyCode = KeyCodes.KEYCODE_BACK Then
-		DTTC.TapToClose
-		Return True
-	Else
-		Return False
-	End If
-End Sub
+'Sub Activity_KeyPress (KeyCode As Int) As Boolean
+'	If KeyCode = KeyCodes.KEYCODE_BACK Then
+'		DTTC.TapToClose
+'		Return True
+'	Else
+'		Return False
+'	End If
+'End Sub
 
 
 
