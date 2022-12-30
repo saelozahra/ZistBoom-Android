@@ -40,6 +40,6 @@ ModuleClosedNodes6=
 ModuleClosedNodes7=
 ModuleClosedNodes8=
 ModuleClosedNodes9=
-NavigationStack=HomeAct,Activity_CreateMenu,430,0,SubmitEffectAct,SubmitBtn_Click,206,6,SubmitEffectAct,Process_Globals,7,0,LoginAct,Globals,13,0,SubmitEffectAct,Globals,30,0,SaeloZahra,tarikheKhafan,182,0,SubmitEffectAct,DateFab_Click,232,6,Visual Designer,ArtistEffectLayout.bal,-100,6,SubmitEffectAct,pdpd_DateSelected,233,6,SubmitEffectAct,Activity_Create,56,6,SubmitEffectAct,JobDone,188,6
+NavigationStack=HomeAct,InstallBottomMenu,201,0,HomeAct,InstallActivity,279,2,HomeAct,SpaceNavigationView1_onItemReselected,440,2,HomeAct,SpaceNavigationView1_onCentreButtonClick,425,4,SubmitEffectAct,JobDone,163,0,SubmitEffectAct,SubmitBtn_Click,216,1,SubmitEffectAct,TitleET_TextChanged,271,0,SubmitEffectAct,TarikhET_TextChanged,257,0,SubmitEffectAct,Activity_Create,48,0,SubmitEffectAct,ValidateForm,288,6
 SelectedBuild=0
 VisibleModules=4,2,9,10,3,13,6,12

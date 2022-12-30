@@ -168,15 +168,15 @@ Sub JobDone(j As HttpJob)
 				For Each coljRoot As Map In jRoot
 					'			Dim province_id As Int = coljRoot.Get("province_id")
 					Dim title As String = coljRoot.Get("title")
-					'			Dim description As String = coljRoot.Get("description")
-					'			Dim id As Int = coljRoot.Get("id")
-					Dim slug As String = coljRoot.Get("slug")
+'					Dim description As String = coljRoot.Get("description")
+					Dim id As Int = coljRoot.Get("id")
+'					Dim slug As String = coljRoot.Get("slug")
 					ReshteSpinner.Add(title)
-					ReshteMap.Put(title, slug)
+					ReshteMap.Put(title, id)
 				Next
 			Case "SubmitJob"
 				
-				If j.GetString == "{""status"":""اثر حدید با موفقیت ساخته شد""}" Then
+				If j.GetString == "{""status"":""اثر جدید با موفقیت ساخته شد""}" Then
 					
 					snake.Initialize("snake", Activity,SaeloZahra.CSB("اثر شما با موفقیت ثبت شد..."), snake.DURATION_LONG)
 					snake.Show
@@ -218,12 +218,15 @@ Private Sub SubmitBtn_Click
 	M1.Put("description", DescET.Text)
 	M1.Put("dateCreated", TarikhET.Text)
 	M1.Put("productionTeam", TeamET.Text)
+	Log(M1)
 	
 	SubmitJob.PostMultipart(SaeloZahra.JsonUrl&"effect/Submit/", M1, files)
 	
 End Sub
 
 Private Sub PicBtn_Click
+	SaeloZahra.P.HideKeyboard(Activity)
+	Sleep(0)
 	cc.Show("image/*", "تصویر مورد نظر خود را انتخاب کنید")
 End Sub
 
@@ -237,10 +240,86 @@ End Sub
 
 Private Sub DateFab_Click
 	Dim pdpd As ParsDatePickerDialog
-	pdpd.Initialize("pdpd", 1401, 1300, SaeloZahra.Font, SaeloZahra.ColorDark, "ثبت", "لغو", "امروز")
+	pdpd.Initialize("pdpd", 1402, 1400, SaeloZahra.Font, SaeloZahra.ColorDark, "ثبت", "لغو", "امروز")
 	pdpd.show
 End Sub
 
 Sub pdpd_DateSelected(PersianYear As Int,PersianMonth As Int,PersianDay As Int)
-	TarikhET.Text = PersianYear&"/"&PersianMonth&"/"&PersianDay
+	Dim SPD As String
+	If PersianDay<10 Then
+		SPD = "0"&PersianDay
+	Else
+		SPD = PersianDay
+	End If
+	Dim SPM As String
+	If PersianMonth<10 Then
+		SPM = "0"&PersianMonth
+	Else
+		SPM = PersianMonth
+	End If
+	TarikhET.Text = PersianYear&"-"&SPM&"-"&SPD
+End Sub
+
+
+Private Sub TarikhET_TextChanged (Old As String, New As String)
+	If Regex.IsMatch("14\d\d-\d\d-\d\d", New) Then
+		TarikhET.ErrorText=SaeloZahra.CSB("")
+		SubmitBtn.Enabled=True
+	Else
+		TarikhET.ErrorText=SaeloZahra.CSB("قالب تاریخ «**-**-**14» صحیح نیست")
+		SubmitBtn.Enabled=False
+	End If
+End Sub
+
+Private Sub TitleET_TextChanged (Old As String, New As String)
+	ValidateForm
+End Sub
+
+
+Private Sub ValidateForm As Boolean
+	
+	SubmitBtn.Enabled=False
+	
+	If TitleET.Text.Length==0 Then
+		TitleET.ErrorText="عنوان را وارد کنید"
+		TitleET.RequestFocus
+		SubmitBtn.Enabled=False
+		Return False
+	Else
+		TitleET.ErrorText=""
+		SubmitBtn.Enabled=True
+	End If
+	
+	
+	If DescET.Text.Length==0 Then
+		DescET.ErrorText="توضیحات را وارد کنید"
+		DescET.RequestFocus
+		SubmitBtn.Enabled=False
+		Return False
+	Else
+		DescET.ErrorText=""
+		SubmitBtn.Enabled=True
+	End If
+	
+	
+	
+	If TarikhET.Text.Length==0 Then
+		TarikhET.ErrorText="تاریخ را وارد کنید"
+		TarikhET.RequestFocus
+		SubmitBtn.Enabled=False
+		Return False
+	Else
+		TarikhET.ErrorText=""
+		SubmitBtn.Enabled=True
+	End If
+	
+	
+	
+	If files.Size==0 Then
+		ToastMessageShow(SaeloZahra.CSB("لطفا تصویر را وارد کنید"), False)
+		Return False
+	End If
+	
+	Return True
+	
 End Sub

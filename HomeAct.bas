@@ -36,6 +36,9 @@ Sub Globals
 	
 	Dim Ime1 As IME
 	
+	Dim HomeHasError As Boolean
+	Dim JobLoadHome As HttpJob
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
@@ -47,13 +50,51 @@ Sub Activity_Create(FirstTime As Boolean)
 	ActionBar.LogoBitmap=LoadBitmapResize(File.DirAssets,"icon.png",SaeloZahra.MaterialActionBarHeight*1.5,SaeloZahra.MaterialActionBarHeight-14,True)
 	
 	LoadingWV.SetLayout(0, 0, 100%x, 100%y)
-	LoadingWV.LoadHtml("<html><body style='margin:Auto;'><img src='file:///android_asset/loading_app.gif' style='width:100%;height:100%;' /></body></html>")
 	LoadingWV.BringToFront
 	
-	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
-	
-	
 	InstallBottomMenu
+	
+	
+	If File.Exists(SaeloZahra.Dir, "home.html") Then
+		Log("loading default site")
+		LoadingWV.LoadHtml(File.ReadString(SaeloZahra.Dir, "home.html"))
+	Else
+		LoadingWV.LoadHtml("<html><body style='margin:Auto;'><img src='file:///android_asset/loading_app.gif' style='width:100%;height:100%;' /></body></html>")
+	End If
+	
+	
+	JobLoadHome.Initialize("JobLoadHome", Me)
+	JobLoadHome.Tag = SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery
+	JobLoadHome.Download(JobLoadHome.Tag)
+	Wait For (JobLoadHome) JobDone(jlh As HttpJob)
+	Dim HomeHtml As String
+	HomeHasError=True
+	If jlh.Success Then
+		If jlh.GetString.Contains("OperationalError") Or jlh.GetString.Contains("127.0.0.1") Then
+			If File.Exists(SaeloZahra.Dir, "home.html") Then
+				HomeHtml = File.ReadString(SaeloZahra.Dir, "home.html")
+			Else
+				HomeHtml = "<h1>خطا در بارگزاری صفحه</h1>"
+			End If
+		Else
+			HomeHasError=False
+			HomeHtml = "<link href='https://v1.fontapi.ir/css/Estedad' rel='stylesheet'><base href='"&jlh.Tag&"' ><style>*{font-family:Estedad !important;}</style>"&jlh.GetString
+			File.WriteString(SaeloZahra.Dir, "home.html", HomeHtml)
+		End If
+	Else
+		If File.Exists(SaeloZahra.Dir, "home.html") Then
+			HomeHtml = File.ReadString(SaeloZahra.Dir, "home.html")
+		Else
+			HomeHtml = "<h1>خطا در بارگزاری صفحه</h1>"
+		End If
+	End If
+'	LoadingWV.LoadHtml(HomeHtml)
+	jlh.Release
+	
+	
+	Sleep(0)
+	
+	
 	If File.Exists(SaeloZahra.Dir, "UPTemp") Then
 		InstallActivity
 	Else
@@ -61,7 +102,12 @@ Sub Activity_Create(FirstTime As Boolean)
 	End If
 	
 	
-	Sleep(0)
+	
+	
+	
+	
+	DTTC.InItIaLiZe("مجددا دکمه خروج را بزنید")
+	
 	
 	
 	Ime1.Initialize("ime1")
@@ -129,14 +175,21 @@ End Sub
 #Region InstallBottomMenu
 
 Sub ime1_HeightChanged (NewHeight As Int, OldHeight As Int)
-		
-	If SpaceNavigationView1.IsInitialized Then Panel.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
-	If SpaceNavigationView1.IsInitialized Then SpaceNavigationView1.SetLayout(0,Panel.Top+Panel.Height-SaeloZahra.StatusBarHeight,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
-	
+	Try
+		If SpaceNavigationView1.IsInitialized Then Panel.SetLayout(0,SaeloZahra.MaterialActionBarHeight,100%x,NewHeight-SpaceNavigationView1.Height-SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+		If SpaceNavigationView1.IsInitialized Then SpaceNavigationView1.SetLayout(0,Panel.Top+Panel.Height-SaeloZahra.StatusBarHeight,100%x,SaeloZahra.MaterialActionBarHeight+SaeloZahra.StatusBarHeight)
+	Catch
+		Log(LastException)
+	End Try
 End Sub
 
 Sub InstallBottomMenu
 
+	Log("InstallBottomMenu")
+	
+	SpaceNavigationView1.Visible=False
+	SpaceNavigationView1.SendToBack
+	
 	SpaceNavigationView1.SpaceBackgroundColor = SaeloZahra.ColorDark
 	SpaceNavigationView1.ActiveSpaceItemColor = Colors.White
 	SpaceNavigationView1.InActiveSpaceItemColor = Colors.LightGray
@@ -172,12 +225,19 @@ Sub InstallActivity
 	LogColor(StrProfile.Tag, Colors.Yellow)
 	StrProfile.AddView(ProfileWV)
 	
-	LogColor("loading HomeWV: "&SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery,Colors.Magenta)
-	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery)
+	
+	LogColor(HomeHasError& "loading HomeWV: "&SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery,Colors.Magenta)
+	
+	If HomeHasError And File.Exists(SaeloZahra.Dir, "home.html") Then
+		HomeWV.LoadHtml(File.ReadString(SaeloZahra.Dir, "home.html"))
+	Else
+		HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery)
+		LogColor("start loading asli url", Colors.Magenta)
+	End If
 	HomeWV.ZoomEnabled=False
 	
 '	WebViewSettings1.setSavePassword(ProfileWV, True)
-	''	WebViewSettings1.setUserAgentString(ProfileWV, "Mozilla/5.0 (Linux; Win64; x64; rv:46.0) Gecko/20100101 Firefox/68.0")
+''	WebViewSettings1.setUserAgentString(ProfileWV, "Mozilla/5.0 (Linux; Win64; x64; rv:46.0) Gecko/20100101 Firefox/68.0")
 '	WebViewSettings1.setGeolocationEnabled(ProfileWV, True)
 '	WebViewSettings1.setDomStorageEnabled(ProfileWV, True)
 '	WebViewSettings1.setDatabaseEnabled(ProfileWV, True)
@@ -223,6 +283,7 @@ Sub InstallActivity
 	
 	VP.SendToBack
 	SpaceNavigationView1.BringToFront
+	SpaceNavigationView1.Visible=True
 	
 	
 	
@@ -236,9 +297,16 @@ End Sub
 
 Sub InstallHome
 	
-	LogColor("loading HomeWV: "&SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery,Colors.Magenta)
-	HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery)
+	LogColor(HomeHasError& " loading HomeWV: "&SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery,Colors.Magenta)
+
+	If HomeHasError And File.Exists(SaeloZahra.Dir, "home.html") Then
+		HomeWV.LoadHtml(File.ReadString(SaeloZahra.Dir, "home.html"))
+		LogColor("start loading asli url", Colors.Magenta)
+	Else
+		HomeWV.LoadUrl(SaeloZahra.SiteUrl&"home/mobile"&Main.UNQuery)
+	End If
 	HomeWV.ZoomEnabled=False
+	
 	
 	Dim wcc As DefaultWebChromeClient
 	wcc.Initialize("wcc")
@@ -255,8 +323,6 @@ Sub InstallHome
 	HomeWV.SetLayout(0, 0, 100%x, -2)
 	VP.Visible=False
 	LoadingWV.SetLayout(0, 0, 100%x, 100%y)
-	SpaceNavigationView1.Visible=False
-	SpaceNavigationView1.SendToBack
 	
 End Sub
 
@@ -282,12 +348,29 @@ Sub HomeWV_PageFinished (Url As String)
 	Sleep(1313)
 	LoadingWV.SendToBack
 	Sleep(313)
-	If SpaceNavigationView1.IsInitialized And File.Exists(SaeloZahra.Dir, "UPTemp") Then
-		CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
-	End If
+	Try
+		If SpaceNavigationView1.IsInitialized And File.Exists(SaeloZahra.Dir, "UPTemp") Then
+			CallSub(Me, "SpaceNavigationView1_onCentreButtonClick")
+		End If
+	Catch
+		Log(LastException)
+	End Try
+	
+	
 End Sub
 
 Sub HomeWV_OverrideUrl (Url As String) As Boolean
+	Log(Url)
+	
+	If SaeloZahra.WVRoles(Url) == Url Then
+		customBrowser.CreateNewTab(Url)
+	End If
+	
+	Return True
+End Sub
+
+
+Sub LoadingWV_OverrideUrl (Url As String) As Boolean
 	Log(Url)
 	
 	If SaeloZahra.WVRoles(Url) == Url Then
@@ -330,19 +413,21 @@ Private Sub VP_PageChanged (Position As Int)
 End Sub
 
 Sub SpaceNavigationView1_onCentreButtonClick
+	Try
+'		SpaceNavigationView1.showBadgeAtIndex(1, 8,Colors.Red)
+		LogColor("SpaceNavi_onCentreButtonClick()", SaeloZahra.ColorDark)
 	
-	SpaceNavigationView1.showBadgeAtIndex(1, 8,Colors.Red)
-	LogColor("SpaceNavi_onCentreButtonClick()", SaeloZahra.ColorDark)
+		SpaceNavigationView1.ActiveSpaceItemColor   = Colors.LightGray
 	
-	SpaceNavigationView1.ActiveSpaceItemColor   = Colors.LightGray
-	
-	VP.SendToBack
-	VP.SetVisibleAnimated(313,False)
-	HomeWV.BringToFront
-	HomeWV.SetVisibleAnimated(313,True)
-	SpaceNavigationView1.BringToFront
-	
-	
+		VP.SendToBack
+		VP.SetVisibleAnimated(313,False)
+		HomeWV.BringToFront
+		HomeWV.SetVisibleAnimated(313,True)
+		SpaceNavigationView1.BringToFront
+		SpaceNavigationView1.Visible=True
+	Catch
+		Log(LastException)
+	End Try
 End Sub
 
 Sub SpaceNavigationView1_onItemReselected(index As Int, text As String)
@@ -358,6 +443,7 @@ Sub SpaceNavigationView1_onItemReselected(index As Int, text As String)
 		VP.SetVisibleAnimated(313,True)
 		VP.BringToFront
 		SpaceNavigationView1.BringToFront
+		SpaceNavigationView1.Visible=True
 	End If
 End Sub
 
@@ -401,7 +487,7 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 	Menu.Clear
 	ActionBar.InitMenuListener
 	sv.QueryHint=SaeloZahra.csb("جستجو")
-	SI = Menu.Add2(1, 3, "جستجو",X1.GetDrawable("baseline_search_white_24") )
+	SI = Menu.Add2(1, 0, "جستجو",X1.GetDrawable("baseline_search_white_24") )
 	SI.SearchView = sv
 	
 	
@@ -433,7 +519,7 @@ Sub Activity_CreateMenu(Menu As ACMenu)
 		LblYourName.Gravity=Bit.Or(Gravity.CENTER_HORIZONTAL,Gravity.CENTER_VERTICAL)
 		ActionBar.AddView(LblYourName,-2,SaeloZahra.MaterialActionBarHeight,Gravity.CENTER)
 		
-		Menu.Add2(5,5,"افزودن اثر هنری", 	X1.GetDrawable("baseline_control_point_duplicate_white_24") ).ShowAsAction = 2
+		Menu.Add2(5,2,"افزودن اثر هنری", 	X1.GetDrawable("baseline_control_point_duplicate_white_24") ).ShowAsAction = 2
 		
 	Else
 		Menu.Add2(2,2,"ورود به حساب کاربری",X1.GetDrawable("round_login_white_24") ).ShowAsAction = 2

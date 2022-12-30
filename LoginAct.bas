@@ -181,13 +181,13 @@ Sub LoginKon
 		M1.Put("username",UserNameFLET.Text)
 		M1.Put("password",PasswordFLET.Text)
 		File.WriteMap(SaeloZahra.Dir,"UPTemp",M1)
-'			LoginJob.PostMultipart(SaeloZahra.JsonUrl&"login",M1,Null)
-		LoginJob.PostString(SaeloZahra.JsonUrl&"login", "?username="&UserNameFLET.Text&"&password="&PasswordFLET.Text)
+'		LoginJob.PostMultipart(SaeloZahra.JsonUrl&"login",M1,Null)
+		LoginJob.Download(SaeloZahra.JsonUrl&"login?username="&UserNameFLET.Text&"&password="&PasswordFLET.Text)
 		ProgressDialogShow(SaeloZahra.CSBTitle("کمی صبر کنید"))
 	
 	End If
 
-	Log(SaeloZahra.JsonUrl&"login"&Main.UNQuery)
+	Log(SaeloZahra.JsonUrl&"login?username="&UserNameFLET.Text&"&password="&PasswordFLET.Text)
 	
 	
 End Sub

@@ -1,60 +1,62 @@
 ﻿Build1=Default,ir.saelozahra.zistboom.fars
 File1=ArtistEffectLayout.bal
-File10=intro.jpg
-File11=load.gif
-File12=loading_app.gif
-File13=login.png
-File14=LoginAct.bal
-File15=RegisterLayout.bal
-File16=samim-bold-fd-wol.ttf
-File17=samim-fd-wol.ttf
-File18=searchlayout.bal
-File19=seprate.png
+File10=icon.png
+File11=intro.jpg
+File12=load.gif
+File13=loading_app.gif
+File14=login.png
+File15=LoginAct.bal
+File16=RegisterLayout.bal
+File17=samim-bold-fd-wol.ttf
+File18=samim-fd-wol.ttf
+File19=searchlayout.bal
 File2=avatar.png
-File20=SingleAsaarLayout.bal
-File21=SingleNewsLayout.bal
-File22=singleproductpanellayout.bal
-File23=slider.html
-File24=slider_1.html
-File25=slider_2.html
-File26=SVLayout.bal
-File27=WVLayout.bal
-File28=zistboom.png
+File20=seprate.png
+File21=SingleAsaarLayout.bal
+File22=SingleNewsLayout.bal
+File23=singleproductpanellayout.bal
+File24=slider.html
+File25=slider_1.html
+File26=slider_2.html
+File27=SVLayout.bal
+File28=WVLayout.bal
+File29=zistboom.png
 File3=db.db
 File4=farhang.png
 File5=fars.png
-File6=granim.html
-File7=greenhover.png
-File8=HomeLayout.bal
-File9=icon.png
-FileGroup1=Default Group
+File6=font.css
+File7=granim.html
+File8=greenhover.png
+File9=HomeLayout.bal
+FileGroup1=Layout
 FileGroup10=img
 FileGroup11=img
 FileGroup12=img
 FileGroup13=img
-FileGroup14=Layout
+FileGroup14=img
 FileGroup15=Layout
-FileGroup16=Default Group
+FileGroup16=Layout
 FileGroup17=Default Group
-FileGroup18=Layout
-FileGroup19=img
+FileGroup18=Default Group
+FileGroup19=Layout
 FileGroup2=img
-FileGroup20=Layout
+FileGroup20=img
 FileGroup21=Layout
 FileGroup22=Layout
-FileGroup23=Default Group
+FileGroup23=Layout
 FileGroup24=Default Group
 FileGroup25=Default Group
-FileGroup26=Layout
+FileGroup26=Default Group
 FileGroup27=Layout
-FileGroup28=img
+FileGroup28=Layout
+FileGroup29=img
 FileGroup3=Default Group
 FileGroup4=img
 FileGroup5=img
 FileGroup6=Default Group
-FileGroup7=img
-FileGroup8=Layout
-FileGroup9=img
+FileGroup7=Default Group
+FileGroup8=img
+FileGroup9=Layout
 Group=Default Group
 Library1=ahswipetorefresh
 Library10=hitex_materialx
@@ -96,15 +98,15 @@ Module6=ProfileAct
 Module7=RegisterAct
 Module8=SaeloZahra
 Module9=SearchAct
-NumberOfFiles=28
+NumberOfFiles=29
 NumberOfLibraries=26
 NumberOfModules=13
 Version=11.8
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: زیست بوم فرهنگ و ارشاد فارس
-	#VersionCode: 2
-	#VersionName: 2
+	#VersionCode: 3
+	#VersionName: 3
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#CanInstallToExternalStorage: true
